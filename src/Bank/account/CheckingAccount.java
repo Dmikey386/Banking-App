@@ -1,4 +1,4 @@
-package MethodTesting;
+package Bank.account;
 
 public class CheckingAccount extends BankAccount {
     // checking account
