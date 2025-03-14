@@ -1,4 +1,4 @@
-package MethodTesting;
+package Bank.account;
 
 public class BankAccount {
     private double balance;
