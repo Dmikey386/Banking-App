@@ -5,7 +5,7 @@ public class SavingsAccount extends BankAccount {
     double savingsAPY;
 
     //savings account constructor
-    SavingsAccount(int accountNumber,double APY){
+    public SavingsAccount(int accountNumber,double APY){
         super(accountNumber);
         savingsAPY = APY;
     }
