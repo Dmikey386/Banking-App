@@ -5,20 +5,10 @@ public class SavingsAccount extends BankAccount {
     double savingsAPY;
 
     //savings account constructor
-    SavingsAccount(int accountNumber,double APY){
+    SavingsAccount(int accountNumber){
         super(accountNumber);
-        savingsAPY = APY;
     }
 
-    @Override
-    public double APY(){
-        double yield = this.getBalance()*savingsAPY;
-        this.deposit(yield);
-        System.out.println("APY: " + (Math.round(yield * 100)/100.0) + " Total Balance: " + getBalance());
-        return yield;
-    }
-
-    @Override
     public void printAccountInfo(){
         System.out.println("Account Type: Savings");
         System.out.println("Account #: " + getAccountNumber());
