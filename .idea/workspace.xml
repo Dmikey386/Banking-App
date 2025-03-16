@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e0fae2e-1290-4a8b-889e-e7ad60caad85" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Bank/account/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bank/account/TransactionManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bank/account/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bank/core/Transactions/Deposit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bank/core/Transactions/ProcessTransactions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bank/core/Transactions/WireTransfer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bank/core/Transactions/Withdraw.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bank/account/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bank/account/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/CheckingAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bank/account/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/SavingsAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bank/core/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Bank/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/account/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/account/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/Deposit.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/Deposit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/ProcessTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/ProcessTransactions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/WireTransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/WireTransfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/Withdraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/Withdraw.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,29 +21,29 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2uNFsuYu6WDsoEIF4Mhf8FlB3AZ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Feature-Extraction",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Feature-Extraction&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Bank.core.Main" />
@@ -87,7 +80,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1742081334112</updated>
-      <workItem from="1742081335166" duration="810000" />
+      <workItem from="1742081335166" duration="3391000" />
+      <workItem from="1742089800899" duration="163000" />
+      <workItem from="1742090009813" duration="25000" />
+      <workItem from="1742090038349" duration="2718000" />
     </task>
     <servers />
   </component>

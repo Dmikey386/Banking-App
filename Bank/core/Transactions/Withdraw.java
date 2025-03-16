@@ -4,6 +4,7 @@ import Bank.account.BankAccount;
 
 public class Withdraw  {
     private BankAccount account;
+    private int transactionID = 1;
     private double amount;
 
     public Withdraw(BankAccount account, double amount) {
@@ -22,5 +23,8 @@ public class Withdraw  {
     }
     public double getAmount() {
         return amount;
+    }
+    public int getTransactionID() {
+        return transactionID;
     }
 }

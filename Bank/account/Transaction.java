@@ -1,13 +1,30 @@
 package Bank.account;
 
-public class Transaction<T>{
-    private int toAccountNumber;
-    private int fromAccountNumber;
-    private T transcation;
+public class Transaction{
+    private int depositAccount;
+    private int withdrawAccount;
+    private int transactionType;
+    private double amount;
 
-    public Transaction(int toAccountNumber, int fromAccountNumber, T transcation) {
-        this.toAccountNumber = toAccountNumber;
-        this.fromAccountNumber = fromAccountNumber;
-        this.transcation = transcation;
+    // Core transaction constructor
+    public Transaction(int depositAccount, int withdrawAccount,int transactionType, double amount) {
+        this.depositAccount = depositAccount;
+        this.withdrawAccount = withdrawAccount;
+        this.transactionType = transactionType;
+        this.amount = amount;
+    }
+
+    // getters
+    public int getdepositAccount() {
+        return depositAccount;
+    }
+    public int getwithdrawAccount() {
+        return withdrawAccount;
+    }
+    public int getTransactionType() {
+        return transactionType;
+    }
+    public double getAmount() {
+        return amount;
     }
 }
