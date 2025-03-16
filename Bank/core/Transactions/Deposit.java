@@ -4,6 +4,7 @@ import Bank.account.BankAccount;
 
 public class Deposit {
     // deposit money from one account to another account
+    private int transactionID = 0;
     private BankAccount account;
     private double amount;
 
@@ -14,6 +15,7 @@ public class Deposit {
 
     // setters
     public void process(){
+        System.out.println(account);
         account.setBalance(account.getBalance() + amount);
     }
 
@@ -23,5 +25,8 @@ public class Deposit {
     }
     public double getAmount() {
         return amount;
+    }
+    public int getTransactionID() {
+        return transactionID;
     }
 }

@@ -14,6 +14,14 @@ public class User {
         this.userID = userID;
         totalBalance = 0;
     }
+    // get user
+    public BankAccount getAccount(int accountID) {
+        if (userAccMap.containsKey(accountID)) {
+            return userAccMap.get(accountID);
+        }
+        System.out.println(" Account not found: " + accountID);
+        return null;
+    }
 
     // set new value to account database
     private void addAccToUser(int accountNumber, BankAccount account) {
