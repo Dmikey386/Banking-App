@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 public class User {
     private int userID;
-    private HashMap<Integer, BankAccount> userAccMap = new HashMap<>();
-    private ArrayList<Integer> userAccList = new ArrayList<>();
+    private HashMap<Integer, Double> userAccMap = new HashMap<>(); // Key = accountID, value = balance
     private double totalBalance;
 
     //User Constructor
@@ -14,20 +13,7 @@ public class User {
         this.userID = userID;
         totalBalance = 0;
     }
-    // get user
-    public BankAccount getAccount(int accountID) {
-        if (userAccMap.containsKey(accountID)) {
-            return userAccMap.get(accountID);
-        }
-        System.out.println(" Account not found: " + accountID);
-        return null;
-    }
 
-    // set new value to account database
-    private void addAccToUser(int accountNumber, BankAccount account) {
-        userAccMap.put(accountNumber, account);
-        userAccList.add(accountNumber);
-    }
 
     // Open new account
     public int openAccount(String accountType) {
@@ -40,11 +26,11 @@ public class User {
         switch (accountType) {
             case "Checking":
                 CheckingAccount newChecking = new CheckingAccount(accountNumber);
-                addAccToUser(accountNumber, newChecking);
+                userAccMap.put(accountNumber, newChecking.getBalance());
                 break;
             case "Savings":
                 SavingsAccount newSavings = new SavingsAccount(accountNumber);
-                addAccToUser(accountNumber, newSavings);
+                userAccMap.put(accountNumber, newSavings.getBalance());
                 break;
             default: // would not occur if there was a button to pick
                 System.out.println("Invalid account type");
