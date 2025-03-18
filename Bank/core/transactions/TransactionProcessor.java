@@ -1,4 +1,4 @@
-package Bank.core.Transactions;
+package Bank.core.transactions;
 
 public class TransactionProcessor {
 

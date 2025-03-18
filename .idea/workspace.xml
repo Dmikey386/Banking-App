@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e0fae2e-1290-4a8b-889e-e7ad60caad85" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Bank/core/Transactions/TransactionProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bank/core/Transactions/TransactionVerifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/account/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/account/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/account/TransactionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/TransactionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/account/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/core/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/Deposit.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/Deposit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/ProcessTransactions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/WireTransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/WireTransfer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/Withdraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/Withdraw.java" afterDir="false" />
-    </list>
+    <list default="true" id="4e0fae2e-1290-4a8b-889e-e7ad60caad85" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,21 +28,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Feature-Extraction&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Transaction-Processing",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Bank.core.Main" />
@@ -100,6 +87,7 @@
       <workItem from="1742163644951" duration="4000" />
       <workItem from="1742164464331" duration="4408000" />
       <workItem from="1742239682023" duration="2406000" />
+      <workItem from="1742261323420" duration="323000" />
     </task>
     <servers />
   </component>
