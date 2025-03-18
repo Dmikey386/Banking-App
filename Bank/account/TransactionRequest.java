@@ -17,8 +17,25 @@ public class TransactionRequest {
         this.transactionType= builder.transactionType;
         this.status = builder.status;
     }
+
+    public boolean getStatus(){
+        return status;
+    }
+    public int[] getAccountIDs(){
+        return accountIDs;
+    }
+    public int getTransactionType(){
+        return transactionType;
+    }
+    public double getAmount(){
+        return amount;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
     
-    // Use builder instead of constructor
+    // Use Builder class for construction
     public static class Builder {
         private User user;
         private int[] accountIDs;
@@ -55,5 +72,7 @@ public class TransactionRequest {
             return new TransactionRequest(this);
         }
     }
+
+
 }
 

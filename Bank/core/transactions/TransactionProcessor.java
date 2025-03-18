@@ -1,17 +1,70 @@
 package Bank.core.transactions;
 
+import Bank.account.User;
+import Bank.account.BankAccount;
+import Bank.account.TransactionRequest;
+import Bank.core.Bank;
+
+import java.util.HashMap;
+
 public class TransactionProcessor {
+    private TransactionVerifier transactionVerifier = new TransactionVerifier();
+    private User user; // change to bank when user/account data is stored in bank
+
+    public TransactionProcessor(User user){
+        this.user = user;
+    }
 
 
-    //TransactionProcessor
+    public void processTransaction(TransactionRequest transactionRequest) {
+        if (transactionRequest.getStatus()){
+            System.out.println("Transaction is not valid");
+        }
+        else{
 
-    // Attributes
-    // Transaction Obj - contains transaction information
-    // Transaction verifier - verifies transaction
-    // Bank
-    // Deposit Obj
-    // Withdraw Obj
-    // Transfer Obj
+            // Create Transaction Process Transaction
+            Transaction transaction = createTransaction(transactionRequest);
+            transaction.process();
+
+        }
+
+    }
+
+    // Select Transaction Type
+    public Transaction createTransaction(TransactionRequest transactionRequest) {
+        int type = transactionRequest.getTransactionType();
+        Transaction transaction = null;
+        BankAccount[] accounts = getAccounts(transactionRequest);
+        double amount = transactionRequest.getAmount();
+
+        switch (type){
+            case 0:
+                transaction = new Deposit(accounts,amount);
+                break;
+                case 1:
+                    transaction = new Withdraw(accounts,amount);
+                    break;
+                    case 2:
+                        transaction = new WireTransfer(accounts,amount);
+                        break;
+                        default:
+                            System.out.println("Invalid transaction type");
+
+        }
+        return transaction;
+
+    }
+
+    // Convert accounts to list of
+    public BankAccount[] getAccounts(TransactionRequest transactionRequest) {
+        int[] accountIDs = transactionRequest.getAccountIDs();
+        BankAccount[] accounts = new BankAccount[accountIDs.length];
+
+        for (int i = 0; i < accountIDs.length; i++){
+            accounts[i] = user.getAccount(accountIDs[i]); // will take from bank data when account and user data is stored in bank
+        }
+        return accounts;
+    }
 
 
 }

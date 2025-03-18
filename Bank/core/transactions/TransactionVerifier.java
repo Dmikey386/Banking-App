@@ -1,12 +1,15 @@
 package Bank.core.transactions;
 
-public class TransactionVerifier {
-    // Attributes
-    // Bank
-    // Transaction - verifier
-    // Bank Obj - go through account and user list
-    // goal verify User account, transaction call transaction processor.
+import Bank.core.Bank;
 
+public class TransactionVerifier {
+    private Bank bank;
+    private Transaction transaction;
+
+    public TransactionVerifier() {
+        this.bank = bank;
+        this.transaction = transaction;
+    }
 
 
 
