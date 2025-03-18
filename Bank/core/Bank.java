@@ -19,6 +19,8 @@ public class Bank {
 
     }
 
+
+    // Bank Getters
     public BankAccount getAccount (int accountID){
         return accounts.get(accountID);
     }
