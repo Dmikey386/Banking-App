@@ -7,8 +7,6 @@ public class TransactionVerifier {
     private Transaction transaction;
 
     public TransactionVerifier() {
-        this.bank = bank;
-        this.transaction = transaction;
     }
 
 

@@ -1,9 +1,6 @@
 package Bank.account;
-import Bank.core.transactions.Transaction;
 
-import java.util.Random;
 import java.util.HashMap;
-import java.util.ArrayList;
 
 public class User {
     private int userID;
@@ -17,7 +14,7 @@ public class User {
         totalBalance = 0;
     }
 
-    // Add account to  user
+    // Add account to user account Map
     public void addAccount(int accountID, double accountBalance){
         userAccMap.put(accountID, accountBalance);
     }
