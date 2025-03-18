@@ -16,6 +16,8 @@ public class TransactionVerifier {
     private HashMap<Integer,BankAccount> accountBankMap;
     private HashMap<Integer,User> userBankMap;
 
+
+    // Constructor
     public TransactionVerifier(Bank bank, TransactionRequest transactionRequest) {
         // get transaction Request information
         this.transactionRequest = transactionRequest;
@@ -32,11 +34,13 @@ public class TransactionVerifier {
 
     }
 
+
+    // Verify a transaction
     public TransactionRequest verifyTransaction() {
         try {
             verifyAmmount();
-            verifyTransactionAccounts(bankAccountIDs);
-            verifyWithdrawBalances(bankAccountIDs);
+            verifyTransactionAccounts();
+            verifyWithdrawBalances();
             transactionRequest.setStatus(true);
         }
         catch (TransactionVerifierException e){
@@ -44,23 +48,26 @@ public class TransactionVerifier {
         }
             return transactionRequest;
     }
-    public void verifyTransactionAccounts(int[] accountIDs) throws TransactionVerifierException{
+
+    // Verify all account parameters for a transaction
+    public void verifyTransactionAccounts() throws TransactionVerifierException{
         if (transactionType == 0){
-            verifyDepositAccounts(accountIDs[0]);
+            verifyDepositAccounts(bankAccountIDs[0]);
         }
         else if (transactionType == 1){
-            verifyWithdrawAccounts(accountIDs[0]);
+            verifyWithdrawAccounts(bankAccountIDs[0]);
         }
         if (transactionType == 2) {
-            if (accountIDs.length < 2) {
+            if (bankAccountIDs.length < 2) {
                 throw new TransactionVerifierException("Transfer requires both a withdraw and deposit account.");
             }
-            verifyTransferAccounts(accountIDs);
+            verifyTransferAccounts(bankAccountIDs);
         }
 
 
     }
 
+    // Verify if Deposit Accounts
     public void verifyDepositAccounts(int accountID) throws TransactionVerifierException {
         // verify if deposit account (recieving money) is in bank database
         if (!accountBankMap.containsKey(accountID)) {
@@ -68,6 +75,7 @@ public class TransactionVerifier {
         }
     }
 
+    // Verify Withdrawal Accounts
     public void verifyWithdrawAccounts(int accountID) throws TransactionVerifierException {
         // verify if withdraw account (removing money) is in bank database
         if (!accountBankMap.containsKey(accountID)) {
@@ -79,6 +87,7 @@ public class TransactionVerifier {
         }
 
     }
+    // Verify Transfer accounts
     public void verifyTransferAccounts(int[] accountIDs) throws TransactionVerifierException {
         int withdrawAccountID = accountIDs[0];
         int depositAccountID = accountIDs[1];
@@ -86,21 +95,25 @@ public class TransactionVerifier {
         verifyWithdrawAccounts(withdrawAccountID);
         verifyDepositAccounts(depositAccountID);
     }
-    public void verifyWithdrawBalances(int[] accountIDs) throws TransactionVerifierException {
+
+    // Verify valid balances
+    public void verifyWithdrawBalances() throws TransactionVerifierException {
         if (transactionType != 0){ // if not a deposit
-            int accountID = accountIDs[0];
+            int accountID = bankAccountIDs[0];
             BankAccount withdrawAccount = accountBankMap.get(accountID);
             if (withdrawAccount.getBalance() - amount < 50){ // min-account-balance: 50
                 throw new TransactionVerifierException("Insufficient Balance");
             }
         }
     }
+    // Verify amount in transaction is valid
     public void verifyAmmount() throws TransactionVerifierException {
         if (amount < 0){
             throw new TransactionVerifierException("Invalid Amount: " + amount);
         }
     }
 }
+
 
 class TransactionVerifierException extends Exception{
     public TransactionVerifierException(String message){
