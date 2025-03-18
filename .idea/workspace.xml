@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e0fae2e-1290-4a8b-889e-e7ad60caad85" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Bank/core/Transactions/TransactionProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Bank/core/Transactions/TransactionVerifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/account/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/BankAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bank/account/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/account/TransactionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/TransactionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bank/account/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/core/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Bank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bank/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/Deposit.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/Deposit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/ProcessTransactions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/ProcessTransactions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/ProcessTransactions.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/WireTransfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/WireTransfer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bank/core/Transactions/Withdraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Transactions/Withdraw.java" afterDir="false" />
     </list>
@@ -17,6 +22,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -84,6 +96,10 @@
       <workItem from="1742089800899" duration="163000" />
       <workItem from="1742090009813" duration="25000" />
       <workItem from="1742090038349" duration="2718000" />
+      <workItem from="1742092869003" duration="6071000" />
+      <workItem from="1742163644951" duration="4000" />
+      <workItem from="1742164464331" duration="4408000" />
+      <workItem from="1742239682023" duration="2406000" />
     </task>
     <servers />
   </component>
