@@ -9,12 +9,11 @@ import java.util.HashMap;
 
 public class TransactionProcessor {
     private TransactionVerifier transactionVerifier = new TransactionVerifier();
-    private User user; // change to bank when user/account data is stored in bank
+    private Bank bank;
 
-    public TransactionProcessor(User user){
-        this.user = user;
+    public TransactionProcessor(Bank bank) {
+        this.bank = bank;
     }
-
 
     public void processTransaction(TransactionRequest transactionRequest) {
         if (transactionRequest.getStatus()){
@@ -27,7 +26,6 @@ public class TransactionProcessor {
             transaction.process();
 
         }
-
     }
 
     // Select Transaction Type
@@ -61,7 +59,7 @@ public class TransactionProcessor {
         BankAccount[] accounts = new BankAccount[accountIDs.length];
 
         for (int i = 0; i < accountIDs.length; i++){
-            accounts[i] = user.getAccount(accountIDs[i]); // will take from bank data when account and user data is stored in bank
+            accounts[i] = bank.getAccount(accountIDs[i]);
         }
         return accounts;
     }

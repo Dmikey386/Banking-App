@@ -5,52 +5,133 @@ import Bank.account.User;
 
 public class Main {
     public static void main(String[] args) {
+        // Current functionality is demonstrated in commands below
+        // right now Bank does not store any user or account data so the transaction request pipeline will need to be sligtly modified to search bank for account objects
+        // next step
+        // upon user creation or account creation, modify bank hashMaps storing user and account data
+        // change user hashmaps back to <accountID, acccountbalance>
+        // modify transaction processor to use bank hashmaps rather than user hashmaps
+        // Test Transaction processor between different users
+        // Start Transaction verifier
 
-        // process is slightly modified because bank does not store account or user data yet
-        User user = new User(1);
-        System.out.println(user);
-        Bank bank = new Bank(user);
-        int accSavingsID = user.openAccount("Savings");
-        int accCheckingID = user.openAccount("Checking");
-
-
-        TransactionRequest deposit = user.createTransactionRequest(new int[] {accSavingsID},10000,0);
-        TransactionRequest withdraw = user.createTransactionRequest(new int[] {accSavingsID},5000,1);
-        TransactionRequest transfer = user.createTransactionRequest(new int[] {accSavingsID,accCheckingID},2500,2);
-
-        System.out.println(user.getAccount(accSavingsID).getBalance());
-        System.out.println(accSavingsID);
-
-        bank.processTransaction(deposit);
-
-
-        System.out.println(user.getAccount(accSavingsID).getBalance());
-
-        bank.processTransaction(withdraw);
-        System.out.println(user.getAccount(accSavingsID).getBalance());
-        System.out.println(user.getAccount(accCheckingID).getBalance());
-
-        bank.processTransaction(transfer);
-        System.out.println(user.getAccount(accSavingsID).getBalance());
-        System.out.println(user.getAccount(accCheckingID).getBalance());
-
-        // Currently, fully functioning, User class with Hashmap<accountNums, balances>, and ability to create accounts
-        // Bank - no functions, but has instance data structues, Hashmap UserIDs to user objects, and account IDs to account objects.
-        // these stores are temporary for testing functionality before implementing relational database
+        Bank bank = new Bank();
+        bank.createUser(1);
+        bank.createUser(2);
+        int savings1 = bank.openAccount("Savings",bank.getUser(1));
+        int savings2 = bank.openAccount("Checking",bank.getUser(2));
+        int checking1 = bank.openAccount("Savings",bank.getUser(1));
+        int checking2 = bank.openAccount("Checking",bank.getUser(2));
 
 
-        // TRANSACTION CLASS questions
-        // request transaction - user or account method?
-        // store an instance of each transaction as transaction class attribute?
-        // just have methods to request each type of transaction  and dont use a transaction class
-        // i like the idea of a transaction class, because then i can just store the class in the transaction manager. Is this a good idea
+        // ===============================
+//        DEPOSIT TESTS
+// ===============================
+        System.out.println("\n===== STARTING DEPOSIT TESTS =====\n");
 
-        // Next steps - create transaction lifecycle at each level (Bank, User, Account, transaction verifier, transaction processor)
-        // Allow user or account to request transaction class,
-        // Use transaction verifier to see if transaction is valid
-        // Use transaction processor -> perform transaction using Deposit, Withdraw, or Transfer
-        // Add transaction manager method to store transaction data as attribute of
-        // add transaction to t
+// Savings Deposits
+        System.out.println("Initial Savings Balances:");
+        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
+        System.out.println("User 2 Savings: " + bank.getAccount(savings2).getBalance());
+
+        TransactionRequest depositSavings1 = bank.getUser(1).createTransactionRequest(new int[]{savings1}, 10000, 0);
+        TransactionRequest depositSavings2 = bank.getUser(2).createTransactionRequest(new int[]{savings2}, 10000, 0);
+
+        bank.processTransaction(depositSavings1);
+        bank.processTransaction(depositSavings2);
+
+        System.out.println("After Deposit Savings Balances:");
+        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
+        System.out.println("User 2 Savings: " + bank.getAccount(savings2).getBalance());
+
+// Checking Deposits
+        System.out.println("\nInitial Checking Balances:");
+        System.out.println("User 1 Checking: " + bank.getAccount(checking1).getBalance());
+        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance());
+
+        TransactionRequest depositChecking1 = bank.getUser(1).createTransactionRequest(new int[]{checking1}, 10000, 0);
+        TransactionRequest depositChecking2 = bank.getUser(2).createTransactionRequest(new int[]{checking2}, 10000, 0);
+
+        bank.processTransaction(depositChecking1);
+        bank.processTransaction(depositChecking2);
+
+        System.out.println("After Deposit Checking Balances:");
+        System.out.println("User 1 Checking: " + bank.getAccount(checking1).getBalance());
+        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance());
+
+
+// ===============================
+//       WITHDRAWAL TESTS
+// ===============================
+        System.out.println("\n===== STARTING WITHDRAWAL TESTS =====\n");
+
+// Savings Withdrawals
+        TransactionRequest withdrawSavings1 = bank.getUser(1).createTransactionRequest(new int[]{savings1}, 5000, 1);
+        TransactionRequest withdrawSavings2 = bank.getUser(2).createTransactionRequest(new int[]{savings2}, 5000, 1);
+
+        bank.processTransaction(withdrawSavings1);
+        bank.processTransaction(withdrawSavings2);
+
+        System.out.println("After Withdrawal Savings Balances:");
+        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
+        System.out.println("User 2 Savings: " + bank.getAccount(savings2).getBalance());
+
+// Checking Withdrawals
+        TransactionRequest withdrawChecking1 = bank.getUser(1).createTransactionRequest(new int[]{checking1}, 5000, 1);
+        TransactionRequest withdrawChecking2 = bank.getUser(2).createTransactionRequest(new int[]{checking2}, 5000, 1);
+
+        bank.processTransaction(withdrawChecking1);
+        bank.processTransaction(withdrawChecking2);
+
+        System.out.println("After Withdrawal Checking Balances:");
+        System.out.println("User 1 Checking: " + bank.getAccount(checking1).getBalance());
+        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance());
+
+
+// ===============================
+//       TRANSFER TESTS
+// ===============================
+        System.out.println("\n===== STARTING TRANSFER TESTS =====\n");
+
+// Transfer from User 1's Savings → Checking
+        TransactionRequest transferToChecking1 = bank.getUser(1).createTransactionRequest(new int[]{savings1, checking1}, 2500, 2);
+        bank.processTransaction(transferToChecking1);
+
+// Transfer from User 2's Savings → Checking
+        TransactionRequest transferToChecking2 = bank.getUser(2).createTransactionRequest(new int[]{savings2, checking2}, 2500, 2);
+        bank.processTransaction(transferToChecking2);
+
+        System.out.println("After Transfer (Savings to Checking):");
+        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
+        System.out.println("User 1 Checking: " + bank.getAccount(checking1).getBalance());
+        System.out.println("User 2 Savings: " + bank.getAccount(savings2).getBalance());
+        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance() + "\n");
+
+// Transfer from User 1's Checking → User 2's Checking
+        TransactionRequest transferCheckingToChecking = bank.getUser(1).createTransactionRequest(new int[]{checking1, checking2}, 3000, 2);
+        bank.processTransaction(transferCheckingToChecking);
+
+        System.out.println("After Transfer (Checking1 → Checking2):");
+        System.out.println("User 1 Checking: " + bank.getAccount(checking1).getBalance());
+        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance() + "\n");
+
+// Transfer from User 1's Savings → User 2's Savings
+        TransactionRequest transferSavingsToSavings = bank.getUser(1).createTransactionRequest(new int[]{savings1, savings2}, 3000, 2);
+        bank.processTransaction(transferSavingsToSavings);
+
+        System.out.println("After Transfer (Savings1 → Savings2):");
+        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
+        System.out.println("User 2 Savings: " + bank.getAccount(savings2).getBalance() + "\n");
+
+// Transfer from User 1's Savings → User 2's Checking (FIXED ERROR)
+        TransactionRequest transferSavingsToChecking = bank.getUser(1).createTransactionRequest(new int[]{savings1, checking2}, 3000, 2);
+        bank.processTransaction(transferSavingsToChecking);
+
+        System.out.println("After Transfer (Savings1 → Checking2):");
+        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
+        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance());
+
+
+
 
     }
 }
