@@ -5,7 +5,7 @@ public class CheckingAccount extends BankAccount {
     double checkingAPY;
 
     // checking account constructor
-    CheckingAccount(int accountNumber) {
+    public CheckingAccount(int accountNumber) {
         super(accountNumber);
     }
 
