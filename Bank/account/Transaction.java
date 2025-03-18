@@ -1,30 +1,16 @@
 package Bank.account;
 
+import Bank.core.Transactions.Deposit;
+import Bank.core.Transactions.WireTransfer;
+import Bank.core.Transactions.Withdraw;
+
 public class Transaction{
-    private int depositAccount;
-    private int withdrawAccount;
-    private int transactionType;
-    private double amount;
+    // Attributes
+    // transaction code
+    // transaction verification status
+    // User
+    // [acc1, acc2]
+    // amount
+    // Transaction type - return
 
-    // Core transaction constructor
-    public Transaction(int depositAccount, int withdrawAccount,int transactionType, double amount) {
-        this.depositAccount = depositAccount;
-        this.withdrawAccount = withdrawAccount;
-        this.transactionType = transactionType;
-        this.amount = amount;
-    }
-
-    // getters
-    public int getdepositAccount() {
-        return depositAccount;
-    }
-    public int getwithdrawAccount() {
-        return withdrawAccount;
-    }
-    public int getTransactionType() {
-        return transactionType;
-    }
-    public double getAmount() {
-        return amount;
-    }
 }

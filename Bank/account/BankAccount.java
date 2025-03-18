@@ -4,6 +4,7 @@ package Bank.account;
 public class BankAccount {
     private double balance;
     private int accountNumber;
+    private TransactionManager transactionManager; // Store transactions by account
 
     // Constructor
     public BankAccount(int accountNumber) {

@@ -7,12 +7,17 @@ public class User {
     private int userID;
     private HashMap<Integer, Double> userAccMap = new HashMap<>(); // Key = accountID, value = balance
     private double totalBalance;
+    private TransactionManager transactionManager; // store transactions by user
 
     //User Constructor
     public User(int userID){
         this.userID = userID;
         totalBalance = 0;
     }
+
+    // Request Transaction
+    // return a transaction that user can send to bank
+
 
 
     // Open new account
