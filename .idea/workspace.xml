@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e0fae2e-1290-4a8b-889e-e7ad60caad85" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Bank/account/BankAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/BankAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/account/TransactionRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/TransactionRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/account/CheckingAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/CheckingAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bank/account/SavingsAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/SavingsAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bank/account/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/account/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bank/core/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Bank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bank/core/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/core/transactions/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/transactions/Transaction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bank/core/transactions/TransactionProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/transactions/TransactionProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bank/core/transactions/TransactionVerifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bank/core/transactions/TransactionVerifier.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +95,7 @@
       <workItem from="1742164464331" duration="4408000" />
       <workItem from="1742239682023" duration="2406000" />
       <workItem from="1742261323420" duration="323000" />
-      <workItem from="1742261648292" duration="11296000" />
+      <workItem from="1742261648292" duration="14089000" />
     </task>
     <servers />
   </component>

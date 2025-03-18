@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class User {
     private int userID;
-    private HashMap<Integer, BankAccount> userAccMap = new HashMap<>(); // Key = accountID, value = balance
+    private HashMap<Integer, Double> userAccMap = new HashMap<>(); // Key = accountID, value = balance
     private double totalBalance;
     private TransactionManager transactionManager; // store transactions by user
 
@@ -17,10 +17,11 @@ public class User {
         totalBalance = 0;
     }
 
-    // get account
-    public BankAccount getAccount(int accID){
-        return userAccMap.get(accID);
+    // Add account to  user
+    public void addAccount(int accountID, double accountBalance){
+        userAccMap.put(accountID, accountBalance);
     }
+
 
     // Request Transaction
     public TransactionRequest createTransactionRequest(int[] accounts, double amount, int transactionType){
@@ -37,27 +38,4 @@ public class User {
 
 
 
-    // Open new account
-    public int openAccount(String accountType) {
-        Random rand = new Random();
-
-        // Check for valid account number in database
-        int accountNumber = rand.nextInt(1000);
-
-        // Make account
-        switch (accountType) {
-            case "Checking":
-                CheckingAccount newChecking = new CheckingAccount(accountNumber);
-                userAccMap.put(accountNumber, newChecking);
-                break;
-            case "Savings":
-                SavingsAccount newSavings = new SavingsAccount(accountNumber);
-                userAccMap.put(accountNumber, newSavings);
-                break;
-            default: // would not occur if there was a button to pick
-                System.out.println("Invalid account type");
-                break;
-        }
-        return accountNumber;
-    }
 }
