@@ -1,35 +1,36 @@
 package Bank.core.transactions;
 
-import Bank.account.User;
 import Bank.account.BankAccount;
 import Bank.account.TransactionRequest;
 import Bank.core.Bank;
 
-import java.util.HashMap;
 
 public class TransactionProcessor {
     private TransactionVerifier transactionVerifier = new TransactionVerifier();
     private Bank bank;
 
+
+    // constructor
     public TransactionProcessor(Bank bank) {
         this.bank = bank;
     }
 
+
+    // Process the transaction
     public void processTransaction(TransactionRequest transactionRequest) {
-        if (transactionRequest.getStatus()){
+        if (!transactionRequest.getStatus()){
             System.out.println("Transaction is not valid");
         }
         else{
-
-            // Create Transaction Process Transaction
             Transaction transaction = createTransaction(transactionRequest);
             transaction.process();
 
         }
     }
 
-    // Select Transaction Type
+    // create the transaction
     public Transaction createTransaction(TransactionRequest transactionRequest) {
+
         int type = transactionRequest.getTransactionType();
         Transaction transaction = null;
         BankAccount[] accounts = getAccounts(transactionRequest);
@@ -53,7 +54,7 @@ public class TransactionProcessor {
 
     }
 
-    // Convert accounts to list of
+    // Convert accountIDs to account objects
     public BankAccount[] getAccounts(TransactionRequest transactionRequest) {
         int[] accountIDs = transactionRequest.getAccountIDs();
         BankAccount[] accounts = new BankAccount[accountIDs.length];

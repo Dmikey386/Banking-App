@@ -4,9 +4,9 @@ import Bank.account.BankAccount;
 
 
 public interface Transaction{
+    // Interface for key transaction methods
     void process();
     double getAmount();
-    int getTransactionID();
     BankAccount[] getAccount();
 
 
@@ -16,8 +16,8 @@ public interface Transaction{
      // Deposit money into an account
      private BankAccount account;
      private double amount;
-     private int transactionID;
 
+     // constructor
      public Deposit(BankAccount[] account, double amount) {
          this.account = account[0];
          this.amount = amount;
@@ -28,28 +28,27 @@ public interface Transaction{
          account.setBalance(account.getBalance() + amount);
      }
 
+     // getters
      public BankAccount[] getAccount() {
          return new BankAccount[]{account};
      }
      public double getAmount() {
          return amount;
      }
-     public int getTransactionID() {
-         return transactionID;
-     }
  }
 
  class Withdraw implements Transaction{
+    // withdraw money from an account
     private BankAccount account;
     private double amount;
-    private int transactionID;
 
+    // constructor
     public Withdraw(BankAccount[] account, double amount) {
         this.account = account[0];
         this.amount = amount;
     }
 
-    // setters
+    // process withdrawal
     public void process(){
         account.setBalance(account.getBalance() - amount);
     }
@@ -61,18 +60,17 @@ public interface Transaction{
     public double getAmount() {
         return amount;
     }
-     public int getTransactionID() {
-         return transactionID;
-     }
 
 }
 
  class WireTransfer implements Transaction{
+    // wire money from one account to another
     private BankAccount withdrawAcc;
     private BankAccount depositAcc;
     private double amount;
-    private int transactionID;
 
+
+    // constructor
     public WireTransfer(BankAccount[] accounts, double amount) {
         this.withdrawAcc = accounts[0];
         this.depositAcc = accounts[1];
@@ -86,9 +84,6 @@ public interface Transaction{
     public BankAccount[] getAccount() {
         return new BankAccount[]{withdrawAcc, depositAcc};
     }
-     public int getTransactionID() {
-         return transactionID;
-     }
 
 
     // process withdraw

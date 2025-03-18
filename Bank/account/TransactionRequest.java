@@ -10,6 +10,8 @@ public class TransactionRequest {
     private int transactionType;
     private boolean status;
 
+
+    // constructore for transaction request
     public TransactionRequest(Builder builder) {
         this.user = builder.user;
         this.accountIDs = builder.accountIDs;
@@ -18,6 +20,8 @@ public class TransactionRequest {
         this.status = builder.status;
     }
 
+
+    // getters for transaction request
     public boolean getStatus(){
         return status;
     }
@@ -31,6 +35,8 @@ public class TransactionRequest {
         return amount;
     }
 
+
+    // set status of transaction
     public void setStatus(boolean status) {
         this.status = status;
     }

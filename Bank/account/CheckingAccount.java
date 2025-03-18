@@ -9,6 +9,7 @@ public class CheckingAccount extends BankAccount {
         super(accountNumber);
     }
 
+    // print account information
     public void printAccountInfo() {
         System.out.println("Account Type: Checking");
         System.out.println("Account #: " + getAccountNumber());

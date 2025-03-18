@@ -12,11 +12,9 @@ public class BankAccount {
     }
 
     // getters
-    // return the current balance
     public double getBalance(){
         return balance;
     }
-    // get account number
     public int getAccountNumber(){
         return accountNumber;
     }

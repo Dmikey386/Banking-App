@@ -5,14 +5,7 @@ import Bank.account.User;
 
 public class Main {
     public static void main(String[] args) {
-        // Current functionality is demonstrated in commands below
-        // right now Bank does not store any user or account data so the transaction request pipeline will need to be sligtly modified to search bank for account objects
-        // next step
-        // upon user creation or account creation, modify bank hashMaps storing user and account data
-        // change user hashmaps back to <accountID, acccountbalance>
-        // modify transaction processor to use bank hashmaps rather than user hashmaps
-        // Test Transaction processor between different users
-        // Start Transaction verifier
+
 
         Bank bank = new Bank();
         bank.createUser(1);
