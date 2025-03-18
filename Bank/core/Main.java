@@ -5,13 +5,34 @@ import Bank.account.User;
 
 public class Main {
     public static void main(String[] args) {
-        Bank bank = new Bank();
 
+        // process is slightly modified because bank does not store account or user data yet
         User user = new User(1);
+        System.out.println(user);
+        Bank bank = new Bank(user);
         int accSavingsID = user.openAccount("Savings");
         int accCheckingID = user.openAccount("Checking");
 
-        TransactionRequest request = user.createTransactionRequest(new int[] {accSavingsID},10000,0);
+
+        TransactionRequest deposit = user.createTransactionRequest(new int[] {accSavingsID},10000,0);
+        TransactionRequest withdraw = user.createTransactionRequest(new int[] {accSavingsID},5000,1);
+        TransactionRequest transfer = user.createTransactionRequest(new int[] {accSavingsID,accCheckingID},2500,2);
+
+        System.out.println(user.getAccount(accSavingsID).getBalance());
+        System.out.println(accSavingsID);
+
+        bank.processTransaction(deposit);
+
+
+        System.out.println(user.getAccount(accSavingsID).getBalance());
+
+        bank.processTransaction(withdraw);
+        System.out.println(user.getAccount(accSavingsID).getBalance());
+        System.out.println(user.getAccount(accCheckingID).getBalance());
+
+        bank.processTransaction(transfer);
+        System.out.println(user.getAccount(accSavingsID).getBalance());
+        System.out.println(user.getAccount(accCheckingID).getBalance());
 
         // Currently, fully functioning, User class with Hashmap<accountNums, balances>, and ability to create accounts
         // Bank - no functions, but has instance data structues, Hashmap UserIDs to user objects, and account IDs to account objects.

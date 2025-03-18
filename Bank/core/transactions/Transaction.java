@@ -18,8 +18,8 @@ public interface Transaction{
      private double amount;
      private int transactionID;
 
-     public Deposit(BankAccount account, double amount) {
-         this.account = account;
+     public Deposit(BankAccount[] account, double amount) {
+         this.account = account[0];
          this.amount = amount;
      }
 
@@ -44,8 +44,8 @@ public interface Transaction{
     private double amount;
     private int transactionID;
 
-    public Withdraw(BankAccount account, double amount) {
-        this.account = account;
+    public Withdraw(BankAccount[] account, double amount) {
+        this.account = account[0];
         this.amount = amount;
     }
 
@@ -73,9 +73,9 @@ public interface Transaction{
     private double amount;
     private int transactionID;
 
-    public WireTransfer(BankAccount depositAcc, BankAccount withdrawAcc, double amount) {
-        this.withdrawAcc = withdrawAcc;
-        this.depositAcc = depositAcc;
+    public WireTransfer(BankAccount[] accounts, double amount) {
+        this.withdrawAcc = accounts[0];
+        this.depositAcc = accounts[1];
         this.amount = amount;
     }
 
@@ -94,11 +94,11 @@ public interface Transaction{
     // process withdraw
     public void process() {
         // withdraw
-        Withdraw withdrawal = new Withdraw(withdrawAcc, amount);
+        Withdraw withdrawal = new Withdraw(new BankAccount[] {withdrawAcc}, amount);
         withdrawal.process();
 
         // deposit
-        Deposit deposit = new Deposit(depositAcc, amount);
+        Deposit deposit = new Deposit(new BankAccount[] {depositAcc}, amount);
         deposit.process();
     }
 }

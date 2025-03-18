@@ -1,6 +1,5 @@
 package Bank.account;
 
-
 public class BankAccount {
     private double balance;
     private int accountNumber;
