@@ -6,6 +6,7 @@ import Bank.account.BankAccount;
 public interface Transaction{
     void process();
     double getAmount();
+    int getTransactionID();
     BankAccount[] getAccount();
 
 
@@ -15,6 +16,7 @@ public interface Transaction{
      // Deposit money into an account
      private BankAccount account;
      private double amount;
+     private int transactionID;
 
      public Deposit(BankAccount account, double amount) {
          this.account = account;
@@ -29,15 +31,18 @@ public interface Transaction{
      public BankAccount[] getAccount() {
          return new BankAccount[]{account};
      }
-
      public double getAmount() {
          return amount;
+     }
+     public int getTransactionID() {
+         return transactionID;
      }
  }
 
  class Withdraw implements Transaction{
     private BankAccount account;
     private double amount;
+    private int transactionID;
 
     public Withdraw(BankAccount account, double amount) {
         this.account = account;
@@ -56,6 +61,9 @@ public interface Transaction{
     public double getAmount() {
         return amount;
     }
+     public int getTransactionID() {
+         return transactionID;
+     }
 
 }
 
@@ -63,6 +71,7 @@ public interface Transaction{
     private BankAccount withdrawAcc;
     private BankAccount depositAcc;
     private double amount;
+    private int transactionID;
 
     public WireTransfer(BankAccount depositAcc, BankAccount withdrawAcc, double amount) {
         this.withdrawAcc = withdrawAcc;
@@ -77,6 +86,9 @@ public interface Transaction{
     public BankAccount[] getAccount() {
         return new BankAccount[]{withdrawAcc, depositAcc};
     }
+     public int getTransactionID() {
+         return transactionID;
+     }
 
 
     // process withdraw

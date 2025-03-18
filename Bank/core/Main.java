@@ -1,7 +1,18 @@
 package Bank.core;
 
+import Bank.account.TransactionRequest;
+import Bank.account.User;
+
 public class Main {
     public static void main(String[] args) {
+        Bank bank = new Bank();
+
+        User user = new User(1);
+        int accSavingsID = user.openAccount("Savings");
+        int accCheckingID = user.openAccount("Checking");
+
+        TransactionRequest request = user.createTransactionRequest(new int[] {accSavingsID},10000,0);
+
         // Currently, fully functioning, User class with Hashmap<accountNums, balances>, and ability to create accounts
         // Bank - no functions, but has instance data structues, Hashmap UserIDs to user objects, and account IDs to account objects.
         // these stores are temporary for testing functionality before implementing relational database
