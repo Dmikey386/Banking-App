@@ -1,6 +1,4 @@
-package Bank.core.Transactions;
-
-import Bank.account.TransactionManager;
+package Bank.core.transactions;
 
 public class TransactionVerifier {
     // Attributes
