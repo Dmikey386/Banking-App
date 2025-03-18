@@ -6,125 +6,86 @@ import Bank.account.User;
 public class Main {
     public static void main(String[] args) {
 
-
         Bank bank = new Bank();
         bank.createUser(1);
         bank.createUser(2);
-        int savings1 = bank.openAccount("Savings",bank.getUser(1));
-        int savings2 = bank.openAccount("Checking",bank.getUser(2));
-        int checking1 = bank.openAccount("Savings",bank.getUser(1));
-        int checking2 = bank.openAccount("Checking",bank.getUser(2));
-
+        int savings1 = bank.openAccount("Savings", bank.getUser(1));
+        int savings2 = bank.openAccount("Checking", bank.getUser(2));
+        int checking1 = bank.openAccount("Savings", bank.getUser(1));
+        int checking2 = bank.openAccount("Checking", bank.getUser(2));
 
         // ===============================
-//        DEPOSIT TESTS
-// ===============================
+        // DEPOSIT TESTS
+        // ===============================
         System.out.println("\n===== STARTING DEPOSIT TESTS =====\n");
-
-// Savings Deposits
-        System.out.println("Initial Savings Balances:");
-        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
-        System.out.println("User 2 Savings: " + bank.getAccount(savings2).getBalance());
 
         TransactionRequest depositSavings1 = bank.getUser(1).createTransactionRequest(new int[]{savings1}, 10000, 0);
         TransactionRequest depositSavings2 = bank.getUser(2).createTransactionRequest(new int[]{savings2}, 10000, 0);
+        TransactionRequest depositInvalidAccount = bank.getUser(1).createTransactionRequest(new int[]{9999}, 5000, 0); // Should fail
 
         bank.processTransaction(depositSavings1);
         bank.processTransaction(depositSavings2);
+        bank.processTransaction(depositInvalidAccount);
 
-        System.out.println("After Deposit Savings Balances:");
-        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
-        System.out.println("User 2 Savings: " + bank.getAccount(savings2).getBalance());
+        System.out.println("User 1 Savings Balance: " + bank.getAccount(savings1).getBalance());
+        System.out.println("User 2 Savings Balance: " + bank.getAccount(savings2).getBalance());
 
-// Checking Deposits
-        System.out.println("\nInitial Checking Balances:");
-        System.out.println("User 1 Checking: " + bank.getAccount(checking1).getBalance());
-        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance());
-
-        TransactionRequest depositChecking1 = bank.getUser(1).createTransactionRequest(new int[]{checking1}, 10000, 0);
-        TransactionRequest depositChecking2 = bank.getUser(2).createTransactionRequest(new int[]{checking2}, 10000, 0);
-
-        bank.processTransaction(depositChecking1);
-        bank.processTransaction(depositChecking2);
-
-        System.out.println("After Deposit Checking Balances:");
-        System.out.println("User 1 Checking: " + bank.getAccount(checking1).getBalance());
-        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance());
-
-
-// ===============================
-//       WITHDRAWAL TESTS
-// ===============================
+        // ===============================
+        // WITHDRAWAL TESTS (Invalid and Valid Cases)
+        // ===============================
         System.out.println("\n===== STARTING WITHDRAWAL TESTS =====\n");
 
-// Savings Withdrawals
-        TransactionRequest withdrawSavings1 = bank.getUser(1).createTransactionRequest(new int[]{savings1}, 5000, 1);
-        TransactionRequest withdrawSavings2 = bank.getUser(2).createTransactionRequest(new int[]{savings2}, 5000, 1);
+        double balanceBeforeWithdraw = bank.getAccount(savings1).getBalance();
 
-        bank.processTransaction(withdrawSavings1);
-        bank.processTransaction(withdrawSavings2);
+        TransactionRequest withdrawInvalidAccount = bank.getUser(1).createTransactionRequest(new int[]{9999}, 1000, 1); // Should fail
+        TransactionRequest withdrawUnauthorizedAccount = bank.getUser(2).createTransactionRequest(new int[]{savings1}, 1000, 1); // Should fail
+        TransactionRequest validWithdrawSavings1 = bank.getUser(1).createTransactionRequest(new int[]{savings1}, 2000, 1); // Should succeed
 
-        System.out.println("After Withdrawal Savings Balances:");
-        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
-        System.out.println("User 2 Savings: " + bank.getAccount(savings2).getBalance());
+        bank.processTransaction(withdrawInvalidAccount);
+        bank.processTransaction(withdrawUnauthorizedAccount);
+        bank.processTransaction(validWithdrawSavings1);
 
-// Checking Withdrawals
-        TransactionRequest withdrawChecking1 = bank.getUser(1).createTransactionRequest(new int[]{checking1}, 5000, 1);
-        TransactionRequest withdrawChecking2 = bank.getUser(2).createTransactionRequest(new int[]{checking2}, 5000, 1);
+        double balanceAfterWithdraw = bank.getAccount(savings1).getBalance();
 
-        bank.processTransaction(withdrawChecking1);
-        bank.processTransaction(withdrawChecking2);
+        System.out.println("User 1 Savings Balance before withdrawal attempts: " + balanceBeforeWithdraw);
+        System.out.println("User 1 Savings Balance after withdrawal attempts: " + balanceAfterWithdraw);
+        System.out.println("Expected difference (valid withdrawal only): -2000. Actual difference: " + (balanceBeforeWithdraw - balanceAfterWithdraw));
 
-        System.out.println("After Withdrawal Checking Balances:");
-        System.out.println("User 1 Checking: " + bank.getAccount(checking1).getBalance());
-        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance());
+        System.out.println("User 2 Savings Balance after withdrawal attempts: " + bank.getAccount(savings2).getBalance());
 
-
-// ===============================
-//       TRANSFER TESTS
-// ===============================
+        // ===============================
+        // TRANSFER TESTS (Invalid and Valid Cases)
+        // ===============================
         System.out.println("\n===== STARTING TRANSFER TESTS =====\n");
 
-// Transfer from User 1's Savings → Checking
-        TransactionRequest transferToChecking1 = bank.getUser(1).createTransactionRequest(new int[]{savings1, checking1}, 2500, 2);
-        bank.processTransaction(transferToChecking1);
+        TransactionRequest transferInvalidToAccount = bank.getUser(1).createTransactionRequest(new int[]{savings1, 9999}, 1000, 2); // Should fail
+        TransactionRequest transferInvalidFromAccountBank = bank.getUser(1).createTransactionRequest(new int[]{9999, savings2}, 1000, 2); // Should fail
+        TransactionRequest transferInvalidFromAccountUser = bank.getUser(2).createTransactionRequest(new int[]{savings1, savings2}, 1000, 2); // Should fail
+        TransactionRequest validTransfer = bank.getUser(1).createTransactionRequest(new int[]{savings1, checking1}, 1500, 2); // Should succeed
 
-// Transfer from User 2's Savings → Checking
-        TransactionRequest transferToChecking2 = bank.getUser(2).createTransactionRequest(new int[]{savings2, checking2}, 2500, 2);
-        bank.processTransaction(transferToChecking2);
+        bank.processTransaction(transferInvalidToAccount);
+        bank.processTransaction(transferInvalidFromAccountBank);
+        bank.processTransaction(transferInvalidFromAccountUser);
+        bank.processTransaction(validTransfer);
 
-        System.out.println("After Transfer (Savings to Checking):");
-        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
-        System.out.println("User 1 Checking: " + bank.getAccount(checking1).getBalance());
-        System.out.println("User 2 Savings: " + bank.getAccount(savings2).getBalance());
-        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance() + "\n");
+        System.out.println("User 1 Savings Balance after transfer attempts: " + bank.getAccount(savings1).getBalance());
+        System.out.println("User 1 Checking Balance after transfer attempts: " + bank.getAccount(checking1).getBalance());
+        System.out.println("User 2 Savings Balance after transfer attempts: " + bank.getAccount(savings2).getBalance());
 
-// Transfer from User 1's Checking → User 2's Checking
-        TransactionRequest transferCheckingToChecking = bank.getUser(1).createTransactionRequest(new int[]{checking1, checking2}, 3000, 2);
-        bank.processTransaction(transferCheckingToChecking);
+        // ===============================
+        // INVALID AMOUNT TESTS
+        // ===============================
+        System.out.println("\n===== STARTING INVALID AMOUNT TESTS =====\n");
 
-        System.out.println("After Transfer (Checking1 → Checking2):");
-        System.out.println("User 1 Checking: " + bank.getAccount(checking1).getBalance());
-        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance() + "\n");
+        TransactionRequest negativeDeposit = bank.getUser(1).createTransactionRequest(new int[]{savings1}, -500, 0); // Should fail
+        TransactionRequest negativeWithdrawal = bank.getUser(1).createTransactionRequest(new int[]{savings1}, -500, 1); // Should fail
+        TransactionRequest negativeTransfer = bank.getUser(1).createTransactionRequest(new int[]{savings1, checking1}, -1000, 2); // Should fail
 
-// Transfer from User 1's Savings → User 2's Savings
-        TransactionRequest transferSavingsToSavings = bank.getUser(1).createTransactionRequest(new int[]{savings1, savings2}, 3000, 2);
-        bank.processTransaction(transferSavingsToSavings);
+        bank.processTransaction(negativeDeposit);
+        bank.processTransaction(negativeWithdrawal);
+        bank.processTransaction(negativeTransfer);
 
-        System.out.println("After Transfer (Savings1 → Savings2):");
-        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
-        System.out.println("User 2 Savings: " + bank.getAccount(savings2).getBalance() + "\n");
-
-// Transfer from User 1's Savings → User 2's Checking (FIXED ERROR)
-        TransactionRequest transferSavingsToChecking = bank.getUser(1).createTransactionRequest(new int[]{savings1, checking2}, 3000, 2);
-        bank.processTransaction(transferSavingsToChecking);
-
-        System.out.println("After Transfer (Savings1 → Checking2):");
-        System.out.println("User 1 Savings: " + bank.getAccount(savings1).getBalance());
-        System.out.println("User 2 Checking: " + bank.getAccount(checking2).getBalance());
-
-
-
-
+        System.out.println("User 1 Savings Balance after invalid amount attempts: " + bank.getAccount(savings1).getBalance());
+        System.out.println("User 1 Checking Balance after invalid amount attempts: " + bank.getAccount(checking1).getBalance());
     }
 }

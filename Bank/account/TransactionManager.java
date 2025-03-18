@@ -1,7 +1,8 @@
 package Bank.account;
 
-public class TransactionManager {
+import java.util.HashMap;
+
+public class TransactionManager<T> {
     // Attributes
-    // HashMap <transaction code, transaction>
-    // ArrayList<transaction code>
+    private HashMap<Integer, T> transactions = new HashMap<>();
 }

@@ -9,6 +9,7 @@ public class TransactionRequest {
     private double amount;
     private int transactionType;
     private boolean status;
+    private String transactionFailure = null;
 
 
     // constructore for transaction request
@@ -18,6 +19,7 @@ public class TransactionRequest {
         this.amount = builder.amount;
         this.transactionType= builder.transactionType;
         this.status = builder.status;
+
     }
 
 
@@ -34,11 +36,23 @@ public class TransactionRequest {
     public double getAmount(){
         return amount;
     }
+    public User getUser(){
+        return user;
+    }
+    public int getUserID(){
+        return user.getUserID();
+    }
 
 
     // set status of transaction
     public void setStatus(boolean status) {
         this.status = status;
+    }
+    public void setFailureStatement(String message){
+        transactionFailure = message;
+    }
+    public String getFailureStatement(){
+        return transactionFailure;
     }
     
     // Use Builder class for construction
@@ -48,6 +62,7 @@ public class TransactionRequest {
         private double amount;
         private int transactionType;
         private boolean status;
+
 
         public Builder user(User user) {
             this.user = user;
