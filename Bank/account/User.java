@@ -1,4 +1,6 @@
 package Bank.account;
+import Bank.core.transactions.Transaction;
+
 import java.util.Random;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -16,7 +18,17 @@ public class User {
     }
 
     // Request Transaction
-    // return a transaction that user can send to bank
+    public TransactionRequest createTransactionRequest(int[] accounts, double amount, int transactionType){
+        TransactionRequest request = new TransactionRequest.Builder()
+                .user(this)
+                .accountIDs(accounts)
+                .amount(amount)
+                .transactionType(transactionType)
+                .status(false)
+                .build();
+
+        return request;
+    }
 
 
 
