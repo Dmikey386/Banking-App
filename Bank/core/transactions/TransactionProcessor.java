@@ -6,7 +6,6 @@ import Bank.core.Bank;
 
 
 public class TransactionProcessor {
-    private TransactionVerifier transactionVerifier = new TransactionVerifier();
     private Bank bank;
 
 
@@ -16,10 +15,17 @@ public class TransactionProcessor {
     }
 
 
+    // Verify transaction
+    public void verifyTransaction(TransactionRequest transactionRequest) {
+        TransactionVerifier verifier = new TransactionVerifier(bank, transactionRequest);
+        verifier.verifyTransaction();
+    }
+
     // Process the transaction
     public void processTransaction(TransactionRequest transactionRequest) {
+        verifyTransaction(transactionRequest);
         if (!transactionRequest.getStatus()){
-            System.out.println("Transaction is not valid");
+            System.out.println(transactionRequest.getFailureStatement());
         }
         else{
             Transaction transaction = createTransaction(transactionRequest);

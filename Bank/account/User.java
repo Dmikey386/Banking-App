@@ -14,6 +14,14 @@ public class User {
         totalBalance = 0;
     }
 
+    //get user ID
+    public int getUserID() {
+        return userID;
+    }
+    public HashMap<Integer, Double> getUserAccMap() {
+        return userAccMap;
+    }
+
     // Add account to user account Map
     public void addAccount(int accountID, double accountBalance){
         userAccMap.put(accountID, accountBalance);

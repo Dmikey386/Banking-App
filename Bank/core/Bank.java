@@ -12,6 +12,7 @@ public class Bank {
     private HashMap<Integer, User> users = new HashMap<>();
     private HashMap<Integer, BankAccount> accounts = new HashMap<>();
     private TransactionProcessor transactionProcessor = new TransactionProcessor(this);
+    private TransactionManager transactionStorage  = new TransactionManager();
 
     // bank is modified, because accounts are only stored in user data
     public Bank() {
@@ -21,8 +22,14 @@ public class Bank {
     public BankAccount getAccount (int accountID){
         return accounts.get(accountID);
     }
-    public User getUser (int accountID){
-        return users.get(accountID);
+    public User getUser (int userID){
+        return users.get(userID);
+    }
+    public HashMap<Integer, BankAccount> getAccountsHashMap(){
+        return accounts;
+    }
+    public HashMap<Integer, User> getUsersHashMap(){
+        return users;
     }
 
     // Open new account
