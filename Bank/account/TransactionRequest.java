@@ -10,6 +10,7 @@ public class TransactionRequest {
     private int transactionType;
     private boolean status;
     private String transactionFailure = null;
+    private String transactionID;
 
 
     // constructore for transaction request
@@ -53,6 +54,9 @@ public class TransactionRequest {
     }
     public String getFailureStatement(){
         return transactionFailure;
+    }
+    public void setTransactionID(String transactionID) {
+        this.transactionID = transactionID;
     }
     
     // Use Builder class for construction

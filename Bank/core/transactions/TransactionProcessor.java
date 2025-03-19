@@ -3,6 +3,7 @@ package Bank.core.transactions;
 import Bank.account.BankAccount;
 import Bank.account.TransactionRequest;
 import Bank.core.Bank;
+import java.util.Random;
 
 
 public class TransactionProcessor {
@@ -23,6 +24,9 @@ public class TransactionProcessor {
 
     // Process the transaction
     public void processTransaction(TransactionRequest transactionRequest) {
+        Random rand = new Random();
+        String transactionID = String.valueOf(rand.nextInt(10000));
+        transactionRequest.setTransactionID(transactionID);
         verifyTransaction(transactionRequest);
         if (!transactionRequest.getStatus()){
             System.out.println(transactionRequest.getFailureStatement());
@@ -30,8 +34,8 @@ public class TransactionProcessor {
         else{
             Transaction transaction = createTransaction(transactionRequest);
             transaction.process();
-
         }
+        bank.logTransaction(transactionID,transactionRequest);
     }
 
     // create the transaction
