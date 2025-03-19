@@ -1,9 +1,10 @@
 package Bank.account;
+import java.util.ArrayList;
 
 public class BankAccount {
     private double balance;
     private int accountNumber;
-    private TransactionLogger transactionManager; // Store transactions by account
+    private TransactionLogger transactionLog = new TransactionLogger(); // Store transactions by account
 
     // Constructor
     public BankAccount(int accountNumber) {
@@ -18,15 +19,19 @@ public class BankAccount {
     public int getAccountNumber(){
         return accountNumber;
     }
-    public TransactionLogger getTransactionManager(){
-        return transactionManager;
+    public TransactionLogger getTransactionLog(){
+        return transactionLog;
     }
 
     // Setters
     public void setBalance(double newBalance){
         balance = newBalance;
     }
+    public void logTransaction(String transactionID, ArrayList<Object> transactionRequest) {
+        transactionLog.logTransaction(transactionID, transactionRequest);
+    }
 }
+
 
 
 
