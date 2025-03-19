@@ -1,9 +1,9 @@
 package Bank.core;
 import Bank.account.*;
+import Bank.core.transactions.Transaction;
 import Bank.core.transactions.TransactionProcessor;
 
 import java.util.HashMap;
-import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -12,7 +12,7 @@ public class Bank {
     private HashMap<Integer, User> users = new HashMap<>();
     private HashMap<Integer, BankAccount> accounts = new HashMap<>();
     private TransactionProcessor transactionProcessor = new TransactionProcessor(this);
-    private TransactionManager transactionStorage  = new TransactionManager();
+    private TransactionLogger transactionStorage  = new TransactionLogger();
 
     // bank is modified, because accounts are only stored in user data
     public Bank() {
@@ -66,7 +66,9 @@ public class Bank {
         users.put(userID, user);
     }
 
-
+    public void logTransaction(String TransactionID, TransactionRequest transaction) {
+        transactionStorage.logTransaction(TransactionID, transaction);
+    }
 
     public void processTransaction(TransactionRequest request){
         transactionProcessor.processTransaction(request);

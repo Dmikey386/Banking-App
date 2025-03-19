@@ -6,7 +6,7 @@ public class User {
     private int userID;
     private HashMap<Integer, Double> userAccMap = new HashMap<>(); // Key = accountID, value = balance
     private double totalBalance;
-    private TransactionManager transactionManager; // store transactions by user
+    private TransactionLogger transactionManager; // store transactions by user
 
     //User Constructor
     public User(int userID){

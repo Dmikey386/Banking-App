@@ -3,7 +3,7 @@ package Bank.account;
 public class BankAccount {
     private double balance;
     private int accountNumber;
-    private TransactionManager transactionManager; // Store transactions by account
+    private TransactionLogger transactionManager; // Store transactions by account
 
     // Constructor
     public BankAccount(int accountNumber) {
@@ -17,6 +17,9 @@ public class BankAccount {
     }
     public int getAccountNumber(){
         return accountNumber;
+    }
+    public TransactionLogger getTransactionManager(){
+        return transactionManager;
     }
 
     // Setters
