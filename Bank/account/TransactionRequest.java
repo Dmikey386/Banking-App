@@ -3,12 +3,14 @@ package Bank.account;
 Object containing Transaction request info
  */
 
+import java.util.Random;
+
 public class TransactionRequest {
     private User user;
     private int[] accountIDs;
     private double amount;
     private int transactionType;
-    private boolean status;
+    private boolean status = false;
     private String transactionFailure = null;
     private String transactionID;
 
@@ -20,6 +22,7 @@ public class TransactionRequest {
         this.amount = builder.amount;
         this.transactionType= builder.transactionType;
         this.status = builder.status;
+        this.setTransactionID();
 
     }
 
@@ -55,9 +58,18 @@ public class TransactionRequest {
     public String getFailureStatement(){
         return transactionFailure;
     }
-    public void setTransactionID(String transactionID) {
+
+
+    public void setTransactionID() {
+        Random rand = new Random();
+        String transactionID = String.valueOf(rand.nextInt(10000));
         this.transactionID = transactionID;
     }
+    public String getTransactionID(){
+
+        return this.transactionID;
+    }
+
     
     // Use Builder class for construction
     public static class Builder {

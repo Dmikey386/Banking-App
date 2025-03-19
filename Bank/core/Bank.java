@@ -16,7 +16,6 @@ public class Bank {
 
     // bank is modified, because accounts are only stored in user data
     public Bank() {
-
     }
 
 
