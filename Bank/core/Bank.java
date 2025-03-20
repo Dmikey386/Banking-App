@@ -37,7 +37,7 @@ public class Bank {
     }
 
     // Open new account
-    public int openAccount(String accountType, User user) {
+    public String openAccount(String accountType, User user) {
         String accountID = accountIDGenerator.generateID();
 
         // create new account
@@ -60,7 +60,7 @@ public class Bank {
         return accountID;
     }
 
-    public void createUser (int userID){
+    public void createUser (){
         User user = new User(userID);
         users.put(userID, user);
     }
