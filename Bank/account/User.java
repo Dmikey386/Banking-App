@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class User {
     private int userID;
-    private HashMap<Integer, Double> userAccMap = new HashMap<>(); // Key = accountID, value = balance
+    private HashMap<String, Double> userAccMap = new HashMap<>(); // Key = accountID, value = balance
     private double totalBalance;
     private TransactionLogger transactionManager; // store transactions by user
 
@@ -18,12 +18,12 @@ public class User {
     public int getUserID() {
         return userID;
     }
-    public HashMap<Integer, Double> getUserAccMap() {
+    public HashMap<String, Double> getUserAccMap() {
         return userAccMap;
     }
 
     // Add account to user account Map
-    public void addAccount(int accountID, double accountBalance){
+    public void addAccount(String accountID, double accountBalance){
         userAccMap.put(accountID, accountBalance);
     }
 

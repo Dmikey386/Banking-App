@@ -1,4 +1,4 @@
-package Bank.Tools;
+package Bank.IDTools;
 
 import java.util.concurrent.atomic.AtomicLong;
 
