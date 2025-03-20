@@ -3,27 +3,27 @@ package Bank.account;
 import java.util.HashMap;
 
 public class User {
-    private int userID;
-    private HashMap<Integer, Double> userAccMap = new HashMap<>(); // Key = accountID, value = balance
+    private String userID;
+    private HashMap<String, Double> userAccMap = new HashMap<>(); // Key = accountID, value = balance
     private double totalBalance;
     private TransactionLogger transactionManager; // store transactions by user
 
     //User Constructor
-    public User(int userID){
+    public User(String userID){
         this.userID = userID;
         totalBalance = 0;
     }
 
     //get user ID
-    public int getUserID() {
+    public String getUserID() {
         return userID;
     }
-    public HashMap<Integer, Double> getUserAccMap() {
+    public HashMap<String, Double> getUserAccMap() {
         return userAccMap;
     }
 
     // Add account to user account Map
-    public void addAccount(int accountID, double accountBalance){
+    public void addAccount(String accountID, double accountBalance){
         userAccMap.put(accountID, accountBalance);
     }
 
