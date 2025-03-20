@@ -87,31 +87,28 @@ public class TransactionProcessor {
         double amount = transactionRequest.getAmount();
         int type = transactionRequest.getTransactionType();
 
-        ArrayList<Object> depositerMetadata = new ArrayList<>();
-        ArrayList<Object> withdrawalMetadata = new ArrayList<>();
-
-        depositerMetadata.add(type);
-        depositerMetadata.add(status);
-        withdrawalMetadata.add(type);
-        depositerMetadata.add(status);
-
 
         switch (type) {
-            case 0:
-                depositerMetadata.add(amount);
-                accounts[0].logTransaction(transactionID, depositerMetadata);
+            case 0: // Deposit
+                logToAccount(accounts[0], transactionID, status, type, amount);
                 break;
-            case 1:
-                withdrawalMetadata.add(-amount);
-                accounts[0].logTransaction(transactionID, withdrawalMetadata);
+            case 1: // Withdraw
+                logToAccount(accounts[0], transactionID, status, type, -amount);
                 break;
-            case 2:
-                withdrawalMetadata.add(-amount);
-                accounts[0].logTransaction(transactionID, withdrawalMetadata);
-                depositerMetadata.add(2, amount); // change metadata for deposit account
-                accounts[1].logTransaction(transactionID, depositerMetadata);
-
-                bank.logTransaction(transactionID, transactionRequest);
+            case 2: // Wire Transfer
+                logToAccount(accounts[0], transactionID, status, type, -amount);
+                logToAccount(accounts[1], transactionID, status, type, amount);
+                break;
         }
+
+
     }
+    private void logToAccount(BankAccount account, String transactionID, boolean status, int type, double amount) {
+        ArrayList<Object> metadata = new ArrayList<>();
+        metadata.add(status);
+        metadata.add(type);
+        metadata.add(amount);
+        account.logTransaction(transactionID, metadata);
+    }
+
 }
