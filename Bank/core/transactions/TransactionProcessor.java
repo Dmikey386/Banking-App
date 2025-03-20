@@ -5,7 +5,6 @@ import Bank.account.TransactionRequest;
 import Bank.core.Bank;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 
 public class TransactionProcessor {

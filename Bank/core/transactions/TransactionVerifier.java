@@ -13,8 +13,8 @@ public class TransactionVerifier {
     private int transactionType;
     private double amount;
     private User user;
-    private HashMap<Integer,BankAccount> accountBankMap;
-    private HashMap<Integer,User> userBankMap;
+    private HashMap<String,BankAccount> accountBankMap;
+    private HashMap<String,User> userBankMap;
 
 
     // Constructor
