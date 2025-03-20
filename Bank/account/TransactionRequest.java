@@ -3,7 +3,8 @@ package Bank.account;
 Object containing Transaction request info
  */
 
-import java.util.Random;
+import Bank.IDTools.TransactionIDGenerator;
+import Bank.IDTools.UniqueIDGenerator;
 
 public class TransactionRequest {
     private User user;
@@ -13,6 +14,7 @@ public class TransactionRequest {
     private boolean status = false;
     private String transactionFailure = null;
     private String transactionID;
+    private final UniqueIDGenerator transactionIDGenerator = new TransactionIDGenerator();
 
 
     // constructore for transaction request
@@ -61,9 +63,7 @@ public class TransactionRequest {
 
 
     public void setTransactionID() {
-        Random rand = new Random();
-        String transactionID = String.valueOf(rand.nextInt(10000));
-        this.transactionID = transactionID;
+        this.transactionID = transactionIDGenerator.generateID();
     }
     public String getTransactionID(){
 
