@@ -1,5 +1,6 @@
 package Bank.core;
 import Bank.IDTools.AccountIDGenerator;
+import Bank.IDTools.UserIDGenerator;
 import Bank.account.*;
 import Bank.core.transactions.Transaction;
 import Bank.core.transactions.TransactionProcessor;
@@ -16,6 +17,7 @@ public class Bank {
     private TransactionProcessor transactionProcessor = new TransactionProcessor(this);
     private TransactionLogger transactionStorage  = new TransactionLogger();
     private final UniqueIDGenerator accountIDGenerator = new AccountIDGenerator();
+    private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();
 
     // bank is modified, because accounts are only stored in user data
     public Bank() {
@@ -61,6 +63,7 @@ public class Bank {
     }
 
     public void createUser (){
+        String userID = accountIDGenerator.generateID();
         User user = new User(userID);
         users.put(userID, user);
     }
