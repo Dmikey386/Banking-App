@@ -8,19 +8,35 @@ public interface UniqueIDGenerator {
 }
 
 class AccountIDGenerator implements UniqueIDGenerator {
-    private static SnowflakeID generator = new SnowflakeID();
+    private static SnowflakeID generatorAcc = new SnowflakeID();
     static final String prefix = "BA";
 
 
     public String generateID(){
-        long snowflakeID = generator.generateSnowflakeId();
+        long snowflakeID = generatorAcc.generateSnowflakeId();
 
         return prefix + String.valueOf(snowflakeID);
     }
 
 }
 class UserIDGenerator implements UniqueIDGenerator {
-    static SnowflakeID generator = new SnowflakeID();
+    static SnowflakeID generatorUser = new SnowflakeID();
     static final String prefix = "USER";
 
+    public String generateID(){
+        long snowflakeID = generatorUser.generateSnowflakeId();
+
+        return prefix + String.valueOf(snowflakeID);
+    }
+}
+
+class TransactionIDGenerator implements UniqueIDGenerator {
+    static SnowflakeID generatorTransac = new SnowflakeID();
+    static final String prefix = "USER";
+
+    public String generateID(){
+        long snowflakeID = generatorTransac.generateSnowflakeId();
+
+        return prefix + String.valueOf(snowflakeID);
+    }
 }
