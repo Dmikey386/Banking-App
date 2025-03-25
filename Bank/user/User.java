@@ -3,15 +3,22 @@ package Bank.user;
 import Bank.transactions.TransactionLogger;
 import Bank.transactions.TransactionRequest;
 
+import java.util.Map;
 import java.util.HashMap;
 
 public class User {
     private String userID;
-    private HashMap<String, Double> userAccMap = new HashMap<>(); // Key = accountID, value = balance
+    private Map<String, Double> userAccMap; // Key = accountID, value = balance
 
     //User Constructor
-    public User(String userID){
+    public User(String userID, HashMap<String, Double> userAccMap) {
+        this.userAccMap = userAccMap;
         this.userID = userID;
+    }
+    // User Constructor Wrapper
+    public User(String userID) {
+        this.userID = userID;
+        userAccMap = new HashMap<>();
     }
 
     //get user ID
