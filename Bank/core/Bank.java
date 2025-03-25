@@ -18,16 +18,14 @@ import Bank.user.UserLogger;
 public class Bank {
     private TransactionProcessor transactionProcessor = new TransactionProcessor(this);
     public UserLogger userLogger = new UserLogger();
-    private AccountLogger accountStorage = new AccountLogger();
+    public AccountLogger accountStorage = new AccountLogger();
+    public TransactionLogger transactionLogger = new TransactionLogger();
     private final UniqueIDGenerator accountIDGenerator = new AccountIDGenerator();
     private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();
 
 
-    // Bank Getters
-
-
     // Open new account
-    public String openAccount(String accountType, User user) {
+    public String openAccount(String accountType, User user) throws IOException {
         String accountID = accountIDGenerator.generateID();
 
         // create new account
