@@ -1,0 +1,25 @@
+# Ignore IntelliJ, compiled files, and OS junk
+*.iml
+.idea/
+out/
+# Ignore IntelliJ, compiled files, and OS junk
+*.iml
+.idea/
+out/
+<<<<<<< HEAD
+# Ignore IntelliJ IDEA project files
+*.iml
+.idea/
+
+# Ignore compiled output directory
+out/
+
+# Ignore other temporary or OS files (optional)
+.DS_Store
+Thumbs.db
+
+=======
+*.iml
+.idea/
+out/
+>>>>>>> Transaction-Processing

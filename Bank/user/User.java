@@ -8,7 +8,6 @@ import java.util.HashMap;
 public class User {
     private String userID;
     private HashMap<String, Double> userAccMap = new HashMap<>(); // Key = accountID, value = balance
-    private TransactionLogger transactionManager; // store transactions by user
 
     //User Constructor
     public User(String userID){

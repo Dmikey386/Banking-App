@@ -1,6 +1,7 @@
 package Bank.core;
 import Bank.IDTools.AccountIDGenerator;
 import Bank.IDTools.UserIDGenerator;
+import Bank.JsonStorage.JsonLogger;
 import Bank.account.*;
 import Bank.user.User;
 import Bank.transactions.TransactionLogger;
@@ -15,7 +16,7 @@ import Bank.user.UserLogger;
 
 public class Bank {
     private TransactionProcessor transactionProcessor = new TransactionProcessor(this);
-    private TransactionLogger transactionStorage  = new TransactionLogger();
+    private UserLogger userLogger = new UserLogger();
     private AccountLogger accountStorage = new AccountLogger();
     private UserLogger userStorage = new UserLogger();
     private final UniqueIDGenerator accountIDGenerator = new AccountIDGenerator();
@@ -61,7 +62,7 @@ public class Bank {
     }
 
     public void createUser (){
-        String userID = accountIDGenerator.generateID();
+        String userID = userIDGenerator.generateID();
         User user = new User(userID);
         userStorage.logUser(userID, user);
     }
