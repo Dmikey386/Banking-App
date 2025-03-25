@@ -1,14 +1,15 @@
-package Bank.account;
+package Bank.transactions;
 /*
 Object containing Transaction request info
  */
 
 import Bank.IDTools.TransactionIDGenerator;
 import Bank.IDTools.UniqueIDGenerator;
+import Bank.user.User;
 
 public class TransactionRequest {
     private User user;
-    private int[] accountIDs;
+    private String[] accountIDs;
     private double amount;
     private int transactionType;
     private boolean status = false;
@@ -33,7 +34,7 @@ public class TransactionRequest {
     public boolean getStatus(){
         return status;
     }
-    public int[] getAccountIDs(){
+    public String[] getAccountIDs(){
         return accountIDs;
     }
     public int getTransactionType(){
@@ -45,7 +46,7 @@ public class TransactionRequest {
     public User getUser(){
         return user;
     }
-    public int getUserID(){
+    public String getUserID(){
         return user.getUserID();
     }
 
@@ -74,7 +75,7 @@ public class TransactionRequest {
     // Use Builder class for construction
     public static class Builder {
         private User user;
-        private int[] accountIDs;
+        private String[] accountIDs;
         private double amount;
         private int transactionType;
         private boolean status;
@@ -85,7 +86,7 @@ public class TransactionRequest {
             return this;
         }
 
-        public Builder accountIDs(int[] accountIDs) {
+        public Builder accountIDs(String[] accountIDs) {
             this.accountIDs = accountIDs;
             return this;
         }

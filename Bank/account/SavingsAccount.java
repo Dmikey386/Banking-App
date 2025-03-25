@@ -5,8 +5,8 @@ public class SavingsAccount extends BankAccount {
     double savingsAPY;
 
     //savings account constructor
-    public SavingsAccount(int accountNumber){
-        super(accountNumber);
+    public SavingsAccount(String accountID) {
+        super(accountID);
     }
 
     // print account information

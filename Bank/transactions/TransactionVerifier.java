@@ -1,19 +1,20 @@
-package Bank.core.transactions;
+package Bank.transactions;
 
 import java.util.HashMap;
+
+import Bank.account.AccountLogger;
 import Bank.account.BankAccount;
-import Bank.account.TransactionRequest;
-import Bank.account.User;
+import Bank.user.User;
 import Bank.core.Bank;
 
 public class TransactionVerifier {
     private Bank bank;
     private TransactionRequest transactionRequest;
-    private int[] bankAccountIDs;
+    private String[] bankAccountIDs;
     private int transactionType;
     private double amount;
     private User user;
-    private HashMap<String,BankAccount> accountBankMap;
+    private AccountLogger accountBankMap;
     private HashMap<String,User> userBankMap;
 
 
@@ -28,7 +29,7 @@ public class TransactionVerifier {
 
         // get bank information
         this.bank = bank;
-        accountBankMap = bank.getAccountsHashMap();
+        accountBankMap = bank.getAccountLog();
         userBankMap = bank.getUsersHashMap();
 
 
@@ -68,17 +69,17 @@ public class TransactionVerifier {
     }
 
     // Verify if Deposit Accounts
-    public void verifyDepositAccounts(int accountID) throws TransactionVerifierException {
+    public void verifyDepositAccounts(String accountID) throws TransactionVerifierException {
         // verify if deposit account (recieving money) is in bank database
-        if (!accountBankMap.containsKey(accountID)) {
+        if (!accountBankMap.containsAccount(accountID)) {
             throw new TransactionVerifierException("Deposit Account: " + accountID + " not found");
         }
     }
 
     // Verify Withdrawal Accounts
-    public void verifyWithdrawAccounts(int accountID) throws TransactionVerifierException {
+    public void verifyWithdrawAccounts(String accountID) throws TransactionVerifierException {
         // verify if withdraw account (removing money) is in bank database
-        if (!accountBankMap.containsKey(accountID)) {
+        if (!accountBankMap.containsAccount(accountID)) {
             throw new TransactionVerifierException("Withdraw Failed --> Account: " + accountID + " not found");
         }
         // verify if user requesting withdrawal owns the withdrawal account
@@ -88,9 +89,9 @@ public class TransactionVerifier {
 
     }
     // Verify Transfer accounts
-    public void verifyTransferAccounts(int[] accountIDs) throws TransactionVerifierException {
-        int withdrawAccountID = accountIDs[0];
-        int depositAccountID = accountIDs[1];
+    public void verifyTransferAccounts(String[] accountIDs) throws TransactionVerifierException {
+        String withdrawAccountID = accountIDs[0];
+        String depositAccountID = accountIDs[1];
 
         verifyWithdrawAccounts(withdrawAccountID);
         verifyDepositAccounts(depositAccountID);
@@ -99,8 +100,8 @@ public class TransactionVerifier {
     // Verify valid balances
     public void verifyWithdrawBalances() throws TransactionVerifierException {
         if (transactionType != 0){ // if not a deposit
-            int accountID = bankAccountIDs[0];
-            BankAccount withdrawAccount = accountBankMap.get(accountID);
+            String accountID = bankAccountIDs[0];
+            BankAccount withdrawAccount = accountBankMap.getAccount(accountID);
             if (withdrawAccount.getBalance() - amount < 50){ // min-account-balance: 50
                 throw new TransactionVerifierException("Insufficient Balance");
             }
