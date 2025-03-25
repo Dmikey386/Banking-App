@@ -1,7 +1,6 @@
-package Bank.core.transactions;
+package Bank.transactions;
 
 import Bank.account.BankAccount;
-import Bank.account.TransactionRequest;
 import Bank.core.Bank;
 
 import java.util.ArrayList;
@@ -68,7 +67,7 @@ public class TransactionProcessor {
 
     // Convert accountIDs to account objects
     public BankAccount[] getAccounts(TransactionRequest transactionRequest) {
-        int[] accountIDs = transactionRequest.getAccountIDs();
+        String[] accountIDs = transactionRequest.getAccountIDs();
         BankAccount[] accounts = new BankAccount[accountIDs.length];
 
         for (int i = 0; i < accountIDs.length; i++) {

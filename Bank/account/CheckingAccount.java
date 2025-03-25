@@ -5,8 +5,8 @@ public class CheckingAccount extends BankAccount {
     double checkingAPY;
 
     // checking account constructor
-    public CheckingAccount(int accountNumber) {
-        super(accountNumber);
+    public CheckingAccount(String accountID) {
+        super(accountID);
     }
 
     // print account information

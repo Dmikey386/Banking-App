@@ -1,4 +1,7 @@
-package Bank.account;
+package Bank.user;
+
+import Bank.transactions.TransactionLogger;
+import Bank.transactions.TransactionRequest;
 
 import java.util.HashMap;
 
@@ -29,7 +32,7 @@ public class User {
 
 
     // Request Transaction
-    public TransactionRequest createTransactionRequest(int[] accounts, double amount, int transactionType){
+    public TransactionRequest createTransactionRequest(String[] accounts, double amount, int transactionType){
         TransactionRequest request = new TransactionRequest.Builder()
                 .user(this)
                 .accountIDs(accounts)

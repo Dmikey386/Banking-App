@@ -2,20 +2,22 @@ package Bank.core;
 import Bank.IDTools.AccountIDGenerator;
 import Bank.IDTools.UserIDGenerator;
 import Bank.account.*;
-import Bank.core.transactions.Transaction;
-import Bank.core.transactions.TransactionProcessor;
+import Bank.user.User;
+import Bank.transactions.TransactionLogger;
+import Bank.transactions.TransactionProcessor;
 
 import java.util.HashMap;
-import java.util.Random;
+
 import Bank.IDTools.UniqueIDGenerator;
+import Bank.transactions.TransactionRequest;
 
 
 public class Bank {
     private double monetaryBase;
     private HashMap<String, User> users = new HashMap<>();
-    private HashMap<String, BankAccount> accounts = new HashMap<>();
     private TransactionProcessor transactionProcessor = new TransactionProcessor(this);
     private TransactionLogger transactionStorage  = new TransactionLogger();
+    private AccountLogger accountStorage = new AccountLogger();
     private final UniqueIDGenerator accountIDGenerator = new AccountIDGenerator();
     private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();
 
@@ -25,14 +27,14 @@ public class Bank {
 
 
     // Bank Getters
-    public BankAccount getAccount (int accountID){
-        return accounts.get(accountID);
+    public BankAccount getAccount (String accountID){
+        return accountStorage.getAccount(accountID);
     }
     public User getUser (int userID){
         return users.get(userID);
     }
-    public HashMap<String, BankAccount> getAccountsHashMap(){
-        return accounts;
+    public AccountLogger getAccountLog(){
+        return accountStorage;
     }
     public HashMap<String, User> getUsersHashMap(){
         return users;
@@ -46,12 +48,12 @@ public class Bank {
         switch (accountType) {
             case "Checking":
                 CheckingAccount newChecking = new CheckingAccount(accountID);
-                accounts.put(accountID, newChecking);
+                accountStorage.logAccount(accountID, newChecking);
                 user.addAccount(accountID,newChecking.getBalance());
                 break;
             case "Savings":
                 SavingsAccount newSavings = new SavingsAccount(accountID);
-                accounts.put(accountID, newSavings);
+                accountStorage.logAccount(accountID, newSavings);
                 user.addAccount(accountID,newSavings.getBalance());
                 break;
             default: // would not occur if there was a button to pick

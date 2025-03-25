@@ -1,23 +1,25 @@
 package Bank.account;
+import Bank.transactions.TransactionLogger;
+
 import java.util.ArrayList;
 
 public class BankAccount {
     private double balance;
-    private int accountNumber;
+    private String accountID;
     private TransactionLogger transactionLog = new TransactionLogger(); // Store transactions by account
 
     // Constructor
-    public BankAccount(int accountNumber) {
+    public BankAccount(String accountNumber) {
         double balance = 0;
-        this.accountNumber = accountNumber;
+        this.accountID = accountID;
     }
 
     // getters
     public double getBalance(){
         return balance;
     }
-    public int getAccountNumber(){
-        return accountNumber;
+    public String getAccountNumber(){
+        return accountID;
     }
     public TransactionLogger getTransactionLog(){
         return transactionLog;
