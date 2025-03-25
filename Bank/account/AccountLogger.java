@@ -1,19 +1,19 @@
 package Bank.account;
 
-import java.util.HashMap;
-import java.util.Map;
+import Bank.JsonStorage.JsonLogger;
+import java.io.IOException;
 
-public class AccountLogger {
-    private Map<String, BankAccount> accountLog = new HashMap<>();
 
-    public void logAccount(String accountID, BankAccount bankAccount) {
-        accountLog.put(accountID,bankAccount);
+public class AccountLogger extends JsonLogger<BankAccount> {
+
+    // constructor
+    public AccountLogger() {
+        super("Storage/accounts.json");
     }
-    public BankAccount getAccount(String accountID) {
-        return accountLog.get(accountID);
+
+    public void logAccount(String accountID, BankAccount account) throws IOException {
+        logObject(accountID,account);
     }
-    public boolean containsAccount(String accountID) {
-        return accountLog.containsKey(accountID);
-    }
+
 
 }

@@ -1,15 +1,19 @@
 package Bank.transactions;
 
-import Bank.account.BankAccount;
+import Bank.JsonStorage.JsonLogger;
+import java.io.IOException;
 
-import java.util.Map;
-import java.util.HashMap;
 
-public class TransactionLogger<T> {
-    // Attributes
-    private Map<String, T> transactionLog = new HashMap<>();
+public class TransactionLogger extends JsonLogger<TransactionRequest> {
 
-    public void logTransaction(String TransactionID, T transaction) {
-        transactionLog.put(TransactionID,transaction);
+
+    // constructor
+    public TransactionLogger() {
+        super("Storage/transactions.json");
     }
+
+    public void logTransaction(String transactionID, TransactionRequest transactionRequest) throws IOException {
+        logObject(transactionID,transactionRequest);
+    }
+
 }
