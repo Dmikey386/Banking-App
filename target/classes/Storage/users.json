@@ -1,22 +1,10 @@
 {
-  "userLog" : {
-    "USER30382483149160449" : {
-      "userID" : "USER30382483149160449",
-      "userAccMap" : { }
-    },
-    "USER30382483149160448" : {
-      "userID" : "USER30382483149160448",
-      "userAccMap" : { }
-    }
+  "USER30382538098737153" : {
+    "userID" : "USER30382538098737153",
+    "userAccMap" : { }
   },
-  "userAccMap" : {
-    "USER30382483149160449" : {
-      "userID" : "USER30382483149160449",
-      "userAccMap" : { }
-    },
-    "USER30382483149160448" : {
-      "userID" : "USER30382483149160448",
-      "userAccMap" : { }
-    }
+  "USER30382538098737152" : {
+    "userID" : "USER30382538098737152",
+    "userAccMap" : { }
   }
 }
