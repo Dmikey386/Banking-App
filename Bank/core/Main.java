@@ -1,10 +1,12 @@
 package Bank.core;
 
-import Bank.transactions.TransactionRequest;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Bank bank = new Bank();
+        bank.createUser();
+        bank.createUser();
 
 
     }
