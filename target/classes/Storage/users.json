@@ -1,0 +1,22 @@
+{
+  "userLog" : {
+    "USER30382483149160449" : {
+      "userID" : "USER30382483149160449",
+      "userAccMap" : { }
+    },
+    "USER30382483149160448" : {
+      "userID" : "USER30382483149160448",
+      "userAccMap" : { }
+    }
+  },
+  "userAccMap" : {
+    "USER30382483149160449" : {
+      "userID" : "USER30382483149160449",
+      "userAccMap" : { }
+    },
+    "USER30382483149160448" : {
+      "userID" : "USER30382483149160448",
+      "userAccMap" : { }
+    }
+  }
+}
