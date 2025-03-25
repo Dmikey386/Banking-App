@@ -71,22 +71,22 @@ public class TransactionVerifier {
 
     // Verify if Deposit Accounts
     public void verifyDepositAccounts(String accountID) throws TransactionVerifierException {
-        // verify if deposit account (recieving money) is in bank database
-        if (!accountBankMap.containsAccount(accountID)) {
-            throw new TransactionVerifierException("Deposit Account: " + accountID + " not found");
-        }
+//        // verify if deposit account (recieving money) is in bank database
+//        if (!accountBankMap.containsAccount(accountID)) {
+//            throw new TransactionVerifierException("Deposit Account: " + accountID + " not found");
+//        }
     }
 
     // Verify Withdrawal Accounts
     public void verifyWithdrawAccounts(String accountID) throws TransactionVerifierException {
         // verify if withdraw account (removing money) is in bank database
-        if (!accountBankMap.containsAccount(accountID)) {
-            throw new TransactionVerifierException("Withdraw Failed --> Account: " + accountID + " not found");
-        }
-        // verify if user requesting withdrawal owns the withdrawal account
-        if (!user.getUserAccMap().containsKey(accountID)) {
-            throw new TransactionVerifierException("User Does not have permission to withdraw from Account: " + accountID);
-        }
+//        if (!accountBankMap.containsAccount(accountID)) {
+//            throw new TransactionVerifierException("Withdraw Failed --> Account: " + accountID + " not found");
+//        }
+//        // verify if user requesting withdrawal owns the withdrawal account
+//        if (!user.getUserAccMap().containsKey(accountID)) {
+//            throw new TransactionVerifierException("User Does not have permission to withdraw from Account: " + accountID);
+//        }
 
     }
     // Verify Transfer accounts
@@ -100,13 +100,13 @@ public class TransactionVerifier {
 
     // Verify valid balances
     public void verifyWithdrawBalances() throws TransactionVerifierException {
-        if (transactionType != 0){ // if not a deposit
-            String accountID = bankAccountIDs[0];
-            BankAccount withdrawAccount = accountBankMap.getAccount(accountID);
-            if (withdrawAccount.getBalance() - amount < 50){ // min-account-balance: 50
-                throw new TransactionVerifierException("Insufficient Balance");
-            }
-        }
+//        if (transactionType != 0){ // if not a deposit
+//            String accountID = bankAccountIDs[0];
+//            BankAccount withdrawAccount = accountBankMap.getAccount(accountID);
+//            if (withdrawAccount.getBalance() - amount < 50){ // min-account-balance: 50
+//                throw new TransactionVerifierException("Insufficient Balance");
+//            }
+//        }
     }
     // Verify amount in transaction is valid
     public void verifyAmmount() throws TransactionVerifierException {

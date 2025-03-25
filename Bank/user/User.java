@@ -18,9 +18,6 @@ public class User {
     public String getUserID() {
         return userID;
     }
-    public HashMap<String, Double> getUserAccMap() {
-        return userAccMap;
-    }
 
     // Add account to user account Map
     public void addAccount(String accountID, double accountBalance){

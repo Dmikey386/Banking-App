@@ -11,6 +11,7 @@ public class UserLogger extends JsonLogger<User> {
         super("Storage/users.json");
     }
 
+    // Log new User
     public void logUser(String userID, User user) throws IOException {
         logObject(userID, user);
     }

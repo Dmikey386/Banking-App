@@ -17,7 +17,6 @@ public class JsonLogger<T> {
         this.path = path;
     }
 
-
     // Update Json File
     public void writeJson(HashMap log) throws IOException {
         mapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), log);
@@ -31,6 +30,10 @@ public class JsonLogger<T> {
     public HashMap<String, T> readLog() throws IOException {
         HashMap<String, T> objLog = mapper.readValue(new File(path), new TypeReference<HashMap<String, T>>() {});
         return objLog;
+    }
+    public T getObject(String SnowflakeID) throws IOException {
+        HashMap<String, T> objLog = readLog();
+        return objLog.get(SnowflakeID);
     }
 
 
