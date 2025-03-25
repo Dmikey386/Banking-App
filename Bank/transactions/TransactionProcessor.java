@@ -85,28 +85,10 @@ public class TransactionProcessor {
         double amount = transactionRequest.getAmount();
         int type = transactionRequest.getTransactionType();
 
+        bank.logTransaction(transactionID,transactionRequest);
 
-        switch (type) {
-            case 0: // Deposit
-                logToAccount(accounts[0], transactionID, status, type, amount);
-                break;
-            case 1: // Withdraw
-                logToAccount(accounts[0], transactionID, status, type, -amount);
-                break;
-            case 2: // Wire Transfer
-                logToAccount(accounts[0], transactionID, status, type, -amount);
-                logToAccount(accounts[1], transactionID, status, type, amount);
-                break;
-        }
+
 
 
     }
-    private void logToAccount(BankAccount account, String transactionID, boolean status, int type, double amount) {
-        ArrayList<Object> metadata = new ArrayList<>();
-        metadata.add(status);
-        metadata.add(type);
-        metadata.add(amount);
-        account.logTransaction(transactionID, metadata);
-    }
-
 }
