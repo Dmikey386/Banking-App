@@ -6,8 +6,8 @@ import java.util.Map;
 public class AccountLogger {
     private Map<String, BankAccount> accountLog = new HashMap<>();
 
-    public void logAccount(String accountID, BankAccount account) {
-        accountLog.put(accountID,account);
+    public void logAccount(String accountID, BankAccount bankAccount) {
+        accountLog.put(accountID,bankAccount);
     }
     public BankAccount getAccount(String accountID) {
         return accountLog.get(accountID);

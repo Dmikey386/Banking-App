@@ -6,6 +6,7 @@ import Bank.account.AccountLogger;
 import Bank.account.BankAccount;
 import Bank.user.User;
 import Bank.core.Bank;
+import Bank.user.UserLogger;
 
 public class TransactionVerifier {
     private Bank bank;
@@ -15,7 +16,7 @@ public class TransactionVerifier {
     private double amount;
     private User user;
     private AccountLogger accountBankMap;
-    private HashMap<String,User> userBankMap;
+    private UserLogger userBankMap;
 
 
     // Constructor
