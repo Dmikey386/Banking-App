@@ -7,6 +7,7 @@ import Bank.user.User;
 import Bank.transactions.TransactionLogger;
 import Bank.transactions.TransactionProcessor;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import Bank.IDTools.UniqueIDGenerator;
@@ -18,24 +19,12 @@ public class Bank {
     private TransactionProcessor transactionProcessor = new TransactionProcessor(this);
     private UserLogger userLogger = new UserLogger();
     private AccountLogger accountStorage = new AccountLogger();
-    private UserLogger userStorage = new UserLogger();
     private final UniqueIDGenerator accountIDGenerator = new AccountIDGenerator();
     private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();
 
 
     // Bank Getters
-    public BankAccount getAccount (String accountID){
-        return accountStorage.getAccount(accountID);
-    }
-    public User getUser (String userID){
-        return userStorage.getUser(userID);
-    }
-    public AccountLogger getAccountLog(){
-        return accountStorage;
-    }
-    public UserLogger getUsersHashMap(){
-        return userStorage;
-    }
+
 
     // Open new account
     public String openAccount(String accountType, User user) {
@@ -61,15 +50,14 @@ public class Bank {
         return accountID;
     }
 
-    public void createUser (){
+    public void createUser () throws IOException {
         String userID = userIDGenerator.generateID();
         User user = new User(userID);
-        userStorage.logUser(userID, user);
+        userLogger.logUser(userID,user);
+
     }
 
-    public void logTransaction(String TransactionID, TransactionRequest transaction) {
-        transactionStorage.logTransaction(TransactionID, transaction);
-    }
+
 
     public void processTransaction(TransactionRequest request){
         transactionProcessor.processTransaction(request);

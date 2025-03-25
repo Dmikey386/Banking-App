@@ -30,8 +30,8 @@ public class TransactionVerifier {
 
         // get bank information
         this.bank = bank;
-        accountBankMap = bank.getAccountLog();
-        userBankMap = bank.getUsersHashMap();
+        //accountBankMap = bank.getAccountLog();
+        //userBankMap = bank.getUsersHashMap();
 
 
     }

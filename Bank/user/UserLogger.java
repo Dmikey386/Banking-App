@@ -2,22 +2,24 @@ package Bank.user;
 
 
 import Bank.JsonStorage.JsonLogger;
-import java.util.HashMap;
-import java.util.Map;
+import Bank.core.Bank;
 
-public class UserLogger {
-    public Map<String, User> userLog = new HashMap<>();
-    private JsonLogger jsonLogger = new JsonLogger();
+import java.io.IOException;
 
-    public void logUser(String userID, User user) {
-        userLog.put(userID,user);
-    }
-    public User getUser(String userID) {
-        return userLog.get(userID);
+
+
+public class UserLogger extends JsonLogger<User> {
+
+    // constructor
+    public UserLogger() {
+        super("Storage/users.json");
     }
 
-    public Map<String, User> getUserAccMap() {
-        return userLog;
+    public void logUser(String SnowflakeID, User user) throws IOException {
+        logObject(SnowflakeID,user);
     }
+
+
+
 }
 

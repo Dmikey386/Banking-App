@@ -72,7 +72,7 @@ public class TransactionProcessor {
 
         for (int i = 0; i < accountIDs.length; i++) {
 
-            accounts[i] = bank.getAccount(accountIDs[i]);
+            //accounts[i] = bank.getAccount(accountIDs[i]);
         }
         return accounts;
     }
@@ -85,7 +85,7 @@ public class TransactionProcessor {
         double amount = transactionRequest.getAmount();
         int type = transactionRequest.getTransactionType();
 
-        bank.logTransaction(transactionID,transactionRequest);
+        //bank.logTransaction(transactionID,transactionRequest);
 
 
 
