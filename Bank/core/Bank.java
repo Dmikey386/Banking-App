@@ -63,6 +63,12 @@ public class Bank {
 
     }
 
+    public void createTransaction(String userID, String[] accounts, double amount, int transactionType) throws IOException {
+        User user = getUser(userID);
+        TransactionRequest request = user.createTransactionRequest(accounts, amount, transactionType);
+        processTransaction(request);
+    }
+
     public void logTransaction(TransactionRequest request) throws IOException {
         String transactionID = request.getTransactionID();
         transactionLogger.logTransaction(transactionID,request);

@@ -8,7 +8,7 @@ import Bank.IDTools.UniqueIDGenerator;
 import Bank.user.User;
 
 public class TransactionRequest {
-    private User user;
+    private String userID;
     private String[] accountIDs;
     private double amount;
     private int transactionType;
@@ -20,13 +20,12 @@ public class TransactionRequest {
 
     // constructore for transaction request
     public TransactionRequest(Builder builder) {
-        this.user = builder.user;
+        this.userID = builder.userID;
         this.accountIDs = builder.accountIDs;
         this.amount = builder.amount;
         this.transactionType= builder.transactionType;
         this.status = builder.status;
         this.setTransactionID();
-
     }
 
 
@@ -43,12 +42,10 @@ public class TransactionRequest {
     public double getAmount(){
         return amount;
     }
-    public User getUser(){
-        return user;
-    }
     public String getUserID(){
-        return user.getUserID();
+        return userID;
     }
+
 
 
     // set status of transaction
@@ -74,15 +71,15 @@ public class TransactionRequest {
     
     // Use Builder class for construction
     public static class Builder {
-        private User user;
+        private String userID;
         private String[] accountIDs;
         private double amount;
         private int transactionType;
         private boolean status;
 
 
-        public Builder user(User user) {
-            this.user = user;
+        public Builder userID(String userID) {
+            this.userID = userID;
             return this;
         }
 
