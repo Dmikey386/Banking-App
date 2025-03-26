@@ -5,8 +5,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map;
-import Bank.user.User;
 
 
 public class JsonLogger<T> {
@@ -31,7 +29,7 @@ public class JsonLogger<T> {
         HashMap<String, T> objLog = mapper.readValue(new File(path), new TypeReference<HashMap<String, T>>() {});
         return objLog;
     }
-    public T getObject(String SnowflakeID) throws IOException {
+    public T getObjectMap(String SnowflakeID) throws IOException {
         HashMap<String, T> objLog = readLog();
         return objLog.get(SnowflakeID);
     }
