@@ -1,8 +1,6 @@
 package Bank.account;
 
-import Bank.JsonStorage.JsonLogger;
-import Bank.user.User;
-
+import Bank.jsonStorage.JsonLogger;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +25,11 @@ public class AccountLogger extends JsonLogger<BankAccount> {
         BankAccount account = new BankAccount(id);
         return account;
 
+    }
+
+    public boolean searchAccount(String accountID) throws IOException {
+        HashMap accountLog = readLog();
+        return accountLog.containsKey(accountID);
     }
 
 

@@ -1,4 +1,4 @@
-package Bank.JsonStorage;
+package Bank.jsonStorage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;

@@ -31,6 +31,10 @@ public class User {
         userAccMap.put(accountID, accountBalance);
     }
 
+    public boolean verifyAccount(String accountID){
+        return userAccMap.containsKey(accountID);
+    }
+
 
     // Request Transaction
     public TransactionRequest createTransactionRequest(String[] accounts, double amount, int transactionType){
