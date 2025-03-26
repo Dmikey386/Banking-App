@@ -16,4 +16,5 @@ public class TransactionLogger extends JsonLogger<TransactionRequest> {
         logObject(transactionID,transactionRequest);
     }
 
+
 }

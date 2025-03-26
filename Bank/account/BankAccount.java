@@ -9,7 +9,7 @@ public class BankAccount {
 
 
     // Constructor
-    public BankAccount(String accountNumber) {
+    public BankAccount(String accountID) {
         double balance = 0;
         this.accountID = accountID;
     }
@@ -18,7 +18,7 @@ public class BankAccount {
     public double getBalance(){
         return balance;
     }
-    public String getAccountNumber(){
+    public String getAccountID(){
         return accountID;
     }
     // Setters

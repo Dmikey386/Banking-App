@@ -27,6 +27,9 @@ public class Bank {
     public User getUser(String userID) throws IOException {
         return userLogger.getUser(userID);
     }
+    public BankAccount getAccount(String accountID) throws IOException {
+        return accountStorage.getAccount(accountID);
+    }
     // Open new account
     public String openAccount(String accountType, String userID) throws IOException {
         String accountID = accountIDGenerator.generateID();
@@ -60,10 +63,14 @@ public class Bank {
 
     }
 
+    public void logTransaction(TransactionRequest request) throws IOException {
+        String transactionID = request.getTransactionID();
+        transactionLogger.logTransaction(transactionID,request);
+    }
 
-
-    public void processTransaction(TransactionRequest request){
+    public void processTransaction(TransactionRequest request) throws IOException {
         transactionProcessor.processTransaction(request);
+        logTransaction(request);
     }
 
 
