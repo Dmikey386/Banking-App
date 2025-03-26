@@ -29,7 +29,7 @@ public class Bank {
     public UserLogger getUserLog(){
         return userLog;
     }
-    public AccountLogger getaccountLog(){
+    public AccountLogger getAccountLog(){
         return accountLog;
     }
     // Open new account
@@ -40,16 +40,16 @@ public class Bank {
         // create new account
         switch (accountType) {
             case "Checking":
-                CheckingAccount newChecking = new CheckingAccount(accountID);
+                CheckingAccount newChecking = new CheckingAccount(accountID,userID);
                 accountLog.logAccount(accountID, newChecking);
                 user.addAccount(accountID,newChecking.getBalance());
                 break;
             case "Savings":
-                SavingsAccount newSavings = new SavingsAccount(accountID);
+                SavingsAccount newSavings = new SavingsAccount(accountID,userID);
                 accountLog.logAccount(accountID, newSavings);
                 user.addAccount(accountID,newSavings.getBalance());
                 break;
-            default: // would not occur if there was a button to pick
+            default:
                 System.out.println("Invalid account type");
                 break;
         }
