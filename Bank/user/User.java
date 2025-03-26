@@ -35,7 +35,7 @@ public class User {
     // Request Transaction
     public TransactionRequest createTransactionRequest(String[] accounts, double amount, int transactionType){
         TransactionRequest request = new TransactionRequest.Builder()
-                .user(this)
+                .userID(this.getUserID())
                 .accountIDs(accounts)
                 .amount(amount)
                 .transactionType(transactionType)

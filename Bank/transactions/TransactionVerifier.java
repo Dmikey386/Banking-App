@@ -14,7 +14,7 @@ public class TransactionVerifier {
     private String[] bankAccountIDs;
     private int transactionType;
     private double amount;
-    private User user;
+    private String userID;
     private AccountLogger accountBankMap;
     private UserLogger userBankMap;
 
@@ -26,7 +26,7 @@ public class TransactionVerifier {
         bankAccountIDs = transactionRequest.getAccountIDs();
         transactionType = transactionRequest.getTransactionType();
         amount = transactionRequest.getAmount();
-        user = transactionRequest.getUser();
+        userID = transactionRequest.getUserID();
 
         // get bank information
         this.bank = bank;
