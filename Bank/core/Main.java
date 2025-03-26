@@ -8,8 +8,8 @@ public class Main {
         Bank bank = new Bank();
 
         // transfer
-        String[] accounts = {"BA30708702122082304","BA30708702289854464"};
-        bank.createTransaction("USER30708484752277504",accounts,50000,2);
+        String[] accounts = {"BA30708702289854464","BA307087022342344464"};
+        bank.createTransaction("USER30708484903272448",accounts,5000,2);
 
     }
 }

@@ -99,14 +99,14 @@ public class TransactionVerifier {
     }
 
     // Verify valid balances
-    public void verifyWithdrawBalances() throws TransactionVerifierException {
-//        if (transactionType != 0){ // if not a deposit
-//            String accountID = bankAccountIDs[0];
-//            BankAccount withdrawAccount = accountBankMap.getAccount(accountID);
-//            if (withdrawAccount.getBalance() - amount < 50){ // min-account-balance: 50
-//                throw new TransactionVerifierException("Insufficient Balance");
-//            }
-//        }
+    public void verifyWithdrawBalances() throws TransactionVerifierException, IOException {
+       if (transactionType != 0){ // if not a deposit
+            String accountID = bankAccountIDs[0];
+            BankAccount withdrawAccount = accuontLog.getAccount(accountID);
+           if (withdrawAccount.getBalance() - amount < 50){ // min-account-balance: 50
+                throw new TransactionVerifierException("Insufficient Balance");
+            }
+       }
     }
     // Verify amount in transaction is valid
     public void verifyAmmount() throws TransactionVerifierException {
