@@ -1,0 +1,74 @@
+{
+  "TR30709633748303872" : {
+    "userID" : "USER30708484752277504",
+    "accountIDs" : [ "BA30708702122082304" ],
+    "amount" : 5000.0,
+    "transactionType" : 1,
+    "status" : true,
+    "transactionID" : "TR30709633748303872",
+    "failureStatement" : null
+  },
+  "TR30711342151237632" : {
+    "userID" : "USER30708484752277504",
+    "accountIDs" : [ "BA30708702122082304", "BA30708702289854464" ],
+    "amount" : 500000.0,
+    "transactionType" : 2,
+    "status" : false,
+    "transactionID" : "TR30711342151237632",
+    "failureStatement" : "Insufficient Balance"
+  },
+  "TR30711555297378304" : {
+    "userID" : "USER30708484752277504",
+    "accountIDs" : [ "BA30708702289854464", "BA30708702289854464" ],
+    "amount" : 5000.0,
+    "transactionType" : 2,
+    "status" : false,
+    "transactionID" : "TR30711555297378304",
+    "failureStatement" : "User Does not have permission to withdraw from Account: BA30708702289854464"
+  },
+  "TR30711683336896512" : {
+    "userID" : "USER30708484752277504",
+    "accountIDs" : [ "BA30708702289854464", "BA307087022342344464" ],
+    "amount" : 5000.0,
+    "transactionType" : 2,
+    "status" : false,
+    "transactionID" : "TR30711683336896512",
+    "failureStatement" : "User Does not have permission to withdraw from Account: BA30708702289854464"
+  },
+  "TR30710753702969344" : {
+    "userID" : "USER30708484752277504",
+    "accountIDs" : [ "BA30708702122082304", "BA30708702289854464" ],
+    "amount" : 2500.0,
+    "transactionType" : 2,
+    "status" : true,
+    "transactionID" : "TR30710753702969344",
+    "failureStatement" : null
+  },
+  "TR30710902646898688" : {
+    "userID" : "USER30708484752277504",
+    "accountIDs" : [ "BA30708702122082304", "BA30708702289854464" ],
+    "amount" : 50000.0,
+    "transactionType" : 2,
+    "status" : true,
+    "transactionID" : "TR30710902646898688",
+    "failureStatement" : null
+  },
+  "TR30711418256883712" : {
+    "userID" : "USER30708484752277504",
+    "accountIDs" : [ "BA30708702122082304", "BA30708702289854464" ],
+    "amount" : -500000.0,
+    "transactionType" : 2,
+    "status" : false,
+    "transactionID" : "TR30711418256883712",
+    "failureStatement" : "Invalid Amount: -500000.0"
+  },
+  "TR30709006108459008" : {
+    "userID" : "USER30708484752277504",
+    "accountIDs" : [ "BA30708702122082304" ],
+    "amount" : 10000.0,
+    "transactionType" : 0,
+    "status" : true,
+    "transactionID" : "TR30709006108459008",
+    "failureStatement" : null
+  }
+}

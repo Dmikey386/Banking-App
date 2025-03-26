@@ -5,14 +5,14 @@ public class CheckingAccount extends BankAccount {
     double checkingAPY;
 
     // checking account constructor
-    public CheckingAccount(int accountNumber) {
-        super(accountNumber);
+    public CheckingAccount(String accountID, String userID) {
+        super(accountID, userID);
     }
 
     // print account information
     public void printAccountInfo() {
         System.out.println("Account Type: Checking");
-        System.out.println("Account #: " + getAccountNumber());
+        System.out.println("Account #: " + getAccountID());
         System.out.println("Balance: " + getBalance());
     }
 
