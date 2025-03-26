@@ -23,10 +23,14 @@ public class Bank {
     private final UniqueIDGenerator accountIDGenerator = new AccountIDGenerator();
     private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();
 
-
+    // get User
+    public User getUser(String userID) throws IOException {
+        return userLogger.getUser(userID);
+    }
     // Open new account
-    public String openAccount(String accountType, User user) throws IOException {
+    public String openAccount(String accountType, String userID) throws IOException {
         String accountID = accountIDGenerator.generateID();
+        User user = getUser(userID);
 
         // create new account
         switch (accountType) {

@@ -17,9 +17,11 @@ public class UserLogger extends JsonLogger<User> {
     public void logUser(String userID, User user) throws IOException {
         logObject(userID, user);
     }
-    // get User
+
+    // get User from user log
     public User getUser(String userID) throws IOException {
-        Map<String, Object> userAttrMap = (Map<String, Object>) getObject(userID);
+        Map<String, Object> userAttrMap = (Map<String, Object>) getObjectMap(userID);
+        System.out.println(userAttrMap);
         String id = (String) userAttrMap.get("userID");
         HashMap<String, Double> userAccMap = (HashMap<String, Double>) userAttrMap.get("userAccMap");
         User user = new User(id, userAccMap);
