@@ -1,99 +1,39 @@
 package Bank.transactions;
 
-import Bank.account.BankAccount;
+import Bank.account.*;
+import Bank.core.Bank;
+import java.io.IOException;
+
+public class Transaction{
+    protected Bank bank;
+    protected String[] accountIDs;
+    protected double amount;
+    protected AccountLogger logger;
 
 
-public interface Transaction{
-    // Interface for key transaction methods
-    void process();
-    double getAmount();
-    BankAccount[] getAccount();
-
-
-}
-
- class Deposit implements Transaction {
-     // Deposit money into an account
-     private BankAccount account;
-     private double amount;
-
-     // constructor
-     public Deposit(BankAccount[] account, double amount) {
-         this.account = account[0];
-         this.amount = amount;
-     }
-
-     // setters
-     public void process() {
-         account.setBalance(account.getBalance() + amount);
-     }
-
-     // getters
-     public BankAccount[] getAccount() {
-         return new BankAccount[]{account};
-     }
-     public double getAmount() {
-         return amount;
-     }
- }
-
- class Withdraw implements Transaction{
-    // withdraw money from an account
-    private BankAccount account;
-    private double amount;
-
-    // constructor
-    public Withdraw(BankAccount[] account, double amount) {
-        this.account = account[0];
+    public Transaction(Bank bank, String[] accountIDs, double amount) throws IOException {
+        this.bank = bank;
+        this.accountIDs = accountIDs;
         this.amount = amount;
+        this.logger = bank.getaccountLog();
     }
 
-    // process withdrawal
-    public void process(){
-        account.setBalance(account.getBalance() - amount);
+    public BankAccount[] getAccounts(String[] accountIDs) throws IOException {
+        BankAccount[] accounts = new BankAccount[accountIDs.length];
+        for (int i = 0; i < accountIDs.length; i++){
+            BankAccount account = logger.getAccount(accountIDs[i]);
+            accounts[i] = account;
+        }
+        return accounts;
     }
 
-    // getters
-     public BankAccount[] getAccount() {
-        return new BankAccount[]{account};
-     }
-    public double getAmount() {
-        return amount;
+
+    public void process() throws IOException {
     }
 
 }
 
- class WireTransfer implements Transaction{
-    // wire money from one account to another
-    private BankAccount withdrawAcc;
-    private BankAccount depositAcc;
-    private double amount;
 
 
-    // constructor
-    public WireTransfer(BankAccount[] accounts, double amount) {
-        this.withdrawAcc = accounts[0];
-        this.depositAcc = accounts[1];
-        this.amount = amount;
-    }
-
-    // getters
-    public double getAmount() {
-        return amount;
-    }
-    public BankAccount[] getAccount() {
-        return new BankAccount[]{withdrawAcc, depositAcc};
-    }
 
 
-    // process withdraw
-    public void process() {
-        // withdraw
-        Withdraw withdrawal = new Withdraw(new BankAccount[] {withdrawAcc}, amount);
-        withdrawal.process();
-
-        // deposit
-        Deposit deposit = new Deposit(new BankAccount[] {depositAcc}, amount);
-        deposit.process();
-    }
-}

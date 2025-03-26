@@ -1,10 +1,8 @@
 package Bank.transactions;
 
-import Bank.account.BankAccount;
 import Bank.core.Bank;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class TransactionProcessor {
@@ -18,7 +16,7 @@ public class TransactionProcessor {
 
 
     // Verify transaction
-    public void verifyTransaction(TransactionRequest transactionRequest) {
+    public void verifyTransaction(TransactionRequest transactionRequest) throws IOException {
         TransactionVerifier verifier = new TransactionVerifier(bank, transactionRequest);
         verifier.verifyTransaction();
     }
@@ -34,28 +32,27 @@ public class TransactionProcessor {
         } else {
             Transaction transaction = createTransaction(transactionRequest);
             transaction.process();
-        }
 
+        }
 
     }
 
     // create the transaction
     public Transaction createTransaction(TransactionRequest transactionRequest) throws IOException {
-
         int type = transactionRequest.getTransactionType();
         Transaction transaction = null;
-        BankAccount[] accounts = getAccounts(transactionRequest);
+        String[] accountIDs = transactionRequest.getAccountIDs();
         double amount = transactionRequest.getAmount();
 
         switch (type) {
             case 0:
-                transaction = new Deposit(accounts, amount);
+                transaction = new Deposit(bank, accountIDs, amount);
                 break;
             case 1:
-                transaction = new Withdraw(accounts, amount);
+                //transaction = new Withdraw(accountIDs, amount);
                 break;
             case 2:
-                transaction = new WireTransfer(accounts, amount);
+                //transaction = new WireTransfer(accountIDs, amount);
                 break;
             default:
                 System.out.println("Invalid transaction type");
@@ -65,16 +62,6 @@ public class TransactionProcessor {
 
     }
 
-    // Convert accountIDs to account objects
-    public BankAccount[] getAccounts(TransactionRequest transactionRequest) throws IOException {
-        String[] accountIDs = transactionRequest.getAccountIDs();
-        BankAccount[] accounts = new BankAccount[accountIDs.length];
 
-        for (int i = 0; i < accountIDs.length; i++) {
-
-            accounts[i] = bank.getAccount(accountIDs[i]);
-        }
-        return accounts;
-    }
 
 }

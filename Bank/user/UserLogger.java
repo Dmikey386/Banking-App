@@ -1,6 +1,6 @@
 package Bank.user;
 
-import Bank.JsonStorage.JsonLogger;
+import Bank.jsonStorage.JsonLogger;
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
@@ -26,6 +26,7 @@ public class UserLogger extends JsonLogger<User> {
         User user = new User(id, userAccMap);
         return user;
     }
+
 
 }
 

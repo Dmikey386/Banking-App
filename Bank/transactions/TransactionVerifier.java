@@ -1,5 +1,6 @@
 package Bank.transactions;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import Bank.account.AccountLogger;
@@ -15,12 +16,12 @@ public class TransactionVerifier {
     private int transactionType;
     private double amount;
     private String userID;
-    private AccountLogger accountBankMap;
-    private UserLogger userBankMap;
+    private AccountLogger accuontLog;
+    private UserLogger userLog;
 
 
     // Constructor
-    public TransactionVerifier(Bank bank, TransactionRequest transactionRequest) {
+    public TransactionVerifier(Bank bank, TransactionRequest transactionRequest) throws IOException {
         // get transaction Request information
         this.transactionRequest = transactionRequest;
         bankAccountIDs = transactionRequest.getAccountIDs();
@@ -28,11 +29,9 @@ public class TransactionVerifier {
         amount = transactionRequest.getAmount();
         userID = transactionRequest.getUserID();
 
-        // get bank information
         this.bank = bank;
-        //accountBankMap = bank.getAccountLog();
-        //userBankMap = bank.getUsersHashMap();
-
+        this.accuontLog = bank.getaccountLog();
+        this.userLog = bank.getUserLog();
 
     }
 
@@ -45,14 +44,14 @@ public class TransactionVerifier {
             verifyWithdrawBalances();
             transactionRequest.setStatus(true);
         }
-        catch (TransactionVerifierException e){
+        catch (TransactionVerifierException | IOException e){
             transactionRequest.setFailureStatement(e.getMessage());
         }
             return transactionRequest;
     }
 
     // Verify all account parameters for a transaction
-    public void verifyTransactionAccounts() throws TransactionVerifierException{
+    public void verifyTransactionAccounts() throws TransactionVerifierException, IOException {
         if (transactionType == 0){
             verifyDepositAccounts(bankAccountIDs[0]);
         }
@@ -70,27 +69,28 @@ public class TransactionVerifier {
     }
 
     // Verify if Deposit Accounts
-    public void verifyDepositAccounts(String accountID) throws TransactionVerifierException {
-//        // verify if deposit account (recieving money) is in bank database
-//        if (!accountBankMap.containsAccount(accountID)) {
-//            throw new TransactionVerifierException("Deposit Account: " + accountID + " not found");
-//        }
+    public void verifyDepositAccounts(String accountID) throws TransactionVerifierException, IOException {
+        // verify if deposit account (recieving money) is in bank database
+        if (!accuontLog.searchAccount(accountID)) {
+            throw new TransactionVerifierException("Deposit Account: " + accountID + " not found");
+        }
     }
 
     // Verify Withdrawal Accounts
-    public void verifyWithdrawAccounts(String accountID) throws TransactionVerifierException {
+    public void verifyWithdrawAccounts(String accountID) throws TransactionVerifierException, IOException {
         // verify if withdraw account (removing money) is in bank database
-//        if (!accountBankMap.containsAccount(accountID)) {
-//            throw new TransactionVerifierException("Withdraw Failed --> Account: " + accountID + " not found");
-//        }
-//        // verify if user requesting withdrawal owns the withdrawal account
-//        if (!user.getUserAccMap().containsKey(accountID)) {
-//            throw new TransactionVerifierException("User Does not have permission to withdraw from Account: " + accountID);
-//        }
+        if (!accuontLog.searchAccount(accountID)) {
+            throw new TransactionVerifierException("Withdraw Failed --> Account: " + accountID + " not found");
+        }
+        // verify if user requesting withdrawal owns the withdrawal account
+        User user = bank.getUser(userID);
+        if (!user.verifyAccount(accountID)) {
+            throw new TransactionVerifierException("User Does not have permission to withdraw from Account: " + accountID);
+        }
 
     }
     // Verify Transfer accounts
-    public void verifyTransferAccounts(String[] accountIDs) throws TransactionVerifierException {
+    public void verifyTransferAccounts(String[] accountIDs) throws TransactionVerifierException, IOException {
         String withdrawAccountID = accountIDs[0];
         String depositAccountID = accountIDs[1];
 
