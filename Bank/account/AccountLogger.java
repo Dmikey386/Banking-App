@@ -20,9 +20,9 @@ public class AccountLogger extends JsonLogger<BankAccount> {
     // get User from user log
     public BankAccount getAccount(String accountID) throws IOException {
         Map<String, Object> accountAttrMap = (Map<String, Object>) getObjectMap(accountID);
-        String id = (String) accountAttrMap.get("userID");
+        String id = (String) accountAttrMap.get("accountID");
         Double balance = (Double) accountAttrMap.get("balance");
-        BankAccount account = new BankAccount(id);
+        BankAccount account = new BankAccount(id,balance);
         return account;
 
     }

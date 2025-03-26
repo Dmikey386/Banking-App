@@ -22,6 +22,7 @@ public class Transaction{
         BankAccount[] accounts = new BankAccount[accountIDs.length];
         for (int i = 0; i < accountIDs.length; i++){
             BankAccount account = logger.getAccount(accountIDs[i]);
+            System.out.println(account.getBalance());
             accounts[i] = account;
         }
         return accounts;
