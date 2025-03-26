@@ -52,7 +52,7 @@ public class TransactionProcessor {
                 transaction = new Withdraw(bank,accountIDs, amount);
                 break;
             case 2:
-                //transaction = new WireTransfer(accountIDs, amount);
+                transaction = new WireTransfer(bank, accountIDs, amount);
                 break;
             default:
                 System.out.println("Invalid transaction type");
