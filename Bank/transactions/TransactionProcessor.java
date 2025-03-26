@@ -49,7 +49,7 @@ public class TransactionProcessor {
                 transaction = new Deposit(bank, accountIDs, amount);
                 break;
             case 1:
-                //transaction = new Withdraw(accountIDs, amount);
+                transaction = new Withdraw(bank,accountIDs, amount);
                 break;
             case 2:
                 //transaction = new WireTransfer(accountIDs, amount);
