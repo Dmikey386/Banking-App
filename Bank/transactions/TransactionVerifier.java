@@ -30,7 +30,7 @@ public class TransactionVerifier {
         userID = transactionRequest.getUserID();
 
         this.bank = bank;
-        this.accuontLog = bank.getaccountLog();
+        this.accuontLog = bank.getAccountLog();
         this.userLog = bank.getUserLog();
 
     }

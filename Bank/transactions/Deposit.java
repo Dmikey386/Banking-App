@@ -15,10 +15,8 @@ public class Deposit extends Transaction {
     @Override
     public void process() throws IOException {
         BankAccount[] accounts = getAccounts(accountIDs);
-        BankAccount depositAccount = accounts[0];
-        depositAccount.setBalance(depositAccount.getBalance() + amount);
-        String depositAccountID = accountIDs[0];
-        logger.logAccount(depositAccountID,depositAccount);
+        accounts[0].setBalance(accounts[0].getBalance() + amount);
+        updateLogs(accounts);
     }
 
 
