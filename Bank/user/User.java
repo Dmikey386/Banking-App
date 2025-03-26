@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class User {
     private String userID;
-    private Map<String, Double> userAccMap; // Key = accountID, value = balance
+    public Map<String, Double> userAccMap; // Key = accountID, value = balance
 
     //User Constructor
     public User(String userID, HashMap<String, Double> userAccMap) {

@@ -48,6 +48,7 @@ public class Bank {
                 System.out.println("Invalid account type");
                 break;
         }
+        userLogger.logUser(userID,user);
 
         return accountID;
     }
