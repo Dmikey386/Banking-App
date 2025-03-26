@@ -1,7 +1,6 @@
-package Bank.transactions;
+package Bank.singleTransactions;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import Bank.account.AccountLogger;
 import Bank.account.BankAccount;

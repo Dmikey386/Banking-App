@@ -1,11 +1,10 @@
-package Bank.transactions;
+package Bank.singleTransactions;
 /*
 Object containing Transaction request info
  */
 
 import Bank.IDTools.TransactionIDGenerator;
 import Bank.IDTools.UniqueIDGenerator;
-import Bank.user.User;
 
 public class TransactionRequest {
     private String userID;

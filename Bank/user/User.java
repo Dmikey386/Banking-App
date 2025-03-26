@@ -1,7 +1,6 @@
 package Bank.user;
 
-import Bank.transactions.TransactionLogger;
-import Bank.transactions.TransactionRequest;
+import Bank.singleTransactions.TransactionRequest;
 
 import java.util.Map;
 import java.util.HashMap;

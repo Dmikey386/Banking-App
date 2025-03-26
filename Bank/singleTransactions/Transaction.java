@@ -1,4 +1,4 @@
-package Bank.transactions;
+package Bank.singleTransactions;
 
 import Bank.account.*;
 import Bank.core.Bank;

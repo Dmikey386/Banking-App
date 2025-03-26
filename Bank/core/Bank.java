@@ -3,11 +3,11 @@ import Bank.IDTools.AccountIDGenerator;
 import Bank.IDTools.UserIDGenerator;
 import Bank.account.*;
 import Bank.user.User;
-import Bank.transactions.TransactionLogger;
-import Bank.transactions.TransactionProcessor;
+import Bank.singleTransactions.TransactionLogger;
+import Bank.singleTransactions.TransactionProcessor;
 import java.io.IOException;
 import Bank.IDTools.UniqueIDGenerator;
-import Bank.transactions.TransactionRequest;
+import Bank.singleTransactions.TransactionRequest;
 import Bank.user.UserLogger;
 
 
