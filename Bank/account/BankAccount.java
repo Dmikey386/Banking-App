@@ -7,8 +7,11 @@ public class BankAccount {
     private double balance;
     private String accountID;
 
-
-    // Constructor
+    public BankAccount(String accountID, double balance) {
+        this.accountID = accountID;
+        this.balance = balance;
+    }
+    // Constructor Wrapper
     public BankAccount(String accountID) {
         double balance = 0;
         this.accountID = accountID;
