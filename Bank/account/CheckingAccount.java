@@ -12,7 +12,7 @@ public class CheckingAccount extends BankAccount {
     // print account information
     public void printAccountInfo() {
         System.out.println("Account Type: Checking");
-        System.out.println("Account #: " + getAccountNumber());
+        System.out.println("Account #: " + getAccountID());
         System.out.println("Balance: " + getBalance());
     }
 
