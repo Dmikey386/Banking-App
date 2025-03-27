@@ -12,6 +12,7 @@ public class TransactionRequest {
     private double amount;
     private int transactionType;
     private boolean status = false;
+    private boolean auto;
     private String transactionFailure = null;
     private String transactionID;
     private final UniqueIDGenerator transactionIDGenerator = new TransactionIDGenerator();
@@ -24,6 +25,7 @@ public class TransactionRequest {
         this.amount = builder.amount;
         this.transactionType= builder.transactionType;
         this.status = builder.status;
+        this.auto = builder.auto;
         this.setTransactionID();
     }
 
@@ -75,7 +77,12 @@ public class TransactionRequest {
         private double amount;
         private int transactionType;
         private boolean status;
+        private boolean auto;
 
+        public Builder auto(boolean auto) {
+            this.auto = auto;
+            return this;
+        }
 
         public Builder userID(String userID) {
             this.userID = userID;

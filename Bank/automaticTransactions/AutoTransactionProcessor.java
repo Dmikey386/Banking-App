@@ -1,5 +1,9 @@
 package Bank.automaticTransactions;
 
 public class AutoTransactionProcessor {
-    // process automatic transactions
+    // look through autotransactionlog
+    // search for matching payment dates
+    // create list of autotransactions
+    // process auto transaction --> pause if invalid transaction --> send if valid
+
 }

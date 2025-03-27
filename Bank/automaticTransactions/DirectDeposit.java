@@ -1,5 +1,20 @@
 package Bank.automaticTransactions;
 
-public class DirectDeposit {
-    // automatic direct deposit
+
+import Bank.core.Bank;
+
+import java.io.IOException;
+
+public class DirectDeposit extends AutoTransaction {
+
+
+    public DirectDeposit(Bank bank, String rate, String[] accountIDs, double amount) {
+        super(bank, rate, accountIDs, amount);
+    }
+    @Override
+    public void process() throws IOException {
+
+    }
+
+
 }

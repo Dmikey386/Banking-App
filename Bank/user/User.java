@@ -34,6 +34,7 @@ public class User {
         return userAccMap.containsKey(accountID);
     }
 
+    // Request auto transaction
 
     // Request Transaction
     public TransactionRequest createTransactionRequest(String[] accounts, double amount, int transactionType){
@@ -43,6 +44,7 @@ public class User {
                 .amount(amount)
                 .transactionType(transactionType)
                 .status(false)
+                .auto(false)
                 .build();
 
         return request;

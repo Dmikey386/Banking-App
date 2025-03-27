@@ -5,7 +5,7 @@ import Bank.core.Bank;
 
 import java.io.IOException;
 
-class WireTransfer extends Transaction {
+public class WireTransfer extends Transaction {
     // constructor
     public WireTransfer(Bank bank, String[] accountIDs, double amount) throws IOException {
         super(bank, accountIDs, amount);
