@@ -6,8 +6,18 @@ import java.io.IOException;
 
 
 public class TransactionLogger extends JsonLogger<TransactionRequest> {
+    private static TransactionLogger single_instance = null;
+
+    // wrapper for singleton
+    public static TransactionLogger getInstance() {
+        // ensure only one instance
+        if(single_instance == null){
+            single_instance = new TransactionLogger();
+        }
+        return single_instance;
+    }
     // constructor
-    public TransactionLogger() {
+    private TransactionLogger() {
         super("Storage/transactions.json");
     }
 
