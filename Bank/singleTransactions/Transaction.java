@@ -38,7 +38,6 @@ public class Transaction{
 
             // updates user
             String userID = accounts[i].getUserID();
-            System.out.println(userID);
             User user = userLogger.getUser(userID);
             user.addAccount(accountID,accounts[i].getBalance());
             userLogger.logUser(userID,user);
