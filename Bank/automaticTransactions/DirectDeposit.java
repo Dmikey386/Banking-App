@@ -1,8 +1,7 @@
 package Bank.automaticTransactions;
 
-
 import Bank.core.Bank;
-
+import Bank.singleTransactions.Deposit;
 import java.io.IOException;
 
 public class DirectDeposit extends AutoTransaction {

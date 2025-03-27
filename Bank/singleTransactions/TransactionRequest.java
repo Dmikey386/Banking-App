@@ -1,7 +1,4 @@
 package Bank.singleTransactions;
-/*
-Object containing Transaction request info
- */
 
 import Bank.IDTools.TransactionIDGenerator;
 import Bank.IDTools.UniqueIDGenerator;

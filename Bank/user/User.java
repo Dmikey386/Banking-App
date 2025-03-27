@@ -1,5 +1,6 @@
 package Bank.user;
 
+import Bank.automaticTransactions.AutoTransactionRequest;
 import Bank.singleTransactions.TransactionRequest;
 
 import java.util.Map;
@@ -35,6 +36,16 @@ public class User {
     }
 
     // Request auto transaction
+    public AutoTransactionRequest createAutoTransactionRequest(String[] accounts, String rate, double amount, int transactionType) {
+        AutoTransactionRequest request = new AutoTransactionRequest.Builder()
+                .userID(this.getUserID())
+                .accountIDs(accounts)
+                .amount(amount)
+                .rate(rate)
+                .transactionType(transactionType)
+                .build();
+        return request;
+    }
 
     // Request Transaction
     public TransactionRequest createTransactionRequest(String[] accounts, double amount, int transactionType){

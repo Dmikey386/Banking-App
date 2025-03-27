@@ -11,16 +11,14 @@ public class AutoTransaction {
     protected String rate; //Daily,Weekly,Monthly
     // next payment date
     protected int numPayments = 0;
-    protected String[] accounts;
+    protected String[] accountIDs;
     protected Bank bank;
-    protected UserLogger userLogger;
-    protected AccountLogger accountLogger;
+
 
     public AutoTransaction(Bank bank, String rate, String[] accountIDs, double amount) {
         this.amount = amount;
         this.rate = rate;
-        this.bank = bank;
-        this.accounts = accountIDs;
+        this.accountIDs = accountIDs;
     }
 
     public void process() throws IOException {

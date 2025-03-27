@@ -8,7 +8,7 @@ import java.io.IOException;
 public class AutoWireTransfer extends AutoTransaction{
     // automatic wire transfer
 
-    public AutoWireTransfer(Bank bank, String rate, String[] accountIDs, double amount) {
+    public AutoWireTransfer(Bank bank,String rate, String[] accountIDs, double amount) {
         super(bank, rate, accountIDs, amount);
     }
 

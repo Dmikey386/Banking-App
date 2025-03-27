@@ -6,8 +6,6 @@ import java.io.IOException;
 
 
 public class TransactionLogger extends JsonLogger<TransactionRequest> {
-
-
     // constructor
     public TransactionLogger() {
         super("Storage/transactions.json");

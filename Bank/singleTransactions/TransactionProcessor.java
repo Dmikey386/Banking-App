@@ -1,7 +1,6 @@
 package Bank.singleTransactions;
 
 import Bank.core.Bank;
-
 import java.io.IOException;
 
 
