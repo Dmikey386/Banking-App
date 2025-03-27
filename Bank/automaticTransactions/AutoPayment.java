@@ -6,8 +6,8 @@ import java.io.IOException;
 
 public class AutoPayment extends AutoTransaction {
 
-    public AutoPayment(Bank bank, String rate, String[] accountIDs, double amount) {
-        super(bank, rate, accountIDs, amount);
+    public AutoPayment(String[] accountIDs, String rate, double amount) {
+        super(accountIDs, rate, amount);
     }
     @Override
     public void process() throws IOException {

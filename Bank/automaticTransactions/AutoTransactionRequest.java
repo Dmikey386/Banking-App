@@ -23,6 +23,19 @@ public class AutoTransactionRequest {
         this.dateInitialized = LocalDate.now().toString();
         this.autoTransactionID = autoTransactionIDGenerator.generateID();
     }
+    // Get Transaction type
+    public int getTransactionType() {
+        return transactionType;
+    }
+    public String[] getAccountIDs() {
+        return accountIDs;
+    }
+    public double getAmount() {
+        return amount;
+    }
+    public String getRate(){
+        return rate;
+    }
     // Use Builder class for construction
     public static class Builder {
         private String userID;

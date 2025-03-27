@@ -8,14 +8,13 @@ import java.io.IOException;
 public class AutoTransaction {
     protected boolean active;
     protected double amount;
-    protected String rate; //Daily,Weekly,Monthly
-    // next payment date
+    protected String rate;
+    protected String nextPaymentDate;
     protected int numPayments = 0;
     protected String[] accountIDs;
-    protected Bank bank;
 
 
-    public AutoTransaction(Bank bank, String rate, String[] accountIDs, double amount) {
+    public AutoTransaction(String[] accountIDs, String rate, double amount) {
         this.amount = amount;
         this.rate = rate;
         this.accountIDs = accountIDs;

@@ -11,16 +11,15 @@ public class Transaction{
     protected Bank bank;
     protected String[] accountIDs;
     protected double amount;
-    protected AccountLogger accountLogger;
-    protected UserLogger userLogger;
+    protected AccountLogger accountLogger = bank.getAccountLog();
+    protected UserLogger userLogger = bank.getUserLog();
 
 
     public Transaction(Bank bank, String[] accountIDs, double amount) throws IOException {
         this.bank = bank;
         this.accountIDs = accountIDs;
         this.amount = amount;
-        this.accountLogger = bank.getAccountLog();
-        this.userLogger = bank.getUserLog();
+
     }
 
     public BankAccount[] getAccounts(String[] accountIDs) throws IOException {

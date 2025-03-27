@@ -7,7 +7,6 @@ import java.io.IOException;
 public class TransactionProcessor {
     private Bank bank;
 
-
     // constructor
     public TransactionProcessor(Bank bank) {
         this.bank = bank;
@@ -16,13 +15,12 @@ public class TransactionProcessor {
 
     // Verify transaction
     public void verifyTransaction(TransactionRequest transactionRequest) throws IOException {
-        TransactionVerifier verifier = new TransactionVerifier(bank, transactionRequest);
+        TransactionVerifier verifier = new TransactionVerifier(transactionRequest);
         verifier.verifyTransaction();
     }
 
     // Process the transaction
     public void processTransaction(TransactionRequest transactionRequest) throws IOException {
-        String transactionID = transactionRequest.getTransactionID(); // get the transaction ID
 
         verifyTransaction(transactionRequest);
 
@@ -45,13 +43,13 @@ public class TransactionProcessor {
 
         switch (type) {
             case 0:
-                transaction = new Deposit(bank, accountIDs, amount);
+                transaction = new DirectDeposit(accountIDs, amount);
                 break;
             case 1:
-                transaction = new Withdraw(bank,accountIDs, amount);
+                transaction = new Withdraw(accountIDs, amount);
                 break;
             case 2:
-                transaction = new WireTransfer(bank, accountIDs, amount);
+                transaction = new WireTransfer(accountIDs, amount);
                 break;
             default:
                 System.out.println("Invalid transaction type");

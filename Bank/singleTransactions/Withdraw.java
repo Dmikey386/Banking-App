@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class Withdraw extends Transaction {
     // constructor
-    public Withdraw(Bank bank, String[] accountIDs, double amount) throws IOException {
-        super(bank, accountIDs, amount);
+    public Withdraw(String[] accountIDs, double amount) throws IOException {
+        super(accountIDs, amount);
     }
 
     @Override

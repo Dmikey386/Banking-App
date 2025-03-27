@@ -14,24 +14,17 @@ public class TransactionVerifier {
     private String[] bankAccountIDs;
     private int transactionType;
     private double amount;
-    private String userID;
-    private AccountLogger accuontLog;
-    private UserLogger userLog;
+    private AccountLogger accuontLog = bank.getAccountLog();
+    private UserLogger userLog = bank.getUserLog();
 
 
     // Constructor
-    public TransactionVerifier(Bank bank, TransactionRequest transactionRequest) throws IOException {
+    public TransactionVerifier(TransactionRequest transactionRequest) throws IOException {
         // get transaction Request information
         this.transactionRequest = transactionRequest;
         bankAccountIDs = transactionRequest.getAccountIDs();
         transactionType = transactionRequest.getTransactionType();
         amount = transactionRequest.getAmount();
-        userID = transactionRequest.getUserID();
-
-        this.bank = bank;
-        this.accuontLog = bank.getAccountLog();
-        this.userLog = bank.getUserLog();
-
     }
 
 
@@ -82,7 +75,7 @@ public class TransactionVerifier {
             throw new TransactionVerifierException("Withdraw Failed --> Account: " + accountID + " not found");
         }
         // verify if user requesting withdrawal owns the withdrawal account
-        User user = bank.getUser(userID);
+        User user = bank.getUser(accountID);
         if (!user.verifyAccount(accountID)) {
             throw new TransactionVerifierException("User Does not have permission to withdraw from Account: " + accountID);
         }
@@ -114,7 +107,6 @@ public class TransactionVerifier {
         }
     }
 }
-
 
 class TransactionVerifierException extends Exception{
     public TransactionVerifierException(String message){

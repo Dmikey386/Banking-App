@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class WireTransfer extends Transaction {
     // constructor
-    public WireTransfer(Bank bank, String[] accountIDs, double amount) throws IOException {
-        super(bank, accountIDs, amount);
+    public WireTransfer(String[] accountIDs, double amount) throws IOException {
+        super(accountIDs, amount);
     }
     @Override
     public void process() throws IOException {

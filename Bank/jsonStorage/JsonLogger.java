@@ -20,7 +20,7 @@ public class JsonLogger<T> {
         mapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), log);
     }
     // Log new Object
-    public void logObject(String SnowflakeID, T obj) throws IOException {
+    public synchronized void logObject(String SnowflakeID, T obj) throws IOException {
         HashMap<String, T> objLogger = readLog();
         objLogger.put(SnowflakeID, obj);
         writeJson(objLogger);

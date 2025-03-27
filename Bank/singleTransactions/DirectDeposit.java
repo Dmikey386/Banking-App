@@ -1,15 +1,14 @@
 package Bank.singleTransactions;
 
 import Bank.account.BankAccount;
-import Bank.core.Bank;
 
 import java.io.IOException;
 
-public class Deposit extends Transaction {
+public class DirectDeposit extends Transaction {
 
     // constructor
-    public Deposit(Bank bank, String[] accountIDs, double amount) throws IOException {
-        super(bank, accountIDs, amount);
+    public DirectDeposit(String[] accountIDs, double amount) throws IOException {
+        super(accountIDs, amount);
     }
 
     @Override
