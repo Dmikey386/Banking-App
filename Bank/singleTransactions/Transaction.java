@@ -8,15 +8,13 @@ import Bank.user.UserLogger;
 import java.io.IOException;
 
 public class Transaction{
-    protected Bank bank;
     protected String[] accountIDs;
     protected double amount;
-    protected AccountLogger accountLogger = bank.getAccountLog();
-    protected UserLogger userLogger = bank.getUserLog();
+    protected AccountLogger accountLogger = AccountLogger.getInstance();
+    protected UserLogger userLogger = UserLogger.getInstance();
 
 
-    public Transaction(Bank bank, String[] accountIDs, double amount) throws IOException {
-        this.bank = bank;
+    public Transaction(String[] accountIDs, double amount) throws IOException {
         this.accountIDs = accountIDs;
         this.amount = amount;
 

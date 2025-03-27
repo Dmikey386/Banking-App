@@ -7,9 +7,16 @@ import java.util.HashMap;
 
 
 public class UserLogger extends JsonLogger<User> {
-
+    public static UserLogger single_instance = null;
+    //
+    public static UserLogger getInstance() {
+        if (single_instance == null) {
+            single_instance = new UserLogger();
+        }
+        return single_instance;
+    }
     // constructor
-    public UserLogger() {
+    private UserLogger() {
         super("Storage/users.json");
     }
 

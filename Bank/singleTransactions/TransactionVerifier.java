@@ -14,7 +14,7 @@ public class TransactionVerifier {
     private int transactionType;
     private double amount;
     private AccountLogger accuontLog = AccountLogger.getInstance();
-    private UserLogger userLog = bank.getUserLog();
+    private UserLogger userLog = UserLogger.getInstance();
 
 
     // Constructor

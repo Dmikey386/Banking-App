@@ -13,7 +13,7 @@ import Bank.user.UserLogger;
 
 public class Bank {
     private TransactionProcessor transactionProcessor = new TransactionProcessor(this);
-    private UserLogger userLog = new UserLogger();
+    private UserLogger userLog = UserLogger.getInstance();
     private AccountLogger  accountLog = AccountLogger.getInstance();
     private TransactionLogger transactionLogger = TransactionLogger.getInstance();
     private final UniqueIDGenerator accountIDGenerator = new AccountIDGenerator();

@@ -43,7 +43,7 @@ public class AutoTransactionInitializer {
 }
 
 class AutoTransactionVerifier{
-    private UserLogger userLogger = new UserLogger();
+    private UserLogger userLogger = UserLogger.getInstance();
     private AccountLogger accountLogger = AccountLogger.getInstance();
 
 
