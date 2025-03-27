@@ -9,12 +9,11 @@ import Bank.core.Bank;
 import Bank.user.UserLogger;
 
 public class TransactionVerifier {
-    private Bank bank;
     private TransactionRequest transactionRequest;
     private String[] bankAccountIDs;
     private int transactionType;
     private double amount;
-    private AccountLogger accuontLog = bank.getAccountLog();
+    private AccountLogger accuontLog = AccountLogger.getInstance();
     private UserLogger userLog = bank.getUserLog();
 
 
@@ -75,7 +74,7 @@ public class TransactionVerifier {
             throw new TransactionVerifierException("Withdraw Failed --> Account: " + accountID + " not found");
         }
         // verify if user requesting withdrawal owns the withdrawal account
-        User user = bank.getUser(accountID);
+        User user = userLog.getUser(accountID);
         if (!user.verifyAccount(accountID)) {
             throw new TransactionVerifierException("User Does not have permission to withdraw from Account: " + accountID);
         }

@@ -14,7 +14,7 @@ import Bank.user.UserLogger;
 public class Bank {
     private TransactionProcessor transactionProcessor = new TransactionProcessor(this);
     private UserLogger userLog = new UserLogger();
-    private AccountLogger  accountLog = new AccountLogger();
+    private AccountLogger  accountLog = AccountLogger.getInstance();
     private TransactionLogger transactionLogger = TransactionLogger.getInstance();
     private final UniqueIDGenerator accountIDGenerator = new AccountIDGenerator();
     private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();

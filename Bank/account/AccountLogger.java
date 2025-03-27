@@ -7,9 +7,17 @@ import java.util.Map;
 
 
 public class AccountLogger extends JsonLogger<BankAccount> {
+    private static AccountLogger single_instance = new AccountLogger();
 
     // constructor
-    public AccountLogger() {
+    public static AccountLogger getInstance() {
+        if (single_instance == null) {
+            single_instance = new AccountLogger();
+        }
+        return single_instance;
+    }
+
+    private AccountLogger() {
         super("Storage/accounts.json");
     }
 

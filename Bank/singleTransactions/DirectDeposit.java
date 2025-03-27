@@ -1,7 +1,6 @@
 package Bank.singleTransactions;
 
 import Bank.account.BankAccount;
-
 import java.io.IOException;
 
 public class DirectDeposit extends Transaction {

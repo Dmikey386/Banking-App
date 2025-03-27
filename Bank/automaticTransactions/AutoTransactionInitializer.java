@@ -44,7 +44,7 @@ public class AutoTransactionInitializer {
 
 class AutoTransactionVerifier{
     private UserLogger userLogger = new UserLogger();
-    private AccountLogger accountLogger = new AccountLogger();
+    private AccountLogger accountLogger = AccountLogger.getInstance();
 
 
     public boolean verify(AutoTransactionRequest autoTransactionRequest) {
