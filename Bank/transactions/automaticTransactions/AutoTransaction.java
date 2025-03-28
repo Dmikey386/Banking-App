@@ -16,7 +16,9 @@ public class AutoTransaction {
 
 
 
-
+    public String getAutoTransactionID() {
+        return autoTransactionID;
+    }
     public AutoTransaction(AutoTransactionRequest autoTransactionRequest) {
         createAutoTransaction(autoTransactionRequest);
     }

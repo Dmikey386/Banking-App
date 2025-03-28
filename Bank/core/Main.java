@@ -6,8 +6,8 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
         Bank bank = new Bank();
-        String[] accounts = {"BA31132129710571520","BA31132129asdf546993664"};
-        bank.createTransaction("USER31131933190651904",accounts,5000, 2);
+        String[] accounts = {"BA31437963686576129","BA31437963518803968"};
+        bank.createTransaction("USER31437727773753344",accounts,10000,2);
 
     }
 }
