@@ -32,6 +32,8 @@ public class Bank {
     public AccountLogger getAccountLog(){
         return accountLog;
     }
+
+
     // Open new account
     public String openAccount(String accountType, String userID) throws IOException {
         String accountID = accountIDGenerator.generateID();

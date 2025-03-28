@@ -1,18 +1,19 @@
 package Bank.automaticTransactions;
 
 import Bank.IDTools.AutoTransactionIDGenerator;
-import Bank.account.AccountLogger;
-import Bank.core.Bank;
-import Bank.user.UserLogger;
+
+import java.io.IOException;
+
 
 public class AutoTransactionInitializer {
-     private Bank bank;
      private AutoTransactionVerifier verifier = new AutoTransactionVerifier();
-     private AutoTransactionIDGenerator idGenerator = new AutoTransactionIDGenerator();
 
 
-    public void initializeAutoTransaction(AutoTransaction autoTransaction) {
-        String AutoTrID = idGenerator.generateID();
+
+    public void initializeAutoTransaction(AutoTransactionRequest autoTransactionRequest){
+
+       // verifier.verifyTransaction();
+
     }
 
     // Create automatic transaction
@@ -42,13 +43,4 @@ public class AutoTransactionInitializer {
 
 }
 
-class AutoTransactionVerifier{
-    private UserLogger userLogger = UserLogger.getInstance();
-    private AccountLogger accountLogger = AccountLogger.getInstance();
-
-
-    public boolean verify(AutoTransactionRequest autoTransactionRequest) {
-        return false;
-    }
-}
 

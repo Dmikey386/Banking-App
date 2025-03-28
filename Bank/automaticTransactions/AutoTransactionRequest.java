@@ -11,7 +11,6 @@ public class AutoTransactionRequest {
     private int transactionType;
     private String rate;
     private String dateInitialized;
-    private AutoTransactionIDGenerator autoTransactionIDGenerator = new AutoTransactionIDGenerator();
 
 
     public AutoTransactionRequest(Builder build) {
@@ -21,9 +20,11 @@ public class AutoTransactionRequest {
         this.rate = build.rate;
         this.transactionType = build.transactionType;
         this.dateInitialized = LocalDate.now().toString();
-        this.autoTransactionID = autoTransactionIDGenerator.generateID();
     }
-    // Get Transaction type
+    // Get Transaction
+    public String getAutoTransactionID() {
+        return autoTransactionID;
+    }
     public int getTransactionType() {
         return transactionType;
     }
@@ -36,6 +37,19 @@ public class AutoTransactionRequest {
     public String getRate(){
         return rate;
     }
+    public String getDateInitialized(){
+        return dateInitialized;
+    }
+    public String getUserID(){
+        return userID;
+    }
+
+
+
+
+
+
+
     // Use Builder class for construction
     public static class Builder {
         private String userID;

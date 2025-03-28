@@ -43,6 +43,9 @@ public class TransactionRequest {
     public String getUserID(){
         return userID;
     }
+    public String getTransactionID(){
+        return this.transactionID;
+    }
 
 
 
@@ -56,15 +59,10 @@ public class TransactionRequest {
     public String getFailureStatement(){
         return transactionFailure;
     }
-
-
     public void setTransactionID() {
         this.transactionID = transactionIDGenerator.generateID();
     }
-    public String getTransactionID(){
 
-        return this.transactionID;
-    }
 
     
     // Use Builder class for construction
