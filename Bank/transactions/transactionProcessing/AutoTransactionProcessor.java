@@ -1,4 +1,4 @@
-package Bank.automaticTransactions;
+package Bank.transactions.transactionProcessing;
 
 public class AutoTransactionProcessor {
     // look through autotransactionlog

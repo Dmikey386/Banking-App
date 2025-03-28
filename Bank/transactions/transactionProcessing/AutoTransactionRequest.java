@@ -1,6 +1,5 @@
-package Bank.automaticTransactions;
+package Bank.transactions.transactionProcessing;
 
-import Bank.IDTools.AutoTransactionIDGenerator;
 import java.time.LocalDate;
 
 public class AutoTransactionRequest {
@@ -10,7 +9,9 @@ public class AutoTransactionRequest {
     private double amount;
     private int transactionType;
     private String rate;
-    private String dateInitialized;
+    private String dateRequested;
+    private boolean verified = false;
+    private String failureReason = null;
 
 
     public AutoTransactionRequest(Builder build) {
@@ -19,7 +20,7 @@ public class AutoTransactionRequest {
         this.amount = build.amount;
         this.rate = build.rate;
         this.transactionType = build.transactionType;
-        this.dateInitialized = LocalDate.now().toString();
+        this.dateRequested = LocalDate.now().toString();
     }
     // Get Transaction
     public String getAutoTransactionID() {
@@ -37,17 +38,26 @@ public class AutoTransactionRequest {
     public String getRate(){
         return rate;
     }
-    public String getDateInitialized(){
-        return dateInitialized;
+    public String getdateRequested(){
+        return dateRequested;
     }
     public String getUserID(){
         return userID;
     }
-
-
-
-
-
+    public boolean getVerification(){
+        return verified;
+    }
+    public String getFailureReason(){
+        return failureReason;
+    }
+    
+    //set verification
+    public void setVerification(boolean verified){
+        this.verified = verified;
+    }
+    public void setFailureReason(String failureReason){
+        this.failureReason = failureReason;
+    }
 
 
     // Use Builder class for construction

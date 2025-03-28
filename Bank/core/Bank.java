@@ -3,11 +3,11 @@ import Bank.IDTools.AccountIDGenerator;
 import Bank.IDTools.UserIDGenerator;
 import Bank.account.*;
 import Bank.user.User;
-import Bank.singleTransactions.TransactionLogger;
-import Bank.singleTransactions.TransactionProcessor;
+import Bank.transactions.transactionLoggers.TransactionLogger;
+import Bank.transactions.transactionProcessing.TransactionProcessor;
 import java.io.IOException;
 import Bank.IDTools.UniqueIDGenerator;
-import Bank.singleTransactions.TransactionRequest;
+import Bank.transactions.transactionProcessing.TransactionRequest;
 import Bank.user.UserLogger;
 
 
@@ -38,13 +38,13 @@ public class Bank {
         switch (accountType) {
             case "Checking":
                 CheckingAccount newChecking = new CheckingAccount(accountID,userID);
-                accountLog.logAccount(accountID, newChecking);
-                user.addAccount(accountID,newChecking.getBalance());
+                accountLog.logAccount(newChecking);
+                user.addAccount(newChecking.getAccountID(),newChecking.getBalance());
                 break;
             case "Savings":
                 SavingsAccount newSavings = new SavingsAccount(accountID,userID);
-                accountLog.logAccount(accountID, newSavings);
-                user.addAccount(accountID,newSavings.getBalance());
+                accountLog.logAccount(newSavings);
+                user.addAccount(newSavings.getAccountID(),newSavings.getBalance());
                 break;
             default:
                 System.out.println("Invalid account type");

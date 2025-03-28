@@ -1,14 +1,14 @@
-package Bank.singleTransactions;
+package Bank.transactions.singleTransactions;
 
 import Bank.account.BankAccount;
-import Bank.core.Bank;
+import Bank.transactions.transactionProcessing.TransactionRequest;
 
 import java.io.IOException;
 
 public class Withdraw extends Transaction {
     // constructor
-    public Withdraw(String[] accountIDs, double amount) throws IOException {
-        super(accountIDs, amount);
+    public Withdraw(TransactionRequest request) throws IOException {
+        super(request);
     }
 
     @Override

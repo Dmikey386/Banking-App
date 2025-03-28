@@ -1,11 +1,10 @@
-package Bank.singleTransactions;
+package Bank.transactions.transactionProcessing;
 
 import java.io.IOException;
 
 import Bank.account.AccountLogger;
 import Bank.account.BankAccount;
 import Bank.user.User;
-import Bank.core.Bank;
 import Bank.user.UserLogger;
 
 public class TransactionVerifier {

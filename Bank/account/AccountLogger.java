@@ -21,8 +21,8 @@ public class AccountLogger extends JsonLogger<BankAccount> {
         super("Storage/accounts.json");
     }
 
-    public void logAccount(String accountID, BankAccount account) throws IOException {
-        logObject(accountID,account);
+    public void logAccount(BankAccount account) throws IOException {
+        logObject(account.getAccountID(), account);
     }
 
     // get User from user log

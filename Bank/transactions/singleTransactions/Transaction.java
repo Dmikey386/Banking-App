@@ -1,7 +1,7 @@
-package Bank.singleTransactions;
+package Bank.transactions.singleTransactions;
 
 import Bank.account.*;
-import Bank.core.Bank;
+import Bank.transactions.transactionProcessing.TransactionRequest;
 import Bank.user.User;
 import Bank.user.UserLogger;
 
@@ -14,10 +14,9 @@ public class Transaction{
     protected UserLogger userLogger = UserLogger.getInstance();
 
 
-    public Transaction(String[] accountIDs, double amount) throws IOException {
-        this.accountIDs = accountIDs;
-        this.amount = amount;
-
+    public Transaction(TransactionRequest request) throws IOException {
+        accountIDs = request.getAccountIDs();
+        amount = request.getAmount();
     }
 
     public BankAccount[] getAccounts(String[] accountIDs) throws IOException {

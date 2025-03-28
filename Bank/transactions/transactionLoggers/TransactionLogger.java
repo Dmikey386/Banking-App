@@ -1,6 +1,8 @@
-package Bank.singleTransactions;
+package Bank.transactions.transactionLoggers;
 
 import Bank.jsonStorage.JsonLogger;
+import Bank.transactions.transactionProcessing.TransactionRequest;
+
 import java.io.IOException;
 
 
@@ -20,8 +22,8 @@ public class TransactionLogger extends JsonLogger<TransactionRequest> {
         super("Storage/transactions.json");
     }
 
-    public void logTransaction(String transactionID, TransactionRequest transactionRequest) throws IOException {
-        logObject(transactionID,transactionRequest);
+    public void logTransaction(TransactionRequest transactionRequest) throws IOException {
+        logObject(transactionRequest.getTransactionID(),transactionRequest);
     }
 
 

@@ -1,7 +1,7 @@
 package Bank.user;
 
-import Bank.automaticTransactions.AutoTransactionRequest;
-import Bank.singleTransactions.TransactionRequest;
+import Bank.transactions.transactionProcessing.AutoTransactionRequest;
+import Bank.transactions.transactionProcessing.TransactionRequest;
 
 import java.util.Map;
 import java.util.HashMap;
