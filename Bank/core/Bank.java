@@ -16,7 +16,7 @@ public class Bank {
     private UserLogger userLog = UserLogger.getInstance();
     private AccountLogger  accountLog = AccountLogger.getInstance();
     private TransactionLogger transactionLogger = TransactionLogger.getInstance();
-    private final UniqueIDGenerator accountIDGenerator = new AccountIDGenerator();
+    private final AccountFactory accountFactory = new AccountFactory();
     private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();
 
     // Getters
@@ -28,37 +28,20 @@ public class Bank {
     }
 
 
-
     // Open new account
-    public String openAccount(String accountType, String userID) throws IOException {
-        String accountID = accountIDGenerator.generateID();
+    public void openAccount(String accountType, String userID) throws IOException {
+        BankAccount account = accountFactory.createAccount(accountType, userID);
         User user = getUser(userID);
+        accountLog.logAccount(account);
+        user.addAccount(account);
+        userLog.logUser(user);
 
-        // create new account
-        switch (accountType) {
-            case "Checking":
-                CheckingAccount newChecking = new CheckingAccount(accountID,userID);
-                accountLog.logAccount(newChecking);
-                user.addAccount(newChecking.getAccountID(),newChecking.getBalance());
-                break;
-            case "Savings":
-                SavingsAccount newSavings = new SavingsAccount(accountID,userID);
-                accountLog.logAccount(newSavings);
-                user.addAccount(newSavings.getAccountID(),newSavings.getBalance());
-                break;
-            default:
-                System.out.println("Invalid account type");
-                break;
-        }
-        userLog.logUser(userID,user);
-
-        return accountID;
     }
 
     public void createUser() throws IOException {
         String userID = userIDGenerator.generateID();
         User user = new User(userID);
-        userLog.logUser(userID,user);
+        userLog.logUser(user);
 
     }
 

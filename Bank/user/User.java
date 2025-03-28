@@ -1,5 +1,6 @@
 package Bank.user;
 
+import Bank.account.BankAccount;
 import Bank.transactions.transactionProcessing.AutoTransactionRequest;
 import Bank.transactions.transactionProcessing.TransactionRequest;
 
@@ -27,7 +28,9 @@ public class User {
     }
 
     // Add account to user account Map
-    public void addAccount(String accountID, double accountBalance){
+    public void addAccount(BankAccount account) {
+        String accountID = account.getAccountID();
+        double accountBalance = account.getBalance();
         userAccMap.put(accountID, accountBalance);
     }
 

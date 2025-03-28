@@ -21,8 +21,8 @@ public class UserLogger extends JsonLogger<User> {
     }
 
     // Log new User
-    public void logUser(String userID, User user) throws IOException {
-        logObject(userID, user);
+    public void logUser(User user) throws IOException {
+        logObject(user.getUserID(), user);
     }
 
     // get User from user log

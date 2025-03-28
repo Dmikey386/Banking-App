@@ -29,17 +29,16 @@ public class Transaction{
     }
 
     public void updateLogs(BankAccount[] accounts) throws IOException {
-
         for (int i = 0; i < accounts.length; i++){
             //update account
             String accountID = accounts[i].getAccountID();
-            accountLogger.logAccount(accountID,accounts[i]);
+            accountLogger.logAccount(accounts[i]);
 
             // updates user
             String userID = accounts[i].getUserID();
             User user = userLogger.getUser(userID);
-            user.addAccount(accountID,accounts[i].getBalance());
-            userLogger.logUser(userID,user);
+            user.addAccount(accounts[i]);
+            userLogger.logUser(user);
         }
 
     }
