@@ -1,6 +1,6 @@
 package Bank.user;
 
-import Bank.jsonStorage.JsonLogger;
+import Bank.Storage.JsonLogger;
 import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;

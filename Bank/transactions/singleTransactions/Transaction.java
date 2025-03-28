@@ -1,7 +1,7 @@
 package Bank.transactions.singleTransactions;
 
 import Bank.account.*;
-import Bank.transactions.transactionProcessing.TransactionRequest;
+import Bank.transactions.transactionProcessing.single.TransactionRequest;
 import Bank.user.User;
 import Bank.user.UserLogger;
 

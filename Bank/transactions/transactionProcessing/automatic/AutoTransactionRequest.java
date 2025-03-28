@@ -1,4 +1,4 @@
-package Bank.transactions.transactionProcessing;
+package Bank.transactions.transactionProcessing.automatic;
 
 import java.time.LocalDate;
 
@@ -67,8 +67,6 @@ public class AutoTransactionRequest {
         private double amount;
         private int transactionType;
         private String rate;
-
-
 
         public Builder userID(String userID) {
             this.userID = userID;

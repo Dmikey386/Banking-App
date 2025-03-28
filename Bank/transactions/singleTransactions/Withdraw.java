@@ -1,7 +1,7 @@
 package Bank.transactions.singleTransactions;
 
 import Bank.account.BankAccount;
-import Bank.transactions.transactionProcessing.TransactionRequest;
+import Bank.transactions.transactionProcessing.single.TransactionRequest;
 
 import java.io.IOException;
 

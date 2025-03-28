@@ -1,13 +1,12 @@
 package Bank.core;
-import Bank.IDTools.AccountIDGenerator;
 import Bank.IDTools.UserIDGenerator;
 import Bank.account.*;
 import Bank.user.User;
 import Bank.transactions.transactionLoggers.TransactionLogger;
-import Bank.transactions.transactionProcessing.TransactionProcessor;
+import Bank.transactions.transactionProcessing.single.TransactionProcessor;
 import java.io.IOException;
 import Bank.IDTools.UniqueIDGenerator;
-import Bank.transactions.transactionProcessing.TransactionRequest;
+import Bank.transactions.transactionProcessing.single.TransactionRequest;
 import Bank.user.UserLogger;
 
 

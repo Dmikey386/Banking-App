@@ -1,7 +1,6 @@
 package Bank.transactions.automaticTransactions;
 
-import Bank.transactions.transactionProcessing.AutoTransactionRequest;
-
+import Bank.transactions.transactionProcessing.automatic.AutoTransactionRequest;
 import java.io.IOException;
 
 public class AutoPayment extends AutoTransaction {

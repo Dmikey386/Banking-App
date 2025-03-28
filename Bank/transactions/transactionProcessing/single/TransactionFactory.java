@@ -1,6 +1,7 @@
-package Bank.transactions.transactionProcessing;
+package Bank.transactions.transactionProcessing.single;
 
 import Bank.transactions.singleTransactions.*;
+
 import java.io.IOException;
 
 public class TransactionFactory {

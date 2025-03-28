@@ -1,7 +1,8 @@
-package Bank.transactions.transactionProcessing;
+package Bank.transactions.transactionProcessing.automatic;
 
 import Bank.transactions.automaticTransactions.*;
 import Bank.transactions.transactionLoggers.AutoTransactionLogger;
+import Bank.transactions.transactionLoggers.AutoTransactionRequestLogger;
 
 import java.io.IOException;
 
@@ -9,7 +10,8 @@ import java.io.IOException;
 public class AutoTransactionInitializer {
      private AutoTransactionVerifier verifier = new AutoTransactionVerifier();
      private AutoTransactionFactory factory = new AutoTransactionFactory();
-     private AutoTransactionLogger logger = new AutoTransactionLogger();
+     private AutoTransactionLogger autoTransactionLogger = AutoTransactionLogger.getInstance();
+     private AutoTransactionRequestLogger autoTransactionRequestLogger = AutoTransactionRequestLogger.getInstance();
 
 
     public void initializeAutoTransaction(AutoTransactionRequest autoTransactionRequest) throws IOException {
@@ -19,8 +21,9 @@ public class AutoTransactionInitializer {
        }
        else{
            AutoTransaction transaction = factory.createAutoTransaction(autoTransactionRequest);
-           logger.logAutoTransaction(transaction);
+           autoTransactionLogger.logAutoTransaction(transaction); // log to auto transactions file
        }
+        autoTransactionRequestLogger.logAutoTransactionReqeust(autoTransactionRequest); // log the request to requests file
 
     }
 

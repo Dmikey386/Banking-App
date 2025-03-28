@@ -1,4 +1,4 @@
-package Bank.transactions.transactionProcessing;
+package Bank.transactions.transactionProcessing.automatic;
 
 import Bank.account.AccountLogger;
 import Bank.user.UserLogger;

@@ -1,7 +1,7 @@
 package Bank.transactions.transactionLoggers;
 
-import Bank.jsonStorage.JsonLogger;
-import Bank.transactions.transactionProcessing.TransactionRequest;
+import Bank.Storage.JsonLogger;
+import Bank.transactions.transactionProcessing.single.TransactionRequest;
 
 import java.io.IOException;
 

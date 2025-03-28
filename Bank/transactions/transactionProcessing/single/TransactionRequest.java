@@ -1,4 +1,4 @@
-package Bank.transactions.transactionProcessing;
+package Bank.transactions.transactionProcessing.single;
 
 import Bank.IDTools.TransactionIDGenerator;
 import Bank.IDTools.UniqueIDGenerator;
