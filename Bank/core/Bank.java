@@ -12,26 +12,21 @@ import Bank.user.UserLogger;
 
 
 public class Bank {
-    private TransactionProcessor transactionProcessor = new TransactionProcessor(this);
+    private TransactionProcessor transactionProcessor = new TransactionProcessor();
     private UserLogger userLog = UserLogger.getInstance();
     private AccountLogger  accountLog = AccountLogger.getInstance();
     private TransactionLogger transactionLogger = TransactionLogger.getInstance();
     private final UniqueIDGenerator accountIDGenerator = new AccountIDGenerator();
     private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();
 
-    // get User
+    // Getters
     public User getUser(String userID) throws IOException {
         return userLog.getUser(userID);
     }
     public BankAccount getAccount(String accountID) throws IOException {
         return accountLog.getAccount(accountID);
     }
-    public UserLogger getUserLog(){
-        return userLog;
-    }
-    public AccountLogger getAccountLog(){
-        return accountLog;
-    }
+
 
 
     // Open new account
@@ -70,19 +65,6 @@ public class Bank {
     public void createTransaction(String userID, String[] accounts, double amount, int transactionType) throws IOException {
         User user = getUser(userID);
         TransactionRequest request = user.createTransactionRequest(accounts, amount, transactionType);
-        processTransaction(request);
-    }
-
-    public void logTransaction(TransactionRequest request) throws IOException {
-        String transactionID = request.getTransactionID();
-        transactionLogger.logTransaction(transactionID,request);
-
-    }
-
-    public void processTransaction(TransactionRequest request) throws IOException {
         transactionProcessor.processTransaction(request);
-        logTransaction(request);
     }
-
-
 }

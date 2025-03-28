@@ -1,7 +1,6 @@
 package Bank.singleTransactions;
 
 import Bank.jsonStorage.JsonLogger;
-
 import java.io.IOException;
 
 

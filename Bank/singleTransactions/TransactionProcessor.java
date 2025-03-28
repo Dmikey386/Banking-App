@@ -1,16 +1,11 @@
 package Bank.singleTransactions;
 
-import Bank.core.Bank;
 import java.io.IOException;
 
 
 public class TransactionProcessor {
-    private Bank bank;
+    private TransactionLogger transactionLogger = TransactionLogger.getInstance();
 
-    // constructor
-    public TransactionProcessor(Bank bank) {
-        this.bank = bank;
-    }
 
 
     // Verify transaction
@@ -23,7 +18,6 @@ public class TransactionProcessor {
     public void processTransaction(TransactionRequest transactionRequest) throws IOException {
 
         verifyTransaction(transactionRequest);
-
         if (!transactionRequest.getStatus()) {
             System.out.println(transactionRequest.getFailureStatement());
         } else {
@@ -31,6 +25,7 @@ public class TransactionProcessor {
             transaction.process();
 
         }
+        logTransaction(transactionRequest);
 
     }
 
@@ -58,8 +53,10 @@ public class TransactionProcessor {
         return transaction;
 
     }
-    
 
-
+    public void logTransaction(TransactionRequest transactionRequest) throws IOException {
+        String transactionID = transactionRequest.getTransactionID();
+        transactionLogger.logTransaction(transactionID,transactionRequest);
+    }
 
 }
