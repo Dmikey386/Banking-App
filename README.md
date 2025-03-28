@@ -45,7 +45,7 @@ The app supports the following transaction types:
 ---
 
 ## **How It Works**
-1. The **Bank class** manages users and accounts.
+1. The **bank class** manages users and accounts.
 2. Users can **create accounts** and request transactions.
 3. The **TransactionProcessor** verifies and executes transactions.
 4. The **TransactionLogger** records successful and failed transactions.
@@ -54,8 +54,8 @@ The app supports the following transaction types:
 
 ## **Example Usage**
 ```java
-// Create Bank instance
-Bank bank = new Bank();
+// Create bank instance
+bank bank = new bank();
 
 // Create Users
 bank.createUser();
