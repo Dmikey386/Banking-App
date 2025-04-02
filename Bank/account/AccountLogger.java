@@ -1,6 +1,6 @@
-package bank.persistentstorage;
+package bank.account;
 
-import bank.account.BankAccount;
+import bank.persistentstorage.JsonLogger;
 
 import java.io.IOException;
 import java.util.HashMap;

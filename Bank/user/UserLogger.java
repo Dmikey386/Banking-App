@@ -1,6 +1,6 @@
-package bank.persistentstorage;
+package bank.user;
 
-import bank.user.User;
+import bank.persistentstorage.JsonLogger;
 
 import java.io.IOException;
 import java.util.Map;

@@ -1,29 +1,11 @@
 {
-  "TR31438295267278848" : {
-    "userID" : "USER31437727773753344",
-    "accountIDs" : [ "BA31437963686576129" ],
-    "amount" : 10000.0,
-    "transactionType" : 0,
-    "status" : true,
-    "transactionID" : "TR31438295267278848",
-    "failureStatement" : null
-  },
-  "TR31438410400923648" : {
-    "userID" : "USER31437727773753344",
-    "accountIDs" : [ "BA31437963686576129", "BA31437963518803968" ],
-    "amount" : 10000.0,
-    "transactionType" : 0,
-    "status" : true,
-    "transactionID" : "TR31438410400923648",
-    "failureStatement" : null
-  },
-  "TR31438227919339520" : {
-    "userID" : "USER31437727773753344",
-    "accountIDs" : [ "BA31437963686576129" ],
-    "amount" : 10000.0,
-    "transactionType" : 1,
-    "status" : false,
-    "transactionID" : "TR31438227919339520",
-    "failureStatement" : "Insufficient Balance"
+  "TR33288155314520064" : {
+    "transactionID" : "TR33288155314520064",
+    "amount" : 10000,
+    "accountID" : "BA33287624147861504",
+    "timestamp" : "2025-04-02T16:35:14.690922",
+    "approval" : true,
+    "failureReason" : null,
+    "type" : "Deposit"
   }
 }

@@ -1,11 +1,12 @@
-package bank.persistentstorage;
+package bank.transactions.loggers;
 
-import bank.transactions.wire.WireTransferRequest;
+import bank.persistentstorage.JsonLogger;
+import bank.transactions.base.Transaction;
 
 import java.io.IOException;
 
 
-public class TransactionLogger extends JsonLogger<WireTransferRequest> {
+public class TransactionLogger extends JsonLogger<Transaction> {
     private static TransactionLogger single_instance = null;
 
     // wrapper for singleton
@@ -21,8 +22,8 @@ public class TransactionLogger extends JsonLogger<WireTransferRequest> {
         super("Storage/transactions.json");
     }
 
-    public void logTransaction(WireTransferRequest transactionRequest) throws IOException {
-        logObject(transactionRequest.getTransactionID(),transactionRequest);
+    public void logTransaction(Transaction transaction) throws IOException {
+        logObject(transaction.getTransactionID(),transaction);
     }
 
 
