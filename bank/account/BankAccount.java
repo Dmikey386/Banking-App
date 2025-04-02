@@ -1,9 +1,13 @@
 package bank.account;
 
+import bank.idtools.TransactionIDGenerator;
+
 public class BankAccount {
     private double balance;
     private String accountID;
     private String userID;
+    private boolean frozen = false;
+
 
     //Constructor
     public BankAccount(String accountID, String userID, double balance) {
@@ -27,6 +31,9 @@ public class BankAccount {
     }
     public String getUserID(){
         return userID;
+    }
+    public boolean isFrozen(){
+        return frozen;
     }
     // Setters
     public void setBalance(double newBalance){
