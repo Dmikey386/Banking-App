@@ -1,2 +1,22 @@
 {
+  "BA33660014635778048" : {
+    "balance" : 400.0,
+    "accountID" : "BA33660014635778048",
+    "userID" : "USER33601996497879040",
+    "frozen" : false,
+    "monthTxn" : 0,
+    "monthTxnLimit" : 6,
+    "type" : "Savings"
+  },
+  "BA33660014472200192" : {
+    "balance" : 800.0,
+    "accountID" : "BA33660014472200192",
+    "userID" : "USER33601996497879040",
+    "frozen" : false,
+    "monthlyLimit" : 0.0,
+    "dailyLimit" : 0.0,
+    "daySpending" : 0.0,
+    "monthSpending" : 0.0,
+    "type" : "Checking"
+  }
 }

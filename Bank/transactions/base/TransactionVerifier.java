@@ -1,7 +1,6 @@
 package bank.transactions.base;
 
-import bank.account.AccountLogger;
-import bank.account.BankAccount;
+import bank.account.*;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -36,12 +35,45 @@ public class TransactionVerifier {
             }
         }
     }
+
+    // verify if txn passes restrictions on account
     public void verifyAccountRestrictions(Transaction transaction) throws TransactionException, IOException {
-        BankAccount account = accountLog.getAccount(transaction.getAccountID());
-        if(account.isFrozen()){
-            throw new TransactionException("Account is frozen. AccountID: " + transaction.getAccountID());
+        if (transaction.getType().equals("Withdraw")){
+            BankAccount account = accountLog.getAccount(transaction.getAccountID());
+            if(account.isFrozen()){
+                throw new TransactionException("Account is frozen. AccountID: " + transaction.getAccountID());
+            }
+            if (account instanceof CheckingAccount){
+                verifyCheckingAccount(transaction);
+            }
+            else if (account instanceof SavingsAccount){
+                verifySavingsAccount(transaction);
+            }
+            else {
+                throw new TransactionException("Unsupported account type for withdrawal restrictions.");
+            }
+
         }
-        // verify account tx limits
+    }
+
+    // verify restrictions on checking account
+    public void verifyCheckingAccount(Transaction transaction) throws TransactionException, IOException {
+        CheckingAccount checkingAccount = (CheckingAccount) accountLog.getAccount(transaction.getAccountID());
+        if (checkingAccount.getDailyLimit() != -1 && checkingAccount.getDailyLimit() < checkingAccount.getDaySpending() + transaction.getAmount()){
+            throw new TransactionException("Checking Account has reached daily limit: " + checkingAccount.getDailyLimit());
+        }
+        if (checkingAccount.getMonthSpending() != -1 && checkingAccount.getMonthlyLimit() < checkingAccount.getMonthSpending() + transaction.getAmount()){
+            throw new TransactionException("Checking Account has reached monthly limit: " + checkingAccount.getMonthlyLimit());
+        }
+    }
+
+    // verify restrictions on savings account
+    public void verifySavingsAccount(Transaction transaction) throws TransactionException, IOException {
+        SavingsAccount savingsAccount = (SavingsAccount) accountLog.getAccount(transaction.getAccountID());
+        if (savingsAccount.getMonthTxnLimit() != -1 && savingsAccount.getMonthTxnLimit() < savingsAccount.getMonthTxn() + 1){
+            throw new TransactionException("Savings account reached monthly transaction limit: " +
+            savingsAccount.getMonthTxn() + "/" + savingsAccount.getMonthTxnLimit());
+        }
     }
 
     public void fraudDetection(){

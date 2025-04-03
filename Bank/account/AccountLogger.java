@@ -48,7 +48,7 @@ public class AccountLogger extends JsonLogger<BankAccount> {
             SavingsAccount account = new SavingsAccount(id,userId);
             account.setBalance(balance);
             account.setFrozen(frozen);
-            account.setNumTxnLimit((Integer) accountAttrMap.get("numTxnLimit"));
+            account.setNumTxnLimit((Integer) accountAttrMap.get("monthTxnLimit"));
             account.setMonthTxn((Integer) accountAttrMap.get("monthTxn"));
             return account;
         }

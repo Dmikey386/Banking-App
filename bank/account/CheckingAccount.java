@@ -44,7 +44,7 @@ public class CheckingAccount extends BankAccount {
     public double getMonthSpending() {
         return monthSpending;
     }
-    public double getDailySpending() {
+    public double getDaySpending() {
         return daySpending;
     }
     @Override

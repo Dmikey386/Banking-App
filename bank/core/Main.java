@@ -7,7 +7,15 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) throws IOException {
        Bank bank = new Bank();
-       bank.openAccount("Checking","USER33601996497879040");
-       bank.openAccount("Savings","USER33601996497879040");
+       //bank.processTransaction(400,"BA33660014635778048","Deposit");
+        bank.processTransaction(50,"BA33660014635778048","Withdraw");
+        bank.processTransaction(50,"BA33660014635778048","Withdraw");
+        bank.processTransaction(50,"BA33660014635778048","Withdraw");
+        bank.processTransaction(50,"BA33660014635778048","Withdraw");
+        bank.processTransaction(50,"BA33660014635778048","Withdraw");
+        bank.processTransaction(50,"BA33660014635778048","Withdraw");
+        bank.processTransaction(50,"BA33660014635778048","Withdraw");
+
+
     }
 }

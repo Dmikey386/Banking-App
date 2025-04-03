@@ -1,5 +1,5 @@
 package bank.transactions.base;
-import bank.account.BankAccount;
+import bank.account.*;
 import bank.user.User;
 import java.io.IOException;
 
@@ -18,12 +18,20 @@ public class Withdraw extends Transaction {
     @Override
     public void process() throws IOException {
         BankAccount account = accountLog.getAccount(getAccountID());
+        if (account instanceof CheckingAccount){
+            ((CheckingAccount) account).addToSpending(getAmount());
+        }
+        if (account instanceof SavingsAccount){
+            ((SavingsAccount) account).incrementTxn();
+        }
         account.setBalance(account.getBalance() - getAmount());
         accountLog.logAccount(account);
         User user = userLog.getUser(account.getUserID());
         user.addAccount(account);
         userLog.logUser(user);
     }
+
+
 }
 
 
