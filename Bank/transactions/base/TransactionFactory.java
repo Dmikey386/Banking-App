@@ -1,7 +1,5 @@
 package bank.transactions.base;
 
-import bank.account.CheckingAccount;
-import bank.account.SavingsAccount;
 import bank.idtools.TransactionIDGenerator;
 import bank.idtools.UniqueIDGenerator;
 
