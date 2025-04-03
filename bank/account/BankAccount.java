@@ -1,5 +1,8 @@
 package bank.account;
 
+import java.time.LocalDate;
+import java.time.YearMonth;
+
 public abstract class BankAccount {
     private double balance;
     private String accountID;
@@ -18,6 +21,9 @@ public abstract class BankAccount {
         double balance = 0;
         this.accountID = accountID;
     }
+
+
+    public abstract void checkAndResetLimits();
 
     // getters
     public double getBalance(){

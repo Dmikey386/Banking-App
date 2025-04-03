@@ -2,6 +2,7 @@ package bank.core;
 
 import bank.idtools.UserIDGenerator;
 import java.io.IOException;
+import java.util.HashMap;
 import bank.idtools.UniqueIDGenerator;
 import bank.transactions.base.Transaction;
 import bank.transactions.base.TransactionFactory;
@@ -36,14 +37,27 @@ public class Bank {
         user.addAccount(account);
         userLog.logUser(user);
     }
+    // create a new user
     public void createUser() throws IOException {
         String userID = userIDGenerator.generateID();
         User user = new User(userID);
         userLog.logUser(user);
     }
 
+    // process a base transaction
     public void processTransaction(double amount, String accountID,String type) throws IOException {
             Transaction transaction = transactionFactory.createTransaction(type, accountID, amount);
             transactionProcessor.process(transaction);
+    }
+    // reset account daily/monthly limits
+    public void resetLimits() throws IOException {
+        HashMap<String, BankAccount> entry =  accountLog.readLog();
+        for (Object rawAccountData : entry.values()) {
+            HashMap<String,Object> attrMap = (HashMap<String,Object>)rawAccountData;
+            BankAccount account = accountLog.getAccount(attrMap.get("accountID").toString());
+            account.checkAndResetLimits();
+            accountLog.logAccount(account);
+        }
+
     }
 }

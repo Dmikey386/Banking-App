@@ -1,14 +1,18 @@
 package bank.account;
 
+import java.time.LocalDate;
+import java.time.YearMonth;
+
 public class CheckingAccount extends BankAccount {
     // checking account
     double checkingAPY;
-    private double monthlyLimit;
-    private double dailyLimit;
+    private double monthlyLimit = -1; // default no limit
+    private double dailyLimit = -1; // default no limit
     private double daySpending;
     private double monthSpending;
     private static final String type = "Checking";
-
+    private LocalDate lastDayReset = LocalDate.now();
+    private YearMonth lastMonthReset = YearMonth.now();
 
 
     // Constructor
@@ -16,7 +20,30 @@ public class CheckingAccount extends BankAccount {
         super(accountID, userID);
     }
 
+    @Override
+    // reset at end of month and end of day
+    public void checkAndResetLimits() {
+        LocalDate today = LocalDate.now();
+
+        if (!today.equals(lastDayReset)) {
+            setDaySpending(0);
+            lastDayReset = today;
+        }
+
+        YearMonth thisMonth = YearMonth.now();
+        if (!thisMonth.equals(lastMonthReset)) {
+            setMonthSpending(0);
+            lastMonthReset = thisMonth;
+        }
+    }
+
     // setters
+    public void setLastDayReseet(LocalDate lastDayReset) {
+        this.lastDayReset = lastDayReset;
+    }
+    public void setLastMonthReset(YearMonth lastMonthReset) {
+        this.lastMonthReset = lastMonthReset;
+    }
     public void setMonthlyLimit(double monthlyLimit) {
         this.monthlyLimit = monthlyLimit;
     }
@@ -27,11 +54,11 @@ public class CheckingAccount extends BankAccount {
         monthSpending += amount;
         daySpending += amount;
     }
-    public void setMonthSpending(double amount) {
-        monthSpending = amount;
+    public void setMonthSpending(double limit) {
+        monthSpending = limit;
     }
-    public void setDaySpending(double amount) {
-        daySpending = amount;
+    public void setDaySpending(double limit) {
+        daySpending = limit;
     }
 
     //getters
