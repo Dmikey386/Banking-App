@@ -6,8 +6,8 @@ import java.io.IOException;
 public class Withdraw extends Transaction {
     private static final String type = "Withdraw";
 
-    public Withdraw(int amount, String accountID) {
-        super(amount, accountID);
+    public Withdraw(String transactionID,double amount, String accountID) {
+        super(transactionID, amount, accountID);
     }
 
     @Override
@@ -17,33 +17,13 @@ public class Withdraw extends Transaction {
 
     @Override
     public void process() throws IOException {
-        verifyTransaction();
-        if (this.getApproval()){
-            withdrawFrom();
-        }
-        logTransaction();
-
-    }
-
-
-    public void withdrawFrom() throws IOException {
         BankAccount account = accountLog.getAccount(getAccountID());
         account.setBalance(account.getBalance() - getAmount());
         accountLog.logAccount(account);
         User user = userLog.getUser(account.getUserID());
+        user.addAccount(account);
         userLog.logUser(user);
     }
-
-    @Override
-    public void logTransaction() throws IOException {
-        transactionLog.logTransaction(this);
-    }
-
-    @Override
-    public void verifyTransaction() {
-        verifier.verifyTransaction(this);
-    }
-
 }
 
 

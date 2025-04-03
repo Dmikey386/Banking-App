@@ -2,10 +2,6 @@ package bank.transactions.base;
 
 import bank.account.AccountLogger;
 import bank.account.BankAccount;
-import bank.idtools.TransactionIDGenerator;
-import bank.transactions.loggers.TransactionLogger;
-import bank.user.UserLogger;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -27,7 +23,7 @@ public class TransactionVerifier {
     // Verify if the AccountID is valid
     public void verifyAccountID(Transaction transaction) throws TransactionException, IOException {
         if (!accountLog.searchAccount(transaction.getAccountID())){
-            throw new TransactionException("Invalid " + transaction.getType() + " accountID:" + transaction.getAccountID());
+            throw new TransactionException("Invalid " + transaction.getType() + " accountID: " + transaction.getAccountID());
         }
     }
 
@@ -36,7 +32,7 @@ public class TransactionVerifier {
         if(Objects.equals(transaction.getType(), "Withdraw")){
             BankAccount account = accountLog.getAccount(transaction.getAccountID());
             if(transaction.getAmount() > account.getBalance()){
-                throw new TransactionException("Insufficient funds:" + transaction.getAmount());
+                throw new TransactionException("Insufficient funds: " + transaction.getAmount());
             }
         }
     }

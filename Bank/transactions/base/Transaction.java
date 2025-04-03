@@ -7,33 +7,27 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-@JsonIgnoreProperties({"verifier","idGenerator","accountLog","transactionLog","userLog"})
+@JsonIgnoreProperties({"accountLog","userLog"})
 public abstract class Transaction {
     private String transactionID;
-    private int amount;
+    private double amount;
     private String accountID;
     private String timestamp;
     private boolean approval = false;
     private String failureReason;
-
     protected UserLogger userLog = UserLogger.getInstance();
     protected AccountLogger accountLog = AccountLogger.getInstance();
-    protected TransactionLogger transactionLog = TransactionLogger.getInstance();
-    protected TransactionIDGenerator idGenerator = new TransactionIDGenerator();
-    protected TransactionVerifier verifier = new TransactionVerifier();
 
-    public Transaction(int amount, String accountID) {
+
+    public Transaction(String transactionID, double amount, String accountID) {
         this.amount = amount;
         this.accountID = accountID;
         this.timestamp = LocalDateTime.now().toString();
-        this.transactionID = idGenerator.generateID();
+        this.transactionID = transactionID;
     }
 
     // Process
     public abstract void process() throws IOException;
-    public abstract void logTransaction() throws IOException;
-    public abstract void verifyTransaction();
-
 
     // Setters
     public void setApproval(boolean approval) {
@@ -47,7 +41,7 @@ public abstract class Transaction {
     public String getTransactionID(){
         return transactionID;
     }
-    public int getAmount(){
+    public double getAmount(){
         return amount;
     }
     public String getType(){

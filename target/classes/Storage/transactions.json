@@ -1,11 +1,38 @@
 {
-  "TR33288155314520064" : {
-    "transactionID" : "TR33288155314520064",
-    "amount" : 10000,
+  "TR33587482633175040" : {
+    "transactionID" : "TR33587482633175040",
+    "amount" : 50.0,
     "accountID" : "BA33287624147861504",
-    "timestamp" : "2025-04-02T16:35:14.690922",
+    "timestamp" : "2025-04-03T12:24:39.888531",
+    "approval" : true,
+    "failureReason" : null,
+    "type" : "Withdraw"
+  },
+  "TR33587382389309440" : {
+    "transactionID" : "TR33587382389309440",
+    "amount" : 100.0,
+    "accountID" : "BA33287624147861504",
+    "timestamp" : "2025-04-03T12:24:15.989461",
     "approval" : true,
     "failureReason" : null,
     "type" : "Deposit"
+  },
+  "TR33587721280684032" : {
+    "transactionID" : "TR33587721280684032",
+    "amount" : 505.0,
+    "accountID" : "BA33287624147861504",
+    "timestamp" : "2025-04-03T12:25:36.786250",
+    "approval" : false,
+    "failureReason" : "Insufficient funds:505.0",
+    "type" : "Withdraw"
+  },
+  "TR33587938541436928" : {
+    "transactionID" : "TR33587938541436928",
+    "amount" : 505.0,
+    "accountID" : "BA332asdfas87624147861504",
+    "timestamp" : "2025-04-03T12:26:28.585517",
+    "approval" : false,
+    "failureReason" : "Invalid Withdraw accountID: BA332asdfas87624147861504",
+    "type" : "Withdraw"
   }
 }

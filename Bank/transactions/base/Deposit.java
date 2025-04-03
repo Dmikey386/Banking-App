@@ -8,8 +8,8 @@ import java.io.IOException;
 public class Deposit extends Transaction {
     private static final String type = "Deposit";
 
-    public Deposit(int amount, String accountID) {
-        super(amount, accountID);
+    public Deposit(String transactionID,double amount, String accountID) {
+        super(transactionID,amount, accountID);
     }
 
     @Override
@@ -17,16 +17,7 @@ public class Deposit extends Transaction {
         return type;
     }
 
-    @Override
     public void process() throws IOException {
-        verifyTransaction();
-        if (this.getApproval()){
-            depositTo();
-        }
-        logTransaction();
-    }
-
-    public void depositTo() throws IOException {
         // update account and user logs with new balance
         BankAccount account = accountLog.getAccount(getAccountID());
         account.setBalance(account.getBalance() + getAmount());
@@ -35,15 +26,4 @@ public class Deposit extends Transaction {
         user.addAccount(account);
         userLog.logUser(user);
     }
-
-    @Override
-    public void logTransaction() throws IOException {
-        transactionLog.logTransaction(this);
-    }
-
-    @Override
-    public void verifyTransaction() {
-        verifier.verifyTransaction(this);
-    }
-
 }

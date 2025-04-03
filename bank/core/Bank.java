@@ -3,6 +3,9 @@ package bank.core;
 import bank.idtools.UserIDGenerator;
 import java.io.IOException;
 import bank.idtools.UniqueIDGenerator;
+import bank.transactions.base.Transaction;
+import bank.transactions.base.TransactionFactory;
+import bank.transactions.base.TransactionProcessor;
 import bank.user.*;
 import bank.account.*;
 import bank.transactions.loggers.*;
@@ -12,6 +15,8 @@ public class Bank {
     private UserLogger userLog = UserLogger.getInstance();
     private AccountLogger accountLog = AccountLogger.getInstance();
     private TransactionLogger transactionLogger = TransactionLogger.getInstance();
+    private final TransactionProcessor transactionProcessor = new TransactionProcessor();
+    private final TransactionFactory transactionFactory = new TransactionFactory();
     private final AccountFactory accountFactory = new AccountFactory();
     private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();
 
@@ -36,5 +41,10 @@ public class Bank {
         User user = new User(userID);
         userLog.logUser(user);
 
+    }
+
+    public void processTransaction(double amount, String accountID,String type) throws IOException {
+            Transaction transaction = transactionFactory.createTransaction(type, accountID, amount);
+            transactionProcessor.process(transaction);
     }
 }
