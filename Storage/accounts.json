@@ -1,13 +1,22 @@
 {
-  "BA33287624147861504" : {
-    "balance" : 555.0,
-    "accountID" : "BA33287624147861504",
-    "userID" : "USER33287397152129024",
-    "frozen" : false
-  },
-  "BA33287623992672256" : {
+  "BA33652190111334400" : {
     "balance" : 0.0,
-    "accountID" : "BA33287623992672256",
-    "userID" : "USER33287397307318272"
+    "accountID" : "BA33652190111334400",
+    "userID" : "USER33601996497879040",
+    "frozen" : false,
+    "monthlyLimit" : 0.0,
+    "dailyLimit" : 0.0,
+    "monthSpending" : 0.0,
+    "type" : "Checking",
+    "dailySpending" : 0.0
+  },
+  "BA33652190274912256" : {
+    "balance" : 0.0,
+    "accountID" : "BA33652190274912256",
+    "userID" : "USER33601996497879040",
+    "frozen" : false,
+    "monthTxn" : 0,
+    "monthTxnLimit" : 6,
+    "type" : "Savings"
   }
 }

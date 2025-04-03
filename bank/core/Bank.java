@@ -40,7 +40,6 @@ public class Bank {
         String userID = userIDGenerator.generateID();
         User user = new User(userID);
         userLog.logUser(user);
-
     }
 
     public void processTransaction(double amount, String accountID,String type) throws IOException {

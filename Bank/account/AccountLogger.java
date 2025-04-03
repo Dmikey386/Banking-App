@@ -1,7 +1,6 @@
 package bank.account;
 
 import bank.persistentstorage.JsonLogger;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,9 +31,27 @@ public class AccountLogger extends JsonLogger<BankAccount> {
         String id = (String) accountAttrMap.get("accountID");
         String userId = (String) accountAttrMap.get("userID");
         Double balance = (Double) accountAttrMap.get("balance");
-        BankAccount account = new BankAccount(id,userId,balance);
-        return account;
+        String type = (String) accountAttrMap.get("type");
+        Boolean frozen = (Boolean) accountAttrMap.get("frozen");
 
+        if (type.equals("Checking")) {
+            CheckingAccount account = new CheckingAccount(id,userId);
+            account.setBalance(balance);
+            account.setFrozen(frozen);
+            account.setMonthlyLimit((Double) accountAttrMap.get("monthlyLimit"));
+            account.setDailyLimit((Double) accountAttrMap.get("dailyLimit"));
+            account.setMonthSpending((Double) accountAttrMap.get("monthSpending"));
+            account.setDaySpending((Double) accountAttrMap.get("daySpending"));
+            return account;
+        }
+        else {
+            SavingsAccount account = new SavingsAccount(id,userId);
+            account.setBalance(balance);
+            account.setFrozen(frozen);
+            account.setNumTxnLimit((Integer) accountAttrMap.get("numTxnLimit"));
+            account.setMonthTxn((Integer) accountAttrMap.get("monthTxn"));
+            return account;
+        }
     }
 
     public boolean searchAccount(String accountID) throws IOException {

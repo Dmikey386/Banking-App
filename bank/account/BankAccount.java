@@ -1,13 +1,10 @@
 package bank.account;
 
-import bank.idtools.TransactionIDGenerator;
-
-public class BankAccount {
+public abstract class BankAccount {
     private double balance;
     private String accountID;
     private String userID;
     private boolean frozen = false;
-
 
     //Constructor
     public BankAccount(String accountID, String userID, double balance) {
@@ -35,9 +32,15 @@ public class BankAccount {
     public boolean isFrozen(){
         return frozen;
     }
+    public String getType(){
+        return "BankAccount";
+    }
     // Setters
     public void setBalance(double newBalance){
         balance = newBalance;
+    }
+    public void setFrozen(boolean newFrozen){
+        frozen = newFrozen;
     }
 
 }

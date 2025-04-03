@@ -3,17 +3,36 @@ package bank.account;
 public class SavingsAccount extends BankAccount {
     //savings account
     double savingsAPY;
+    private int monthTxn;
+    private int monthTxnLimit = 6;
+    private static final String type = "Savings";
 
-    //savings account constructor
-    public SavingsAccount(String accountID,String userID) {
-        super(accountID,userID);
+    // constructor
+    public SavingsAccount(String accountID, String userID) {
+        super(accountID, userID);
     }
 
-    // print account information
-    public void printAccountInfo(){
-        System.out.println("Account Type: Savings");
-        System.out.println("Account #: " + getAccountID());
-        System.out.println("Balance: " + getBalance());
+    // setters
+    public void setNumTxnLimit(int monthTxnLimit) {
+        this.monthTxnLimit = monthTxnLimit;
+    }
+    public void incrementTxn(){
+        monthTxn++;
+    }
+    public void setMonthTxn(int num){
+        monthTxn = num;
+    }
+
+    // getters
+    public int getMonthTxnLimit() {
+        return monthTxnLimit;
+    }
+    public int getMonthTxn() {
+        return monthTxn;
+    }
+    @Override
+    public String getType(){
+        return type;
     }
 
 }
