@@ -22,8 +22,8 @@ public class TransactionLogger extends JsonLogger<Transaction> {
         super("Storage/transactions.json");
     }
 
-    public void logTransaction(Transaction transaction) throws IOException {
-        logObject(transaction.getTransactionID(),transaction);
+    public void logTransaction(Transaction txn) throws IOException {
+        logObject(txn.getTransactionID(),txn);
     }
 
 

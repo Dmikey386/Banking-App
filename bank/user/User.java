@@ -1,6 +1,9 @@
 package bank.user;
 
 import bank.account.BankAccount;
+import bank.transactions.wiretrasfer.WireTransfer;
+
+import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -34,6 +37,4 @@ public class User {
     public boolean verifyAccount(String accountID){
         return userAccMap.containsKey(accountID);
     }
-
-
 }

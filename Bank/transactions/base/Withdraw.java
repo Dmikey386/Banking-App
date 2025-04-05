@@ -6,8 +6,8 @@ import java.io.IOException;
 public class Withdraw extends Transaction {
     private static final String type = "Withdraw";
 
-    public Withdraw(String transactionID,double amount, String accountID) {
-        super(transactionID, amount, accountID);
+    public Withdraw(String txnID,double amount, String accountID) {
+        super(txnID, amount, accountID);
     }
 
     @Override
@@ -18,9 +18,6 @@ public class Withdraw extends Transaction {
     @Override
     public void process() throws IOException {
         BankAccount account = accountLog.getAccount(getAccountID());
-        if (account instanceof CheckingAccount){
-            ((CheckingAccount) account).addToSpending(getAmount());
-        }
         if (account instanceof SavingsAccount){
             ((SavingsAccount) account).incrementTxn();
         }

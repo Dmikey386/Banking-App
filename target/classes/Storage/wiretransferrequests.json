@@ -23,18 +23,6 @@
     "approval" : false,
     "transferID" : "WT34354170089701376"
   },
-  "WT34354914020818944" : {
-    "amount" : 500.0,
-    "fromAccountID" : "BA34344782029389824",
-    "toAccountID" : "BA34344782239105024",
-    "timestamp" : "2025-04-05T15:14:09.789752",
-    "failureReason" : null,
-    "depositID" : "TXN34354914037596161",
-    "withdrawID" : "TXN34354914037596160",
-    "userID" : "USER33601996351078400",
-    "transferID" : "WT34354914020818944",
-    "approval" : true
-  },
   "WT34353301965242368" : {
     "amount" : 50000.0,
     "fromAccountID" : "BA33660014635778048",

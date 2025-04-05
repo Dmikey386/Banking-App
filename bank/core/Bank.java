@@ -5,8 +5,12 @@ import java.io.IOException;
 import java.util.HashMap;
 import bank.idtools.UniqueIDGenerator;
 import bank.transactions.base.Transaction;
+import bank.transactions.base.TransactionException;
 import bank.transactions.base.TransactionFactory;
 import bank.transactions.base.TransactionProcessor;
+import bank.transactions.wiretrasfer.WireTransfer;
+import bank.transactions.wiretrasfer.WireTransferFactory;
+import bank.transactions.wiretrasfer.WireTransferProcessor;
 import bank.user.*;
 import bank.account.*;
 import bank.transactions.loggers.*;
@@ -18,6 +22,8 @@ public class Bank {
     private TransactionLogger transactionLogger = TransactionLogger.getInstance();
     private final TransactionProcessor transactionProcessor = new TransactionProcessor();
     private final TransactionFactory transactionFactory = new TransactionFactory();
+    private final WireTransferProcessor wireTransferProcessor = new WireTransferProcessor();
+    private final WireTransferFactory wireTransferFactory = new WireTransferFactory();
     private final AccountFactory accountFactory = new AccountFactory();
     private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();
 
@@ -49,6 +55,11 @@ public class Bank {
             Transaction transaction = transactionFactory.createTransaction(type, accountID, amount);
             transactionProcessor.process(transaction);
     }
+    public void processTransferRequest(String userID, String fromAccountID, String toAccountID, double amount) throws IOException {
+        WireTransfer request = wireTransferFactory.createWire(userID, fromAccountID, toAccountID, amount);
+        wireTransferProcessor.processRequest(request);
+    }
+
     // reset account daily/monthly limits
     public void resetLimits() throws IOException {
         HashMap<String, BankAccount> entry =  accountLog.readLog();

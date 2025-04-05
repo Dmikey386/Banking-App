@@ -8,8 +8,8 @@ import java.io.IOException;
 public class Deposit extends Transaction {
     private static final String type = "Deposit";
 
-    public Deposit(String transactionID,double amount, String accountID) {
-        super(transactionID,amount, accountID);
+    public Deposit(String txnID,double amount, String accountID) {
+        super(txnID,amount, accountID);
     }
 
     @Override

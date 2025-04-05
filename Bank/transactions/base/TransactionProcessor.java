@@ -16,7 +16,7 @@ public class TransactionProcessor {
         logTransaction(request);
     }
 
-    public void logTransaction(Transaction transaction) throws IOException {
-        transactionLogger.logTransaction(transaction);
+    public void logTransaction(Transaction txn) throws IOException {
+        transactionLogger.logTransaction(txn);
     }
 }
