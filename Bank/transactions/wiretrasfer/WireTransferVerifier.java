@@ -38,7 +38,6 @@ public class WireTransferVerifier extends TransactionVerifier {
         BankAccount depositAccount = accountLog.getAccount(deposit.getAccountID());
         if (withdrawAccount.getUserID().equals(depositAccount.getUserID())) {
             verifyWithdrawAccount(withdraw);
-            System.out.println("Fraud bypassed, shared userID");
         }
         else{
             verifyWithdrawAccount(withdraw);

@@ -1,18 +1,15 @@
 package bank.transactions.wiretrasfer;
 
-import bank.account.AccountLogger;
 import bank.transactions.base.Transaction;
-import bank.transactions.base.TransactionException;
 import bank.transactions.base.TransactionFactory;
 import bank.transactions.loggers.TransactionLogger;
-import bank.transactions.loggers.TransferRequestLogger;
-import bank.user.UserLogger;
+import bank.transactions.loggers.TransferLogger;
 
 import java.io.IOException;
 
 public class WireTransferProcessor {
     private WireTransferVerifier wireVerifier = new WireTransferVerifier();
-    private TransferRequestLogger wireLogger = TransferRequestLogger.getInstance();
+    private TransferLogger wireLogger = TransferLogger.getInstance();
     private TransactionLogger transactionLogger = TransactionLogger.getInstance();
 
 

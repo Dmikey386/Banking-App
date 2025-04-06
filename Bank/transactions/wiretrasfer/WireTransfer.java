@@ -1,22 +1,27 @@
 package bank.transactions.wiretrasfer;
 
 import java.io.IOException;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class WireTransfer {
     private String wireID;
     private double amount;
     private String fromAccountID;
     private String toAccountID;
     private String fromUserID;
-    private boolean recurring;
     private String timestamp;
-    private boolean approved = false;
+    private boolean approval;
     private String failureReason = null;
     private String depositID;
     private String withdrawID;
 
+    // store autotransaction data
+    private boolean recurring;
+    private String autoTransferID;
+
     // Private constructor
-    private WireTransfer(WireTransfer.Builder builder) {
+    public WireTransfer(WireTransfer.Builder builder) {
         this.wireID = builder.wireID;
         this.amount = builder.amount;
         this.fromAccountID = builder.fromAccountID;
@@ -24,92 +29,117 @@ public class WireTransfer {
         this.fromUserID = builder.fromUserID;
         this.recurring = builder.recurring;
     }
+
     // setters
     public void setFailureReason(String message) {
         failureReason = message;
     }
+    public void setRecurring(boolean recurring) {
+        this.recurring = recurring;
+    }
     public void setDepositID(String depositID) {
         this.depositID = depositID;
     }
+
     public void setWithdrawID(String withdrawID) {
         this.withdrawID = withdrawID;
     }
+
     public void setApproval(boolean approval) {
-        this.approved = approval;
+        this.approval = approval;
     }
+
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
     }
+    public void setAutoTransferID(String autoTransferID) {
+        this.autoTransferID = autoTransferID;
+    }
+
     // getters
-    public String getTransferID() throws IOException {
+    public String getWireID() throws IOException {
         return wireID;
+    }
+    public boolean getRecurring() {
+        return recurring;
+    }
+    public String getAutoTransferID() {
+        return autoTransferID;
     }
     public String getUserID() throws IOException {
         return fromUserID;
     }
+
     public double getAmount() {
         return amount;
     }
+
     public String getFromAccountID() {
         return fromAccountID;
     }
+
     public String getToAccountID() {
         return toAccountID;
     }
+
     public boolean getApproval() {
-        return approved;
+        return approval;
     }
-    public String getWithdrawID(){
+
+    public String getWithdrawID() {
         return withdrawID;
     }
+
     public String getDepositID() {
         return depositID;
     }
+
     public String getTimestamp() {
         return timestamp;
     }
+
     public String getFailureReason() {
         return failureReason;
     }
 
 
-// Builder class
-public static class Builder {
-    private String wireID;
-    private double amount;
-    private String fromAccountID;
-    private String toAccountID;
-    private String fromUserID;
-    private boolean recurring = false; // default
+    // Builder class
+    public static class Builder<T extends Builder<T>> {
+        protected String wireID;
+        protected double amount;
+        protected String fromAccountID;
+        protected String toAccountID;
+        protected String fromUserID;
+        protected boolean recurring;
 
-        public Builder wireID(String wireID) {
+        public T wireID(String wireID) {
             this.wireID = wireID;
-            return this;
+            return (T) this;
         }
 
-        public Builder amount(double amount) {
+        public T amount(double amount) {
             this.amount = amount;
-            return this;
+            return (T) this;
         }
 
-        public Builder fromAccountID(String fromAccountID) {
+        public T fromAccountID(String fromAccountID) {
             this.fromAccountID = fromAccountID;
-            return this;
+            return (T) this;
         }
 
-        public Builder toAccountID(String toAccountID) {
+        public T toAccountID(String toAccountID) {
             this.toAccountID = toAccountID;
-            return this;
+            return (T) this;
         }
 
-        public Builder fromUserID(String fromUserID) {
+        public T fromUserID(String fromUserID) {
             this.fromUserID = fromUserID;
-            return this;
+            return (T) this;
         }
 
-        public Builder recurring(boolean recurring) {
+        public T recurring(boolean recurring) {
             this.recurring = recurring;
-            return this;
+            return (T) this;
         }
 
         public WireTransfer build() {
