@@ -19,7 +19,7 @@ public class AutoTransactionProcessor {
     private WireTransferProcessor wireTransferProcessor = new WireTransferProcessor();
 
     public ArrayList<String> getTxnIDs() throws IOException {
-        String date = "2025-05-04";
+        String date = LocalDate.now().toString();
         HashMap<String, ArrayList<String>> log = scheduler.readLog();
         ArrayList<String> txnIDs = log.get(date);
         return txnIDs;
@@ -37,6 +37,7 @@ public class AutoTransactionProcessor {
     public void processAutoTransfers() throws IOException {
         try {
             ArrayList<String> txnIDs = getTxnIDs();
+            scheduler.deleteDate(LocalDate.now().toString());
             for(String txnID : txnIDs) {
                 AutoWireTransfer autoWire = scheduleRequestLog.getTransfer(txnID);
                 autoWire.getAutoTransferID();
@@ -50,7 +51,6 @@ public class AutoTransactionProcessor {
 
                 }
             }
-            scheduler.deleteDate("2025-05-04");
         } catch (Exception e) {
             System.out.println("No transactions found ");
         }
