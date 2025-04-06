@@ -19,7 +19,7 @@ public class WireTransferProcessor {
         wireVerifier.verifyWireTransfer(request,withdraw,deposit);
         request.setWithdrawID(withdraw.getTransactionID());
         if (request.getApproval() && withdraw.getApproval() && deposit.getApproval()) {
-            withdraw.process();
+            withdraw.processAsTransfer();
             deposit.process();
             request.setDepositID(deposit.getTransactionID());
             transactionLogger.logTransaction(deposit);

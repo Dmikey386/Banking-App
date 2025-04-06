@@ -21,6 +21,9 @@ public class Withdraw extends Transaction {
         if (account instanceof SavingsAccount){
             ((SavingsAccount) account).incrementTxn();
         }
+        if (account instanceof CheckingAccount){
+            ((CheckingAccount) account).addToSpending(getAmount());
+        }
         account.setBalance(account.getBalance() - getAmount());
         accountLog.logAccount(account);
         User user = userLog.getUser(account.getUserID());
@@ -28,7 +31,18 @@ public class Withdraw extends Transaction {
         userLog.logUser(user);
     }
 
-
+    @Override // process withdraw as transfer, where checking spending is not incremented
+    public void processAsTransfer() throws IOException {
+        BankAccount account = accountLog.getAccount(getAccountID());
+        if (account instanceof SavingsAccount){
+            ((SavingsAccount) account).incrementTxn();
+        }
+        account.setBalance(account.getBalance() - getAmount());
+        accountLog.logAccount(account);
+        User user = userLog.getUser(account.getUserID());
+        user.addAccount(account);
+        userLog.logUser(user);
+    }
 }
 
 

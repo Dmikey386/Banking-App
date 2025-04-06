@@ -26,6 +26,7 @@ public abstract class Transaction {
 
     // Process
     public abstract void process() throws IOException;
+    public abstract void processAsTransfer() throws IOException;
 
     // Setters
     public void setApproval(boolean approval) {

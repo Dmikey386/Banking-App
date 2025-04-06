@@ -16,7 +16,7 @@ public class Deposit extends Transaction {
     public String getType() {
         return type;
     }
-
+    @Override
     public void process() throws IOException {
         // update account and user logs with new balance
         BankAccount account = accountLog.getAccount(getAccountID());
@@ -25,5 +25,10 @@ public class Deposit extends Transaction {
         User user = userLog.getUser(account.getUserID());
         user.addAccount(account);
         userLog.logUser(user);
+    }
+
+    @Override
+    public void processAsTransfer() throws IOException {
+        process();
     }
 }

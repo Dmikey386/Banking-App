@@ -1,25 +1,7 @@
 {
-  "BA34706550115270656" : {
-    "balance" : 0.0,
-    "accountID" : "BA34706550115270656",
-    "userID" : "USER33601996497879040",
-    "frozen" : false,
-    "monthTxn" : 0,
-    "monthTxnLimit" : 6,
-    "type" : "Savings"
-  },
-  "BA33660014635778048" : {
-    "balance" : 0.0,
-    "accountID" : "BA33660014635778048",
-    "userID" : "USER33601996497879040",
-    "frozen" : false,
-    "monthTxn" : 0,
-    "monthTxnLimit" : 6,
-    "type" : "Savings"
-  },
-  "BA34344782239105024" : {
+  "BA34729031848951808" : {
     "balance" : 1000.0,
-    "accountID" : "BA34344782239105024",
+    "accountID" : "BA34729031848951808",
     "userID" : "USER33601996351078400",
     "frozen" : false,
     "monthlyLimit" : -1.0,
@@ -28,9 +10,9 @@
     "monthSpending" : 0.0,
     "type" : "Checking"
   },
-  "BA33660014472200192" : {
+  "BA34729031672791040" : {
     "balance" : 0.0,
-    "accountID" : "BA33660014472200192",
+    "accountID" : "BA34729031672791040",
     "userID" : "USER33601996497879040",
     "frozen" : false,
     "monthlyLimit" : -1.0,
@@ -38,23 +20,5 @@
     "daySpending" : 0.0,
     "monthSpending" : 0.0,
     "type" : "Checking"
-  },
-  "BA34344782029389824" : {
-    "balance" : 1000.0,
-    "accountID" : "BA34344782029389824",
-    "userID" : "USER33601996351078400",
-    "frozen" : false,
-    "monthTxn" : 0,
-    "monthTxnLimit" : 6,
-    "type" : "Savings"
-  },
-  "BA34706549934915584" : {
-    "balance" : 1000.0,
-    "accountID" : "BA34706549934915584",
-    "userID" : "USER33601996351078400",
-    "frozen" : false,
-    "monthTxn" : 0,
-    "monthTxnLimit" : 6,
-    "type" : "Savings"
   }
 }

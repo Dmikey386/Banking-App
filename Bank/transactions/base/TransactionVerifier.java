@@ -58,7 +58,7 @@ public class TransactionVerifier {
             if (checkingAccount.getDailyLimit() != -1 && checkingAccount.getDailyLimit() < checkingAccount.getDaySpending() + txn.getAmount()){
                 throw new TransactionException("Checking Account has reached daily limit: " + checkingAccount.getDailyLimit());
             }
-            if (checkingAccount.getMonthSpending() != -1 && checkingAccount.getMonthlyLimit() < checkingAccount.getMonthSpending() + txn.getAmount()){
+            if (checkingAccount.getMonthlyLimit() != -1 && checkingAccount.getMonthlyLimit() < checkingAccount.getMonthSpending() + txn.getAmount()){
                 throw new TransactionException("Checking Account has reached monthly limit: " + checkingAccount.getMonthlyLimit());
             }
         }
