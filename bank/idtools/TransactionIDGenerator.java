@@ -2,7 +2,7 @@ package bank.idtools;
 
 public class TransactionIDGenerator implements UniqueIDGenerator {
     static final SnowflakeID generatorTransac = new SnowflakeID();
-    static final String prefix = "TR";
+    static final String prefix = "TXN";
 
     public String generateID(){
         long snowflakeID = generatorTransac.generateSnowflakeId();

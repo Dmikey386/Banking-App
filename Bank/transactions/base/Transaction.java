@@ -1,55 +1,62 @@
 package bank.transactions.base;
-
-import bank.account.*;
-import bank.persistentstorage.AccountLogger;
-import bank.transactions.wire.WireTransferRequest;
-import bank.user.User;
-import bank.persistentstorage.UserLogger;
-
+import bank.account.AccountLogger;
+import bank.user.UserLogger;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
-public class Transaction{
-    protected String[] accountIDs;
-    protected double amount;
-    protected AccountLogger accountLogger = AccountLogger.getInstance();
-    protected UserLogger userLogger = UserLogger.getInstance();
+@JsonIgnoreProperties({"accountLog","userLog"})
+public abstract class Transaction {
+    private String txnID;
+    private double amount;
+    private String accountID;
+    private String timestamp;
+    private boolean approval = false;
+    private String failureReason;
+    protected UserLogger userLog = UserLogger.getInstance();
+    protected AccountLogger accountLog = AccountLogger.getInstance();
 
 
-    public Transaction(WireTransferRequest request) throws IOException {
-        accountIDs = request.getAccountIDs();
-        amount = request.getAmount();
+    public Transaction(String txnID, double amount, String accountID) {
+        this.amount = amount;
+        this.accountID = accountID;
+        this.timestamp = LocalDateTime.now().toString();
+        this.txnID = txnID;
     }
 
-    public BankAccount[] getAccounts(String[] accountIDs) throws IOException {
-        BankAccount[] accounts = new BankAccount[accountIDs.length];
-        for (int i = 0; i < accountIDs.length; i++){
-            BankAccount account = accountLogger.getAccount(accountIDs[i]);
-            accounts[i] = account;
-        }
-        return accounts;
+    // Process
+    public abstract void process() throws IOException;
+    public abstract void processAsTransfer() throws IOException;
+
+    // Setters
+    public void setApproval(boolean approval) {
+        this.approval = approval;
+    }
+    public void setFailureReason(String failureReason) {
+        this.failureReason = failureReason;
     }
 
-    public void updateLogs(BankAccount[] accounts) throws IOException {
-        for (int i = 0; i < accounts.length; i++){
-            //update account
-            String accountID = accounts[i].getAccountID();
-            accountLogger.logAccount(accounts[i]);
-
-            // updates user
-            String userID = accounts[i].getUserID();
-            User user = userLogger.getUser(userID);
-            user.addAccount(accounts[i]);
-            userLogger.logUser(user);
-        }
-
+    //getters
+    public String getTransactionID(){
+        return txnID;
     }
-
-    public void process() throws IOException {
+    public double getAmount(){
+        return amount;
+    }
+    public String getType(){
+        return "Transaction";
+    }
+    public String getAccountID(){
+        return accountID;
+    }
+    public String getTimestamp(){
+        return timestamp;
+    }
+    public boolean getApproval(){
+        return approval;
+    }
+    public String getFailureReason(){
+        return failureReason;
     }
 
 }
-
-
-
-
-

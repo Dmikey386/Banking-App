@@ -1,9 +1,13 @@
 package bank.account;
 
-public class BankAccount {
+import java.time.LocalDate;
+import java.time.YearMonth;
+
+public abstract class BankAccount {
     private double balance;
     private String accountID;
     private String userID;
+    private boolean frozen = false;
 
     //Constructor
     public BankAccount(String accountID, String userID, double balance) {
@@ -18,6 +22,9 @@ public class BankAccount {
         this.accountID = accountID;
     }
 
+
+    public abstract void checkAndResetLimits();
+
     // getters
     public double getBalance(){
         return balance;
@@ -28,9 +35,18 @@ public class BankAccount {
     public String getUserID(){
         return userID;
     }
+    public boolean isFrozen(){
+        return frozen;
+    }
+    public String getType(){
+        return "BankAccount";
+    }
     // Setters
     public void setBalance(double newBalance){
         balance = newBalance;
+    }
+    public void setFrozen(boolean newFrozen){
+        frozen = newFrozen;
     }
 
 }

@@ -1,20 +1,49 @@
 package bank.transactions.base;
-
-import bank.account.BankAccount;
-import bank.transactions.wire.WireTransferRequest;
-
+import bank.account.*;
+import bank.user.User;
 import java.io.IOException;
 
 public class Withdraw extends Transaction {
-    // constructor
-    public Withdraw(WireTransferRequest request) throws IOException {
-        super(request);
+    private static final String type = "Withdraw";
+
+    public Withdraw(String txnID,double amount, String accountID) {
+        super(txnID, amount, accountID);
+    }
+
+    @Override
+    public String getType() {
+        return type;
     }
 
     @Override
     public void process() throws IOException {
-        BankAccount[] accounts = getAccounts(accountIDs);
-        accounts[0].setBalance(accounts[0].getBalance() - amount);
-        updateLogs(accounts);
+        BankAccount account = accountLog.getAccount(getAccountID());
+        if (account instanceof SavingsAccount){
+            ((SavingsAccount) account).incrementTxn();
+        }
+        if (account instanceof CheckingAccount){
+            ((CheckingAccount) account).addToSpending(getAmount());
+        }
+        account.setBalance(account.getBalance() - getAmount());
+        accountLog.logAccount(account);
+        User user = userLog.getUser(account.getUserID());
+        user.addAccount(account);
+        userLog.logUser(user);
+    }
+
+    @Override // process withdraw as transfer, where checking spending is not incremented
+    public void processAsTransfer() throws IOException {
+        BankAccount account = accountLog.getAccount(getAccountID());
+        if (account instanceof SavingsAccount){
+            ((SavingsAccount) account).incrementTxn();
+        }
+        account.setBalance(account.getBalance() - getAmount());
+        accountLog.logAccount(account);
+        User user = userLog.getUser(account.getUserID());
+        user.addAccount(account);
+        userLog.logUser(user);
     }
 }
+
+
+

@@ -1,13 +1,16 @@
 package bank.core;
 
+
 import java.io.IOException;
+
 
 
 public class Main {
     public static void main(String[] args) throws IOException {
         Bank bank = new Bank();
-        String[] accounts = {"BA31437963686576129","BA31437963518803968"};
-        bank.createTransaction("USER31437727773753344",accounts,10000,2);
-
+        bank.processTransaction(1000,"BA34729031848951808","Deposit");
+        bank.processTransferRequest("USER33601996351078400",
+                "BA34729031848951808",
+                "BA34729031672791040",500);
     }
 }

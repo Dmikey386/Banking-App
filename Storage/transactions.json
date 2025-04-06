@@ -1,38 +1,38 @@
 {
-  "TR31438295267278848" : {
-    "userID" : "USER31437727773753344",
-    "accountIDs" : [ "BA31437963686576129" ],
-    "amount" : 10000.0,
-    "transactionType" : 0,
-    "status" : true,
-    "transactionID" : "TR31438295267278848",
-    "failureStatement" : null
+  "TXN34732266928209920" : {
+    "amount" : 1000.0,
+    "accountID" : "BA34729031848951808",
+    "timestamp" : "2025-04-06T16:13:37.733420",
+    "approval" : true,
+    "failureReason" : null,
+    "type" : "Deposit",
+    "transactionID" : "TXN34732266928209920"
   },
-  "TR31438410400923648" : {
-    "userID" : "USER31437727773753344",
-    "accountIDs" : [ "BA31437963686576129", "BA31437963518803968" ],
-    "amount" : 10000.0,
-    "transactionType" : 0,
-    "status" : true,
-    "transactionID" : "TR31438410400923648",
-    "failureStatement" : null
+  "TXN34732495656189952" : {
+    "amount" : 1000.0,
+    "accountID" : "BA34729031848951808",
+    "timestamp" : "2025-04-06T16:14:32.266901",
+    "approval" : true,
+    "failureReason" : null,
+    "type" : "Deposit",
+    "transactionID" : "TXN34732495656189952"
   },
-  "TR31438227919339520" : {
-    "userID" : "USER31437727773753344",
-    "accountIDs" : [ "BA31437963686576129" ],
-    "amount" : 10000.0,
-    "transactionType" : 1,
-    "status" : false,
-    "transactionID" : "TR31438227919339520",
-    "failureStatement" : "Insufficient Balance"
+  "TXN34732495849127937" : {
+    "amount" : 500.0,
+    "accountID" : "BA34729031672791040",
+    "timestamp" : "2025-04-06T16:14:32.309843",
+    "approval" : true,
+    "failureReason" : null,
+    "type" : "Deposit",
+    "transactionID" : "TXN34732495849127937"
   },
-  "TR31438547076513792" : {
-    "userID" : "USER31437727773753344",
-    "accountIDs" : [ "BA31437963686576129", "BA31437963518803968" ],
-    "amount" : 10000.0,
-    "transactionType" : 2,
-    "status" : true,
-    "transactionID" : "TR31438547076513792",
-    "failureStatement" : null
+  "TXN34732495849127936" : {
+    "amount" : 500.0,
+    "accountID" : "BA34729031848951808",
+    "timestamp" : "2025-04-06T16:14:32.309832",
+    "approval" : true,
+    "failureReason" : null,
+    "type" : "Withdraw",
+    "transactionID" : "TXN34732495849127936"
   }
 }

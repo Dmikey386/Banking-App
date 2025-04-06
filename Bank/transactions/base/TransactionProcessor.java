@@ -1,35 +1,22 @@
 package bank.transactions.base;
 
-import bank.persistentstorage.TransactionLogger;
-import bank.transactions.wire.WireTransferRequest;
-
 import java.io.IOException;
-
+import bank.transactions.loggers.TransactionLogger;
 
 public class TransactionProcessor {
     private TransactionLogger transactionLogger = TransactionLogger.getInstance();
-    private TransactionFactory transactionFactory = new TransactionFactory();
+    private TransactionVerifier verifier = new TransactionVerifier();
 
 
-    // Verify transaction
-    public void verifyTransaction(WireTransferRequest transactionRequest) throws IOException {
-        TransactionVerifier verifier = new TransactionVerifier(transactionRequest);
-        verifier.verifyTransaction();
-    }
-
-    // Process the transaction
-    public void processTransaction(WireTransferRequest transactionRequest) throws IOException {
-
-        verifyTransaction(transactionRequest);
-        if (!transactionRequest.getStatus()) {
-            System.out.println(transactionRequest.getFailureStatement());
-        } else {
-            Transaction transaction = transactionFactory.createTransaction(transactionRequest);
-            transaction.process();
+    public synchronized void process(Transaction request) throws IOException {
+        verifier.verifyTransaction(request);
+        if (request.getApproval()){
+            request.process();
         }
-        transactionLogger.logTransaction(transactionRequest);
-
+        logTransaction(request);
     }
 
-
+    public void logTransaction(Transaction txn) throws IOException {
+        transactionLogger.logTransaction(txn);
+    }
 }

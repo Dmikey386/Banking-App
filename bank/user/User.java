@@ -1,9 +1,9 @@
 package bank.user;
 
 import bank.account.BankAccount;
-import bank.transactions.automatic.AutoTransactionRequest;
-import bank.transactions.wire.WireTransferRequest;
+import bank.transactions.wiretrasfer.WireTransfer;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -37,33 +37,4 @@ public class User {
     public boolean verifyAccount(String accountID){
         return userAccMap.containsKey(accountID);
     }
-
-    // Request auto transaction
-    public AutoTransactionRequest createAutoTransactionRequest(String[] accounts, String rate, double amount, int transactionType) {
-        AutoTransactionRequest request = new AutoTransactionRequest.Builder()
-                .userID(this.getUserID())
-                .accountIDs(accounts)
-                .amount(amount)
-                .rate(rate)
-                .transactionType(transactionType)
-                .build();
-        return request;
-    }
-
-    // Request Transaction
-    public WireTransferRequest createTransactionRequest(String[] accounts, double amount, int transactionType){
-        WireTransferRequest request = new WireTransferRequest.Builder()
-                .userID(this.getUserID())
-                .accountIDs(accounts)
-                .amount(amount)
-                .transactionType(transactionType)
-                .status(false)
-                .auto(false)
-                .build();
-
-        return request;
-    }
-
-
-
 }
