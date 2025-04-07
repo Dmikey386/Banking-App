@@ -1,11 +1,13 @@
 package bank.transactions.wiretrasfer;
 
+import bank.locking.LockManager;
 import bank.transactions.base.Transaction;
 import bank.transactions.base.TransactionFactory;
 import bank.transactions.loggers.TransactionLogger;
 import bank.transactions.loggers.TransferLogger;
 
 import java.io.IOException;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class WireTransferProcessor {
     private WireTransferVerifier wireVerifier = new WireTransferVerifier();
@@ -16,13 +18,29 @@ public class WireTransferProcessor {
     public void processRequest(WireTransfer request) throws IOException {
         Transaction withdraw = TransactionFactory.createTransaction("Withdraw", request.getFromAccountID(), request.getAmount());
         Transaction deposit = TransactionFactory.createTransaction("Deposit",request.getToAccountID(), request.getAmount());
-        wireVerifier.verifyWireTransfer(request,withdraw,deposit);
-        request.setWithdrawID(withdraw.getTransactionID());
-        if (request.getApproval() && withdraw.getApproval() && deposit.getApproval()) {
-            withdraw.processAsTransfer();
-            deposit.process();
-            request.setDepositID(deposit.getTransactionID());
-            transactionLogger.logTransaction(deposit);
+
+        String acct1 = request.getFromAccountID();
+        String acct2 = request.getToAccountID();
+
+        String first = acct1.compareTo(acct2) < 0 ? acct1 : acct2;
+        String second = acct1.compareTo(acct2) < 0 ? acct2 : acct1;
+
+        ReentrantLock firstLock = LockManager.getInstance().getLock(first);
+        ReentrantLock secondLock = LockManager.getInstance().getLock(second);
+        firstLock.lock();
+        secondLock.lock();
+        try{
+            wireVerifier.verifyWireTransfer(request,withdraw,deposit);
+            request.setWithdrawID(withdraw.getTransactionID());
+            if (request.getApproval() && withdraw.getApproval() && deposit.getApproval()) {
+                withdraw.processAsTransfer();
+                deposit.processAsTransfer();
+                request.setDepositID(deposit.getTransactionID());
+                transactionLogger.logTransaction(deposit);
+            }
+        } finally {
+            secondLock.unlock();
+            firstLock.unlock();
         }
         transactionLogger.logTransaction(withdraw);
         logWireTransfer(request);

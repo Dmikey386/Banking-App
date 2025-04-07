@@ -34,7 +34,7 @@ public class AutoTransactionProcessor {
         return wireTransfer;
     }
 
-    public void processAutoTransfers() throws IOException {
+    public void processAutoTransfers() {
         try {
             ArrayList<String> txnIDs = getTxnIDs();
             scheduler.deleteDate(LocalDate.now().toString());
@@ -75,7 +75,7 @@ public class AutoTransactionProcessor {
         }
         logAutoWire(autoWire);
     }
-    public void freezeCheck(AutoWireTransfer autoWire) throws IOException {
+    public void freezeCheck(AutoWireTransfer autoWire) {
         if (autoWire.getConsecutiveFailures() >= 3) {
             autoWire.setApproval(false);
         }
