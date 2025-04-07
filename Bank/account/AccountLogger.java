@@ -9,12 +9,16 @@ import java.util.Map;
 
 
 public class AccountLogger extends JsonLogger<BankAccount> {
-    private static AccountLogger single_instance = new AccountLogger();
+    private static volatile AccountLogger single_instance;
 
     // constructor
     public static AccountLogger getInstance() {
         if (single_instance == null) {
-            single_instance = new AccountLogger();
+            synchronized (AccountLogger.class) {
+                if (single_instance == null) {
+                    single_instance = new AccountLogger();
+                }
+            }
         }
         return single_instance;
     }

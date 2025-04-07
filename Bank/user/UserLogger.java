@@ -8,11 +8,15 @@ import java.util.HashMap;
 
 
 public class UserLogger extends JsonLogger<User> {
-    public static UserLogger single_instance = null;
+    public static volatile UserLogger single_instance;
     //
     public static UserLogger getInstance() {
         if (single_instance == null) {
-            single_instance = new UserLogger();
+            synchronized (UserLogger.class) {
+                if (single_instance == null) {
+                    single_instance = new UserLogger();
+                }
+            }
         }
         return single_instance;
     }

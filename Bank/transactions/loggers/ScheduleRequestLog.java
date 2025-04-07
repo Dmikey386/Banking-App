@@ -3,20 +3,22 @@ package bank.transactions.loggers;
 import bank.persistentstorage.JsonLogger;
 import bank.transactions.auto.AutoWireTransfer;
 import bank.transactions.wiretrasfer.WireTransferFactory;
-
-
 import java.io.IOException;
 import java.util.Map;
 
 public class ScheduleRequestLog extends JsonLogger<AutoWireTransfer> {
-        private static ScheduleRequestLog single_instance = null;
+        private static volatile ScheduleRequestLog single_instance = null;
         private WireTransferFactory wireTransferFactory = new WireTransferFactory();
 
         // wrapper for singleton
         public static ScheduleRequestLog getInstance() {
             // ensure only one instance
             if(single_instance == null){
-                single_instance = new ScheduleRequestLog();
+                synchronized (ScheduleRequestLog.class) {
+                    if(single_instance == null){
+                        single_instance = new ScheduleRequestLog();
+                    }
+                }
             }
             return single_instance;
         }

@@ -9,13 +9,17 @@ import java.util.*;
 
 
 public class TransferScheduler extends JsonLogger<ArrayList<String>> {
-    private static TransferScheduler single_instance = null;
+    private static volatile TransferScheduler single_instance;
 
     // wrapper for singleton
     public static TransferScheduler getInstance() {
         // ensure only one instance
         if(single_instance == null){
-            single_instance = new TransferScheduler();
+            synchronized (TransferScheduler.class){
+                if(single_instance == null){
+                    single_instance = new TransferScheduler();
+                }
+            }
         }
         return single_instance;
     }
