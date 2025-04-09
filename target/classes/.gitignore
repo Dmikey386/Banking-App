@@ -1,5 +1,0 @@
-# Ignore IntelliJ, compiled files, and OS junk
-*.iml
-.idea/
-out/
-
