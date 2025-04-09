@@ -3,9 +3,8 @@
 ### ✅`v1.2.0 Transaction System V2`
 ### ✅`v1.3.0 Concurrency Layer`
 ###  🟦`v1.4.0 Database Layer`
-- migrate to SQL Database
-- Create API endpoints between database
-- Create SQL lvl concurrency safety
+### - Migrate to Database
+- design schema
 ### 🟨`v1.2.0 Transaction System V3`
 ### 🟨 `v1.5.0 – Authentication Layer`
 
