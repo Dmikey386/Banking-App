@@ -1,13 +1,35 @@
 {
+  "BA35524208133931008" : {
+    "balance" : 0.0,
+    "accountID" : "BA35524208133931008",
+    "userID" : "USER35523979439505408",
+    "frozen" : false,
+    "monthlyLimit" : -1.0,
+    "dailyLimit" : -1.0,
+    "daySpending" : 0.0,
+    "monthSpending" : 0.0,
+    "type" : "Checking"
+  },
+  "BA35524091985264640" : {
+    "balance" : 0.0,
+    "accountID" : "BA35524091985264640",
+    "userID" : "USER35523979439505408",
+    "frozen" : false,
+    "monthlyLimit" : -1.0,
+    "dailyLimit" : -1.0,
+    "daySpending" : 0.0,
+    "monthSpending" : 0.0,
+    "type" : "Checking"
+  },
   "BA35500629078048768" : {
-    "balance" : 500.0,
+    "balance" : 0.0,
     "accountID" : "BA35500629078048768",
     "userID" : "USER33601996351078400",
     "frozen" : false,
     "monthlyLimit" : -1.0,
     "dailyLimit" : -1.0,
-    "daySpending" : 1500.0,
-    "monthSpending" : 1500.0,
+    "daySpending" : 0.0,
+    "monthSpending" : 0.0,
     "type" : "Checking"
   }
 }

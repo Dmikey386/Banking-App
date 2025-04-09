@@ -1,1 +1,110 @@
-{}
+{
+  "WT35529808767090689" : {
+    "wireID" : "WT35529808767090689",
+    "amount" : 100.0,
+    "fromAccountID" : "BA35524208133931008",
+    "toAccountID" : "BA35500629078048768",
+    "timestamp" : "2025-04-08T21:02:46.527334",
+    "approval" : true,
+    "depositID" : "TXN35529808788062209",
+    "withdrawID" : "TXN35529808788062208",
+    "recurring" : false,
+    "userID" : "USER35523979439505408"
+  },
+  "WT35529808767090688" : {
+    "wireID" : "WT35529808767090688",
+    "amount" : 100.0,
+    "fromAccountID" : "BA35524208133931008",
+    "toAccountID" : "BA35500629078048768",
+    "timestamp" : "2025-04-08T21:02:46.528051",
+    "approval" : true,
+    "depositID" : "TXN35529808792256513",
+    "withdrawID" : "TXN35529808792256512",
+    "recurring" : false,
+    "userID" : "USER35523979439505408"
+  },
+  "WT35528717291749377" : {
+    "wireID" : "WT35528717291749377",
+    "amount" : 100.0,
+    "fromAccountID" : "BA35524208133931008",
+    "toAccountID" : "BA35500629078048768",
+    "timestamp" : "2025-04-08T20:58:26.299818",
+    "approval" : true,
+    "depositID" : "TXN35528717312720897",
+    "withdrawID" : "TXN35528717312720896",
+    "recurring" : false,
+    "userID" : "USER35523979439505408"
+  },
+  "WT35529318524256258" : {
+    "wireID" : "WT35529318524256258",
+    "amount" : 100.0,
+    "fromAccountID" : "BA35524208133931008",
+    "toAccountID" : "BA35500629078048768",
+    "timestamp" : "2025-04-08T21:00:49.645847",
+    "approval" : false,
+    "failureReason" : "Insufficient funds: 100.0",
+    "withdrawID" : "TXN35529318549422084",
+    "recurring" : false,
+    "userID" : "USER35523979439505408"
+  },
+  "WT35528717291749376" : {
+    "wireID" : "WT35528717291749376",
+    "amount" : 100.0,
+    "fromAccountID" : "BA35524208133931008",
+    "toAccountID" : "BA35500629078048768",
+    "timestamp" : "2025-04-08T20:58:26.300385",
+    "approval" : true,
+    "depositID" : "TXN35528717316915203",
+    "withdrawID" : "TXN35528717316915202",
+    "recurring" : false,
+    "userID" : "USER35523979439505408"
+  },
+  "WT35528717287555072" : {
+    "wireID" : "WT35528717287555072",
+    "amount" : 100.0,
+    "fromAccountID" : "BA35524208133931008",
+    "toAccountID" : "BA35500629078048768",
+    "timestamp" : "2025-04-08T20:58:26.299997",
+    "approval" : true,
+    "depositID" : "TXN35528717316915201",
+    "withdrawID" : "TXN35528717316915200",
+    "recurring" : false,
+    "userID" : "USER35523979439505408"
+  },
+  "WT35529318524256257" : {
+    "wireID" : "WT35529318524256257",
+    "amount" : 100.0,
+    "fromAccountID" : "BA35524208133931008",
+    "toAccountID" : "BA35500629078048768",
+    "timestamp" : "2025-04-08T21:00:49.644370",
+    "approval" : true,
+    "depositID" : "TXN35529318549422081",
+    "withdrawID" : "TXN35529318549422080",
+    "recurring" : false,
+    "userID" : "USER35523979439505408"
+  },
+  "WT35529808767090690" : {
+    "wireID" : "WT35529808767090690",
+    "amount" : 100.0,
+    "fromAccountID" : "BA35524208133931008",
+    "toAccountID" : "BA35500629078048768",
+    "timestamp" : "2025-04-08T21:02:46.528635",
+    "approval" : true,
+    "depositID" : "TXN35529808792256515",
+    "withdrawID" : "TXN35529808792256514",
+    "recurring" : false,
+    "userID" : "USER35523979439505408"
+  },
+  "WT35529318524256256" : {
+    "wireID" : "WT35529318524256256",
+    "amount" : 100.0,
+    "fromAccountID" : "BA35524208133931008",
+    "toAccountID" : "BA35500629078048768",
+    "timestamp" : "2025-04-08T21:00:49.645692",
+    "approval" : true,
+    "depositID" : "TXN35529318549422083",
+    "withdrawID" : "TXN35529318549422082",
+    "recurring" : false,
+    "userID" : "USER35523979439505408"
+  }
+}

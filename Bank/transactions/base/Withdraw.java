@@ -29,7 +29,7 @@ public class Withdraw extends Transaction {
         User user = userLog.getUser(account.getUserID());
         user.addAccount(account);
         userLog.logUser(user);
-        System.out.println("Thread: " + Thread.currentThread().getId() + " withdraw "+  account.getBalance());
+        System.out.println("Thread: " + Thread.currentThread().getId() + " withdraw " + account.getAccountID() + " "+  account.getBalance());
     }
 
     @Override // process withdraw as transfer, where checking spending is not incremented
@@ -43,7 +43,7 @@ public class Withdraw extends Transaction {
         User user = userLog.getUser(account.getUserID());
         user.addAccount(account);
         userLog.logUser(user);
-
+        System.out.println("Thread: " + Thread.currentThread().getId() + " transfer Withdraw "+ account.getAccountID() + " "+  account.getBalance());
     }
 }
 

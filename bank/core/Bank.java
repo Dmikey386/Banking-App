@@ -19,6 +19,7 @@ import bank.transactions.loggers.*;
 
 
 public class Bank {
+    private static volatile Bank instance;
     private UserLogger userLog = UserLogger.getInstance();
     private AccountLogger accountLog = AccountLogger.getInstance();
     private TransferScheduler transferSchedule = TransferScheduler.getInstance();
@@ -30,6 +31,18 @@ public class Bank {
     private final AccountFactory accountFactory = new AccountFactory();
     private final UniqueIDGenerator userIDGenerator = new UserIDGenerator();
     AutoTransactionProcessor autoTransactionProcessor = new AutoTransactionProcessor();
+
+    private Bank(){}
+    public static Bank getInstance(){
+        if(instance == null){
+            synchronized(Bank.class){
+                if(instance == null){
+                    instance = new Bank();
+                }
+            }
+        }
+        return instance;
+    }
 
     // Getters
     public User getUser(String userID) throws IOException {
