@@ -1,90 +1,37 @@
-# **Banking Application**
 
-## **Overview**
-This banking application is a **simple banking system** that allows users to create bank accounts, process transactions, and maintain account records. It implements **Object-Oriented Programming (OOP)** principles and ensures transaction integrity through **verification and logging mechanisms**.
+# Phase 1 Core Infrastructure – Banking App Monolith
 
-## **Developer Skills & Expertise**
-
-### **1. Java & Backend Development**
-- **OOP Design skills** - interfaces, polymorphism, and inheritance to create scalable and modular application
-- **Multithread Protection** - snowlfake IDs allow for atomic ID generation
-
----
-
-## **Features**
-### **1. User and Account Management**
-- Users can be created with a **unique User ID**.
-- Users can open **Checking or Savings accounts**.
-- Each account is assigned a **unique Account ID**.
-- Users can **view their account balance**.
-
-### **2. Unique ID Generation**
-- The app uses a **Snowflake ID Generator** to create **unique IDs** for:
-  - Users (`USER<ID>`)
-  - Accounts (`BA<ID>`)
-  - Transactions (`TR<ID>`)
-
-### **3. Transactions**
-The app supports the following transaction types:
-1. **Deposits:** Users can deposit money into their accounts.
-2. **Withdrawals:** Users can withdraw money (subject to minimum balance requirements).
-3. **Transfers:** Users can transfer money between accounts.
-
-### **4. Transaction Processing & Verification**
-- Transactions go through a **verification process** before being executed.
-- The **TransactionVerifier** ensures:
-  - Validity of account details.
-  - Sufficient balance for withdrawals.
-  - Properly formatted transaction amounts (no negative values).
-- If a transaction fails, a **failure message** is logged.
-
-### **5. Logging and Record Keeping**
-- Transactions are stored in a **Transaction Logger**.
-- Both **users and accounts maintain transaction records**.
-
----
-
-## **How It Works**
-1. The **bank class** manages users and accounts.
-2. Users can **create accounts** and request transactions.
-3. The **TransactionProcessor** verifies and executes transactions.
-4. The **TransactionLogger** records successful and failed transactions.
-
----
-
-## **Example Usage**
-```java
-// Create bank instance
-bank bank = new bank();
-
-// Create Users
-bank.createUser();
-User user1 = bank.getUser(1);
-bank.createUser();
-User user2 = bank.getUser(2);
-
-// Open Accounts
-String savings1 = bank.openAccount("Savings", user1);
-String checking1 = bank.openAccount("Checking", user1);
-String savings2 = bank.openAccount("Savings", user2);
-String checking2 = bank.openAccount("Checking", user2);
-
-// Create Transaction Requests
-TransactionRequest depositRequest = user1.createTransactionRequest(new int[]{savings1}, 1000, 0);
-TransactionRequest withdrawalRequest = user1.createTransactionRequest(new int[]{savings1}, 500, 1);
-TransactionRequest transferRequest = user1.createTransactionRequest(new int[]{savings1, checking1}, 300, 2);
-
-// Process Transactions
-bank.processTransaction(depositRequest);
-bank.processTransaction(withdrawalRequest);
-bank.processTransaction(transferRequest);
-```
-
----
-
-## **Future Improvements**
-- Implement **user authentication** for security.
-- Introduce **interest calculations** for savings accounts.
-- Improve **error handling** and provide **detailed logging**.
-- Add **multi-threading** support for concurrent transactions.
-
+### ✅ Step 1 – Account & Transaction Mechanisms
+- Create `BankAccount` types: Checking, Savings
+- Implement base `Transaction`, `Withdraw`, `Deposit`
+### ✅ Step 2 – User Mechanism & Account Ownership
+- Build `User` class and ownership of accounts
+- Link users to accounts and log using `UserLogger`
+### ✅ Step 3 – Transaction Requesting, Verification, and Processing
+- Add `TransactionProcessor` and `TransactionVerifier`
+- Handle edge cases: frozen accounts, overdrafts, invalid IDs
+### ✅ Step 4 – Unique ID Generation (Snowflake ID)
+- Create thread-safe `UniqueIDGenerator` for transactions and users
+### ✅ Step 5 – Persistent Storage Using JSON
+- Implement `JsonLogger<T>` for object logging
+- Write/read accounts, users, and transactions to/from disk
+### ✅ Step 6 – Logging System (for Testing)
+- Add `TransactionLogger`, `TransferLogger`, `ScheduleRequestLog`
+### ✅ Step 7 – Automatic Transaction Services (Transaction System V2)
+- Implement `WireTransfer`, `AutoWireTransfer`
+- Build scheduler, processor, and recurring payment logic
+### 🔵 Step 8 – Multithreading & Concurrency Layer
+- Add account-level locking (e.g. `ReentrantLock` per accountID)
+- Ensure thread-safe transaction + auto-transfer processing
+### 🟡 Step 9 – SQL Database Migration (PostgreSQL)
+- Design schema and migrate data from JSON
+- Replace `JsonLogger` with SQL-backed persistence
+### 🟡 Step 10 – Spring Boot API for Transactions
+- Build endpoints for transaction access and testing accounts
+### 🟡 Step 11 – Authentication & Security (JWT + RBAC)
+- Implement login/authentication and role-based permissions
+### 🟡 Step 12 – Multi-User Concurrency & SQL-Level Safety
+- Add SQL transaction blocks and isolation handling
+- Integrate row-level locks and ACID compliance
+# Phase 2 Microservices Infrastructure
+# Phase 3 Scalable Distributed System 
