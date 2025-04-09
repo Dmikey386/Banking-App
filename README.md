@@ -3,8 +3,10 @@
 - [v1.1.0 Core Functionality](#v110-core-functionality)
 - [v1.2.0 Transaction System V2](#v120-transaction-system-v2)
 - [v1.3.0 Concurrency Layer](#v130-concurrency-layer)
+- [Banking ERD](/docs/bank_db_ERD.pdf)
 - [Phase 2 Microservices Infrastructure](#phase-2-microservices-infrastructure)
 - [Phase 3 Scalable Distributed System](#phase-3-scalable-distributed-system)
+- 
 
 ---
 
