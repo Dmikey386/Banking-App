@@ -46,13 +46,13 @@
 ## ✅ `v1.3.0 Java-LvL Concurrency Layer`
 ### Step – Multithreading & Concurrency Layer
 ## 🟦 `v1.4.0 Database Layer`
-### 🟦 Step - Migrate to SQL
+### Step - Migrate to SQL
 - Desing DB Schema 
 - Create DB Tables 
 - Transition POJOs into DB schema
-### 🟦 Step - SpringBoot API endpoints between Database
+### Step - SpringBoot API endpoints between Database
 - create API endpoints
-### 🟦 Step - DB-lvl concurrency
+### Step - DB-lvl concurrency
 - Design DB concurrency locks 
 - Stress Test Concurrency locks
 ## 🟨`v1.2.0 Transaction System V3`
