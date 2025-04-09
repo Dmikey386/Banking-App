@@ -1,3 +1,14 @@
+# macOS / System
+.DS_Store
+.gitignore.save
+
+# IDE / Output
+/out
+/target
+*.iml
+
+# Local-only test data (optional)
+Storage/*.json
 # Ignore IntelliJ, compiled files, and OS junk
 *.iml
 .idea/
