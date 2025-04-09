@@ -11,13 +11,8 @@
 - Create Transfer Table 
 - Create AutoTransfer Table 
 ### - SpringBOOT 
-- Annotate POJOs as @Entity with @Table mappings
-- Map ENUMs using @Enumerated(EnumType.STRING)
-- Add @Id, @Column, and @JoinColumn where appropriate 
-- Implement @OneToMany, @ManyToOne, @ManyToMany relationships 
-- Configure spring.datasource in application.properties or yml 
-- Add JPA Repositories for each entity Create DTOs & mappers if needed 
-- Write service-layer integration tests using H2 or Postgres test container
+- JPA Entity mapping
+- Create spring Data Repositories
 ### - DB lvl concurrency layer
 - Design transaction isolation strategy (READ COMMITTED, REPEATABLE READ)
 - Use FOR UPDATE in critical balance/transfer queries 

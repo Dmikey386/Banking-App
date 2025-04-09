@@ -11,6 +11,7 @@ CREATE TABLE Account (
     account_id VARCHAR(50) PRIMARY KEY NOT NULL,
     balance DECIMAL(12,2) NOT NULL,
     account_type account_type_enum NOT NULL,
+    nick_name VARCHAR(50),
     initialized TIMESTAMP NOT NULL,
     -- only for checking
     month_limit DECIMAL(12,2) DEFAULT -1.0,
@@ -56,7 +57,9 @@ CREATE TABLE Transfer (
     auto_wire_id VARCHAR(50),
     time_stamp TIMESTAMP NOT NULL,
     fail_reason VARCHAR(255),
-    description VARCHAR(255)
+    description VARCHAR(255),
+    message VARCHAR(255)
+
 );
 CREATE TABLE AutoTransfer (
     auto_transfer_id VARCHAR(50) PRIMARY KEY NOT NULL,
@@ -68,5 +71,6 @@ CREATE TABLE AutoTransfer (
     consecutive_fails SMALLINT DEFAULT 0 NOT NULL,
     num_txn SMALLINT DEFAULT 0 NOT NULL,
     time_stamp TIMESTAMP NOT NULL,
-    next_date TIMESTAMP
+    next_date TIMESTAMP,
+    message VARCHAR(255)
 );
