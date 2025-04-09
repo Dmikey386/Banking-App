@@ -25,6 +25,7 @@ public class Deposit extends Transaction {
         User user = userLog.getUser(account.getUserID());
         user.addAccount(account);
         userLog.logUser(user);
+        System.out.println("Thread: " + Thread.currentThread().getId() + " deposit "+  account.getBalance());
     }
 
     @Override

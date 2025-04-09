@@ -1,14 +1,1 @@
-{
-  "WT34732495849127936" : {
-    "wireID" : "WT34732495849127936",
-    "amount" : 500.0,
-    "fromAccountID" : "BA34729031848951808",
-    "toAccountID" : "BA34729031672791040",
-    "timestamp" : "2025-04-06T16:14:32.309790",
-    "approval" : true,
-    "depositID" : "TXN34732495849127937",
-    "withdrawID" : "TXN34732495849127936",
-    "recurring" : false,
-    "userID" : "USER33601996351078400"
-  }
-}
+{}

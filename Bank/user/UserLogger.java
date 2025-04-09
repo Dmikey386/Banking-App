@@ -1,6 +1,6 @@
 package bank.user;
 
-import bank.locking.JsonLocker;
+import bank.locking.DocumentLocker;
 import bank.persistentstorage.JsonLogger;
 
 import java.io.IOException;
@@ -34,7 +34,7 @@ public class UserLogger extends JsonLogger<User> {
 
     // get User from user log
     public User getUser(String userID) throws IOException {
-        ReentrantLock lock = JsonLocker.getInstance().getLock(path);
+        ReentrantLock lock = DocumentLocker.getInstance().getLock(path);
         Map<String, Object> userAttrMap = (Map<String, Object>) getObjectMap(userID);
         String id = (String) userAttrMap.get("userID");
         HashMap<String, Double> userAccMap = (HashMap<String, Double>) userAttrMap.get("userAccMap");

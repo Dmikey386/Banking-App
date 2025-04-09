@@ -1,15 +1,14 @@
 package bank.locking;
-
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class LockManager {
-   private static final LockManager instance = new LockManager();
+public class AccountLocker {
+   private static final AccountLocker instance = new AccountLocker();
    private final ConcurrentHashMap<String, ReentrantLock> locks = new ConcurrentHashMap<>();
 
-   private LockManager() {}
+   private AccountLocker() {}
 
-    public static LockManager getInstance() {
+    public static AccountLocker getInstance() {
        return instance;
     }
 

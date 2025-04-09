@@ -3,13 +3,13 @@ package bank.locking;
 import java.util.HashMap;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class JsonLocker {
-    private static final JsonLocker instance = new JsonLocker();
+public class DocumentLocker {
+    private static final DocumentLocker instance = new DocumentLocker();
     private HashMap<String, ReentrantLock> locks = new HashMap<>();
 
-    private JsonLocker() {}
+    private DocumentLocker() {}
 
-    public static JsonLocker getInstance() {
+    public static DocumentLocker getInstance() {
         return instance;
     }
 

@@ -1,6 +1,6 @@
 package bank.persistentstorage;
 
-import bank.locking.JsonLocker;
+import bank.locking.DocumentLocker;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.io.File;
@@ -19,7 +19,7 @@ public class JsonLogger<T> {
 
     // Update Json File
     public void writeJson(HashMap log) throws IOException {
-        ReentrantLock lock = JsonLocker.getInstance().getLock(path);
+        ReentrantLock lock = DocumentLocker.getInstance().getLock(path);
         lock.lock();
         try {
             mapper.writerWithDefaultPrettyPrinter().writeValue(new File(path), log);
@@ -37,7 +37,7 @@ public class JsonLogger<T> {
 
     }
     public HashMap<String, T> readLog() throws IOException {
-        ReentrantLock lock = JsonLocker.getInstance().getLock(path);
+        ReentrantLock lock = DocumentLocker.getInstance().getLock(path);
         lock.lock();
         try {
             HashMap<String, T> objLog = mapper.readValue(new File(path), new TypeReference<HashMap<String, T>>() {});

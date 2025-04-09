@@ -1,7 +1,7 @@
 package bank.transactions.base;
 
 import java.io.IOException;
-import bank.locking.LockManager;
+import bank.locking.AccountLocker;
 import bank.transactions.loggers.TransactionLogger;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -11,13 +11,16 @@ public class TransactionProcessor {
 
 
     public void process(Transaction request) throws IOException {
-        ReentrantLock lock = LockManager.getInstance().getLock(request.getAccountID());
+        ReentrantLock lock = AccountLocker.getInstance().getLock(request.getAccountID());
         lock.lock();
         try{
             verifier.verifyTransaction(request);
             if (request.getApproval()){
-                request.process();
+                Thread.sleep(1500);
+                request.process(); // should print and process here
             }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         } finally {
             lock.unlock();
         }

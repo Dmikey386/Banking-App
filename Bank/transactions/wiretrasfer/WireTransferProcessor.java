@@ -1,6 +1,6 @@
 package bank.transactions.wiretrasfer;
 
-import bank.locking.LockManager;
+import bank.locking.AccountLocker;
 import bank.transactions.base.Transaction;
 import bank.transactions.base.TransactionFactory;
 import bank.transactions.loggers.TransactionLogger;
@@ -25,8 +25,8 @@ public class WireTransferProcessor {
         String first = acct1.compareTo(acct2) < 0 ? acct1 : acct2;
         String second = acct1.compareTo(acct2) < 0 ? acct2 : acct1;
 
-        ReentrantLock firstLock = LockManager.getInstance().getLock(first);
-        ReentrantLock secondLock = LockManager.getInstance().getLock(second);
+        ReentrantLock firstLock = AccountLocker.getInstance().getLock(first);
+        ReentrantLock secondLock = AccountLocker.getInstance().getLock(second);
         firstLock.lock();
         secondLock.lock();
         try{
