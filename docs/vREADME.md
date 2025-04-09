@@ -5,7 +5,7 @@
 - Add account-level locking during transaction/transfer processing
 - Add document-level locking for thread safe document editing
 - Perform Stress Testing on locking mechanisms
-###  🟦`v1.4.0 Database Layer`
+###  🟨`v1.4.0 Database Layer`
 ### 🟨`v1.2.0 Transaction System V3`
 ### 🟨 `v1.5.0 – Authentication Layer`
 
