@@ -43,12 +43,18 @@
   - `Transfer Logger`
 - Implement `AutoWireTransfer` Build scheduler, processor, and recurring payment logic  
   - `Transfer Scheduler`, `Schedule Log`
-## 🟦 `v1.3.0 Java-LvL Concurrency Layer`
-### 🟦Step – Multithreading & Concurrency Layer  
-- Add account-level locking during transaction/transfer processing
-- Add document-level locking for thread safe document editing
-- Perform Stress Testing on locking mechanisms
-## 🟨 `v1.4.0 Database Layer`
+## ✅ `v1.3.0 Java-LvL Concurrency Layer`
+### Step – Multithreading & Concurrency Layer
+## 🟦 `v1.4.0 Database Layer`
+### 🟦 Step - Migrate to SQL
+- Desing DB Schema 
+- Create DB Tables 
+- Transition POJOs into DB schema
+### 🟦 Step - SpringBoot API endpoints between Database
+- create API endpoints
+### 🟦 Step - DB-lvl concurrency
+- Design DB concurrency locks 
+- Stress Test Concurrency locks
 ## 🟨`v1.2.0 Transaction System V3`
 ## 🟨 `v1.5.0 – Authentication Layer`
 
