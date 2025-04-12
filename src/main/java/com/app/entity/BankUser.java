@@ -14,7 +14,7 @@ public class BankUser {
     private String email;
     private String firstName;
 
-    // User Account Sharingn
+    // User Account Sharing
     @ManyToMany
     @JoinTable(
             name = "user_account_join",
@@ -30,5 +30,8 @@ public class BankUser {
     @OneToMany(mappedBy = "user")
     private List<AutoTransfer> autoTransfer;
 
+    public void addAccount(Account account) {
+        accounts.add(account);
+    }
 
 }

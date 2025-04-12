@@ -47,7 +47,7 @@
   - `Transfer Scheduler`, `Schedule Log`
 ## ✅ `v1.3.0 Java-LvL Concurrency Layer`
 ### Step – Multithreading & Concurrency Layer
-## 🟦 `v1.4.0 Database Layer`
+## 🟦 `v1.4.0 Springboot based`
 ### Step - Migrate to SQL
 - Desing DB Schema 
 - Create DB Tables 

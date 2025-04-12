@@ -41,38 +41,16 @@ public class Account  {
     )
     private List<BankUser> users;
 
-    // Setters
-    public void withdraw(double amount) {
-        this.balance -= amount;
-    }
-    public void deposit(double amount) {
-        this.balance += amount;
-    }
-    public void setDaySpending(double daySpending) {
-        this.daySpending = daySpending;
-    }
-    public void setMonthSpending(double monthSpending) {
-        this.monthSpending = monthSpending;
-    }
-    public void addSpending(double amount) {
-        daySpending += amount;
-        monthSpending += amount;
-    }
-    public void resetSpending() {
-        daySpending = 0;
-        monthSpending = 0;
-    }
-    public void incrementMonthTxn() {
-        monthTxn++;
-    }
-    public void resetMonthTxn() {
-        monthTxn = 0;
-    }
-    // Getters
-    public int getMonthTxnLimit() {
-        return monthTxnLimit;
-    }
 
+    public void addUsers(BankUser bankUser) {
+        users.add(bankUser);
+    }
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
+    }
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
+    }
 }
 
 
